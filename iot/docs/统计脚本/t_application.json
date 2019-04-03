@@ -1,0 +1,198 @@
+{ 
+    "_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "app_name" : "用户子服务", 
+    "app_domain" : "user", 
+    "app_secret" : "f1172072afc1301802697a8b160cecc9", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1546480478), 
+    "update_time" : NumberLong(1546480478), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "app_name" : "权限子服务", 
+    "app_domain" : "permission", 
+    "app_secret" : "01aff9892f0c9d00af4271ce533e8eda", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "db455f77693541f789c695bc905af4d1", 
+    "app_name" : "设备子服务", 
+    "app_domain" : "device", 
+    "app_secret" : "732f3710d244c0d3b2946819410ef833", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "app_name" : "支付子服务", 
+    "app_domain" : "pay", 
+    "app_secret" : "0ac1e231c22e6ea84dece6a7574a59d5", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "app_name" : "告警子服务", 
+    "app_domain" : "alarm", 
+    "app_secret" : "4293d9a80cf4a1ebc01966e4db361d46", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "00111e6ef4004758a8cfef7375977c24", 
+    "app_name" : "地理位置子服务", 
+    "app_domain" : "position", 
+    "app_secret" : "56ac1304194d6baa415c6391abcf75e7", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "fac326c7d47043c7a1fd81c47102bf10", 
+    "app_name" : "用户子服务", 
+    "app_domain" : "信息", 
+    "app_secret" : "8c33d4aabafc10aa6c95325e050f6c39", 
+    "founder_id" : "b3695a35-ef7f-58d8-9495-9a8e9ae4e0c0", 
+    "founder_name" : "root", 
+    "create_time" : NumberLong(1547026545), 
+    "update_time" : NumberLong(1547026680), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "2f3bdcd110d54e7393f2e2702b07374c", 
+    "app_name" : "test", 
+    "app_domain" : "test", 
+    "app_secret" : "e7439ed7f291436c537d8b0fa53b3b54", 
+    "founder_id" : "b3695a35-ef7f-58d8-9495-9a8e9ae4e0c0", 
+    "founder_name" : "root", 
+    "create_time" : NumberLong(1547026576), 
+    "update_time" : NumberLong(1547026686), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "43768ec354c448ec840659b92f728fa4", 
+    "app_name" : "test12", 
+    "app_domain" : "test13", 
+    "app_secret" : "fbbd675b4613241507c974203b7cc8ca", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547026609), 
+    "update_time" : NumberLong(1547026663), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "4313126d44894777a4e5aa42f76e7f17", 
+    "app_name" : "三生三世", 
+    "app_domain" : "搜索", 
+    "app_secret" : "a5655dedf2a1b858cc3566daca48c985", 
+    "founder_id" : "b3695a35-ef7f-58d8-9495-9a8e9ae4e0c0", 
+    "founder_name" : "root", 
+    "create_time" : NumberLong(1547026609), 
+    "update_time" : NumberLong(1547026690), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "31c13e7b184a4462936c5cea8434940d", 
+    "app_name" : "gg", 
+    "app_domain" : "gg", 
+    "app_secret" : "3ba73f8da0c81c6b2ec8797e10b640ce", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547026669), 
+    "update_time" : NumberLong(1547026681), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "042168547aa04f6b9276ab48261d4f10", 
+    "app_name" : "ds", 
+    "app_domain" : "ds", 
+    "app_secret" : "87db108a06aa09ea6f23e716398456b5", 
+    "founder_id" : "3e04df79-e41b-4682-8c5d-aa6935141239", 
+    "founder_name" : "app029", 
+    "create_time" : NumberLong(1547026685), 
+    "update_time" : NumberLong(1547026685), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "a171e9cf91454884acf5158ccbc8eb15", 
+    "app_name" : "reter", 
+    "app_domain" : "trre", 
+    "app_secret" : "d94f419ce6afc3b3e2fc29e1834e2266", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547712202), 
+    "update_time" : NumberLong(1547712202), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "f69c0f6234d2410b92912c9e1a9cc1df", 
+    "app_name" : "ergtrehyyrht", 
+    "app_domain" : "tertregtfergtf", 
+    "app_secret" : "17773895d53d7f4a983413b1b6818620", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547712212), 
+    "update_time" : NumberLong(1547712212), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "cdc62475ae384fdd81d1020127a34a88", 
+    "app_name" : "二哥尔特人共同", 
+    "app_domain" : "人格", 
+    "app_secret" : "44ea700943ede3af0bff10536a81fbe2", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547712221), 
+    "update_time" : NumberLong(1547712387), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "71f8ef07df234d80acec399bce0927bd", 
+    "app_name" : "不是个", 
+    "app_domain" : "而GV是GV", 
+    "app_secret" : "d2177f640b4bc9470f5d9f4825ec1f1e", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547712231), 
+    "update_time" : NumberLong(1547712231), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "79ab6d4774cf411c8c7a7cd561f32dcf", 
+    "app_name" : "功夫是不该认识", 
+    "app_domain" : "费GV热", 
+    "app_secret" : "3e11518849db1ed466011a0efd2e4585", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547712239), 
+    "update_time" : NumberLong(1547712239), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "eb6284ac93044e8a9c652f2bea66cb29", 
+    "app_name" : "二公", 
+    "app_domain" : "地方vfd", 
+    "app_secret" : "220a96bd0fe35bef9de4b1a9307deeb7", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547712251), 
+    "update_time" : NumberLong(1548037215), 
+    "state" : NumberInt(0)
+}

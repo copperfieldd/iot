@@ -1,0 +1,40 @@
+# Enable response compression
+server:
+  compression:
+    enabled: true
+# The comma-separated list of mime types that should be compressed
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+# Compress the response only if the response size is at least 1KB
+    min-response-size: 1024
+management:
+  security:
+    enabled: false
+zuul:
+  sensitive-headers: #清空默认过滤请求头。zuul网关对请求参数进行重新组装，默然会过滤掉请求中的authorization、set-cookie、cookie
+  routes:
+    www-root:
+      path: / # 配置根地址跳转至nginx
+      url: http://192.168.3.8:8033       
+    www-index:
+      path: /*.* # 配置根目录下静态文件跳转至nginx
+      url: http://192.168.3.8:8033       
+    www-assets:
+      path: /assets/** #配置/assets/下所有静态文件跳转至nginx
+      url: http://192.168.3.8:8033
+      stripPrefix: false
+    www-static:
+      path: /static/** #配置/static/下所有静态文件跳转至nginx
+      url: http://192.168.3.8:8033       
+      stripPrefix: false
+logging:
+  config: classpath:xml/logback_boot.xml
+debug: true
+trace: true
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
+ribbon:
+  ReadTimeout: 50000

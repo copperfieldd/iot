@@ -1,0 +1,44 @@
+target/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.DS_Store
+### IntelliJ IDEA ###
+.idea
+.idea/*.xml
+*.iws
+*.iml
+*.ipr
+
+### Java template
+# Compiled class file
+*.class
+
+# Log file
+*.log
+
+# BlueJ files
+*.ctxt
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+
+/.mvn/
+/mvnw.cmd
+/mvnw
+
+/LOG_PATH_IS_UNDEFINED

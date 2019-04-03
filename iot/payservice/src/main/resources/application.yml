@@ -1,0 +1,104 @@
+server:
+  #本服务外网地址
+  domain: http://47.94.154.65:8020/${spring.application.name}
+web:
+  config:
+    tokenName: Authorization
+    # 返回数据加密用的秘钥
+    secretKey: "!23edc$6"
+    tokens: "123456"
+
+    pay:
+      #微信支付配置参数
+      WX:
+        #公众号ID
+        appID: wx9971bacce9f6a845
+        #商户号
+        mchID: 1423285902
+        #商户密钥,在商户平台申请，用于支付时加密
+        key: kvQPqB7KiLSWkd0IQTIS5X6mU6hD3rIK
+        #公众号密钥,用于获取用户信息及公众号相关操作
+        appsecret: d37e17d8b547181202eeff1d18221666
+        #签名方式 无需更改
+        signType: MD5
+        #链接超时毫秒数
+        httpConnectTimeoutMs: 6000
+        #读取数据超时毫秒数
+        httpReadTimeoutMs: 8000
+
+      #支付宝支付配置参数
+      alipay:
+        #支付宝API地址
+        #https://openapi.alipaydev.com/gateway.do 沙箱环境
+        #https://openapi.alipay.com/gateway.do 正式环境
+        openApiDomain: https://openapi.alipaydev.com/gateway.do
+        #APPID
+        appId: 2016091300500392
+        #签名类型: RSA->SHA1withRsa,RSA2->SHA256withRsa
+        signType: RSA2
+        #商户私匙
+        privateKey: MIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQD1mzMpODZX3hEUwYbS6TuoBU6ZLLBi/N0fduoHBiyXZNigIqIWllDX3IpQ0AXRFaJnKwD0Zz3LbsAZ2D3NkUB0feYllmiXKnFjW4w51sjfpr9DTL3ugB0CURHGwxDuIKAX5jNCVNm39neYwrn8Mb7unG55BzDTVjZ+Kc+aj32Lap101XQtVFcPk9J2C25Z+cj8o1mnM5HNkH6P8aiae+0nuoK6Jj8ZkfxHr40WvTw+jRPUHr4e55wibDZek1c9qRyqpVUYdrG/0DMVzjYo8nf60F5DFZECCxc36hpdp1rVBFykpjdNpBeh4P2beKqSWNYHLctCrmIYJ/dMy0csmog1AgMBAAECggEAU+W/NT5pedx2s0NkfdmEMmIVtkdIvZepJV1mlh2qz9B4G0OZYOPaG9LPQMm+ouyj/F/5RIOb3Ukov+tZOUZ74Q88texKMBEkiI82OG/BUHzSavflDXqf7jGpQ99QgjeM2H0fV3JKqQe9VOZ3x8lqcnHnXtpw+FBD7xbzPtXzSdLnPMrjVLdq6tAqgQpIjB9IofRLX2FGxhBKEylYm0sTRrUj0Hhcyxd/N3k6QsncG76roqUwi93/dVgIczq+PSYT46m6LVYIKckMAaYufNu1zzPHU8lUImQSchxA+PX0GMJRGXeSuQYoaXm/Hvq9T/qnuR0z4/oAXXhJ4B1JyEhThQKBgQD/nE9gmQNlZJjZ7fZQbVzExPl7RFQAzKVTpKeAmFwtCc65JXxdNEKqRrLzUQU8VB54nDIJdq67cq4zU26bfeNzJSfaEXZ21yJEtiwiX7FEf2a3kOTowSuhHhl/jueJwTF/BRQJYkEhUX8LCSVqsLmhQFc4nGbcq0RpMEKngolSPwKBgQD1+vzuwEaoEXkhwM21b6a9PINOMSVGEJWKCx7XpVHLvM755iBBtMaHYjzzGp+wiXyk+BV4UwYOTx7b6MRdERttAmDiCPQ0vGlMph4aG/9iQ7dtaR9+cCTIjtuPBuK0cmwlFZvlqj3Wp3LOwngRTCoClxjW/udKPiVNugR6x30giwKBgQC6C7aG07hyE09hx98xWPhdzBTeULRnxIxNHhpA8iSdL3dEsXEckc44C69yhDUwXPW0ydNtqfGyQ91hREfMa0ui4pdoFK/J/fpWUtY6yrXG6ogD8jV66CbuZW8ftg726CQzlKmpztci/iNfD/ApAKqMIL2bWdNQqGPpwBOzwsJalwKBgFRPfehbkRxEOO+fxSJeLZmJJzxizfLQ9mCFZUHm0T1y7sJq5T2AN9fpjRiKVJfO2CE3Qyyl0FqRNfOMOdnoZi0b9pcjGIkG11TFT2YFmKhWq4Vd1cShrYnspUbFxmixG24ulOvIST/MzyYdM8hCAdg3b/UpE5+341Nb4fMvcyz3AoGBAMwQW+MjyXTMGbjQx2yJ7lcT7x0MtepiOx3O1NWriJ5JZO84NGYb1i0r9NGFAof8+9ESmWYeUWXz2HL1FdUJuVoUXZ+ItgeXVS+kz6q4jNk5yTjNEov6AFRcP4cJ9lGA17pN+qs3CWQU8g2XQHXU3XJElZjtmigs7OBZjhGgcA7O
+        #支付宝公匙(支付宝根据商户私匙生成,可在支付宝中查看)
+        alipayPublicKey: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAzN8dl9RJS5gLoup8tW+fl+1xIAnlzlo5Ls5aghHr8Sxqnfycjq8cftx96EqqdR+nlJQkQHKyrHKWdgZ9Lpc964OzEuhK5sIjMhNJ2dnxxwb61zaaV8vh8wuda76aEUN56syL3ekTDyGeRPzTb1vyUmRbnbVxeWLzdfYK86iLO/CuyZgap4+KGhoPSEm4cLolQuz+dYQd4PwAZ8noG71xRcs28xj76SFTKyxOe9fN3rUQzlz3LtJl1UA/tkoa8Apc+rg4jfc496DBIwv5oUkrdJKooQKJ/qbW7m4RdWF12M4WXfvKWlxCUTrtJVt015hBNDDh28yUA/kmdoTgk5SJZQIDAQAB
+        #当面付最大查询次数和查询间隔（毫秒）
+        maxQueryRetry: 5
+        queryDuration: 5000
+        #当面付最大撤销次数和撤销间隔（毫秒）
+        maxCancelRetry: 3
+        cancelDuration: 2000
+    #子线程池配置
+    task:
+      #最小线程数
+      corePoolSize: 1
+      #最大线程数
+      maxPoolSize: 1000
+      #允许线程空闲时间
+      keepAliveSeconds: 1000
+      #允许缓存队列数量
+      queueCapacity: 10000
+stats:
+  domain: pay
+  collectionId: pay
+  cron: 0 * * * * ?
+spring:
+ # MYSQL配置
+  # Redis配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 0
+    pool:
+      max-idle: 5
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+    timeout:
+      default: 60
+      smscode: 300
+      weixin: 3600
+
+  thymeleaf:
+    prefix: classpath:/thymeleaf/
+    suffix: .html
+    mode: HTML5
+    encoding: UTF-8
+    content-type: text/html
+    cache: false
+  resources:
+    static-locations: classpath:/static/,/weblibs/
+  mvc:
+    static-path-pattern: /**
+  data:
+    mongodb:
+#      host: 120.79.1.243
+      host: 192.168.3.8
+      port: 27017
+      database: pms
+#      username: xxxx
+#      password: F6Psh4Cxq3QXhw==
+    cassandra:
+      connect-timeout-millis: 10000
+feignService:
+  user: userservice
+  stats: statsservice

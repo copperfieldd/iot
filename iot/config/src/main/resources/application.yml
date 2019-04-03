@@ -1,0 +1,77 @@
+server:
+  #端口号
+  port: 8022
+#  context-path: /config
+spring:
+  profiles:
+    active: native #使用本地文件，不用git
+#  resources:
+#      static-locations: classpath:/resources/,file:d:/config
+  cloud:
+    config:
+      server:
+        prefix: /config
+        native:
+          search-locations: ${data.configserver} #file:${data.configserver} #配置文件路径，可以根据dev，prd，test进行环境选择
+#          search-locations: classpath:/data/configserver #file:${data.configserver} #配置文件路径，可以根据dev，prd，test进行环境选择
+  application:
+    name: config #服务名称
+  jmx:
+    default-domain: config
+  #redis相关配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-active: 1000
+      max-wait: 1000
+      max-idle: 100
+    timeout: 100000
+  #mongodb相关配置
+  data:
+    mongodb:
+      host: 192.168.3.8
+      port: 27017
+      database: config
+    cassandra:
+      connect-timeout-millis: 10000
+
+management:
+  security:
+    enabled: false
+eureka:
+  # 公网ip进行注册，不用内网ip
+  instance:
+      prefer-ipaddress: true
+      
+#      ip-address: 47.94.154.65
+#      instance-id: http://47.94.154.65:8762/
+  client:
+    service-Url:
+      #发布注册中心地址
+      defaultZone: http://admin:admin@47.94.154.65:8031/eureka/eureka
+      # defaultZone: http://admin:admin@127.0.0.1:8031/eureka
+       #为true时，可以启动，但报异常：Cannot execute request on any known server
+      fetch-registry: false
+data:
+#  configserver: /home/bytecloud/iot/config/configfile/data/configserver #classpath:/data/configserver #d:/config/data/configserver
+  configserver: configfile/data/configserver
+#  configserver: configserver #classpath:/data/configserver #d:/config/data/configserver
+success:
+  message:
+    import: 导入成功！！
+    export: 导出成功！！
+    save: 保存成功！！
+    update: 修改成功！！
+    delete: 删除成功！！
+    list: 查询成功！！
+failure:
+  message:
+    import: 导入失败！！
+    export: 导出失败！！
+    save: 保存失败！！
+    update: 修改失败！！
+    delete: 删除失败！！
+    list: 查询失败！！
+monitor:
+  cycle: 60

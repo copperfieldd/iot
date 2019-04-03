@@ -1,0 +1,52 @@
+import { defineMessages } from 'react-intl';
+
+export default defineMessages({
+    cancel:{
+        id:"button.cancel",
+        defaultMessage:"取消"
+      },
+    globallogout:{
+        id:"global.logout",
+        defaultMessage:"确认退出吗?"
+    },
+    notice:{
+        id:"button.notice",
+        defaultMessage:"提示"
+    },
+    ok:{
+      id:"button.ok",
+      defaultMessage:"确定"
+    },
+    basicTitle:{
+      id:"basicTitle",
+      defaultMessage:"智能抄表系统"
+    },
+    userlogin:{
+        id:"userlogin",
+        defaultMessage:"用户登录"
+    },
+    login:{
+        id:"login",
+        defaultMessage:"登录"
+    },
+    remember:{
+        id:"remember",
+        defaultMessage:"记住密码"
+    },
+    username:{
+        id:"username",
+        defaultMessage:"请输入账号"
+    },
+    usernamewrite:{
+        id:"username.write",
+        defaultMessage:"账号不能为空"
+    },
+    password:{
+        id:"password",
+        defaultMessage:"请输入密码"
+    },
+    passwordwrite:{
+        id:"password.write",
+        defaultMessage:"密码不能为空"
+    },
+})

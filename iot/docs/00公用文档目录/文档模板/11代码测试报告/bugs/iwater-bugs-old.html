@@ -1,0 +1,4436 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>SpotBugs Report</title>
+<style type="text/css">
+		.tablerow0 {
+			background: #EEEEEE;
+		}
+
+		.tablerow1 {
+			background: white;
+		}
+
+		.detailrow0 {
+			background: #EEEEEE;
+		}
+
+		.detailrow1 {
+			background: white;
+		}
+
+		.tableheader {
+			background: #b9b9fe;
+			font-size: larger;
+		}
+
+		.tablerow0:hover, .tablerow1:hover {
+			background: #aaffaa;
+		}
+
+		.priority-1 {
+		    color: red;
+		    font-weight: bold;
+		}
+		.priority-2 {
+		    color: orange;
+		    font-weight: bold;
+		}
+		.priority-3 {
+		    color: green;
+		    font-weight: bold;
+		}
+		.priority-4 {
+		    color: blue;
+		    font-weight: bold;
+		}
+		</style>
+<script type="text/javascript">
+			function toggleRow(elid) {
+				if (document.getElementById) {
+					element = document.getElementById(elid);
+					if (element) {
+						if (element.style.display == 'none') {
+							element.style.display = 'block';
+							//window.status = 'Toggle on!';
+						} else {
+							element.style.display = 'none';
+							//window.status = 'Toggle off!';
+						}
+					}
+				}
+			}
+		</script>
+</head>
+<body>
+<h1>
+<a href="https://spotbugs.github.io/">SpotBugs</a> Report</h1>
+<h2>Project Information</h2>
+<p>Project: 
+		</p>
+<p>SpotBugs version: 3.1.8</p>
+<p>Code analyzed:</p>
+<ul>
+<li>/Users/guiqijiang/Desktop/oldIwater/iwater/target/iwater.jar</li>
+</ul>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Metrics</h2>
+<p>0 lines of code analyzed,
+	in 0 classes, 
+	in 33 packages.</p>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Metric</th>
+<th align="right">Total</th>
+<th align="right">Density*</th>
+</tr>
+<tr class="tablerow0">
+<td>High Priority Warnings</td>
+<td align="right">18</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="tablerow1">
+<td>Medium Priority Warnings</td>
+<td align="right">112</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="tablerow1">
+<td>Low Priority Warnings</td>
+<td align="right">120</td>
+<td align="right">0.00</td>
+</tr>
+<tr class="$totalClass">
+<td>
+<b>Total Warnings</b>
+</td>
+<td align="right">
+<b>250</b>
+</td>
+<td align="right">
+<b>0.00</b>
+</td>
+</tr>
+</table>
+<p>
+<i>(* Defects per Thousand lines of non-commenting source statements)</i>
+</p>
+<p>
+<br/>
+<br/>
+</p>
+<h2>Contents</h2>
+<ul>
+<li>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</li>
+<li>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</li>
+<li>
+<a href="#Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</li>
+<li>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</li>
+<li>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</li>
+<li>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</li>
+<li>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</li>
+<li>
+<a href="#Details">Details</a>
+</li>
+</ul>
+<h1>Summary</h1>
+<table width="500" cellpadding="5" cellspacing="2">
+<tr class="tableheader">
+<th align="left">Warning Type</th>
+<th align="right">Number</th>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</td>
+<td align="right">49</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_CORRECTNESS">Correctness Warnings</a>
+</td>
+<td align="right">9</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</td>
+<td align="right">2</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_I18N">Internationalization Warnings</a>
+</td>
+<td align="right">29</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</td>
+<td align="right">31</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<a href="#Warnings_PERFORMANCE">Performance Warnings</a>
+</td>
+<td align="right">54</td>
+</tr>
+<tr class="tablerow0">
+<td>
+<a href="#Warnings_STYLE">Dodgy code Warnings</a>
+</td>
+<td align="right">76</td>
+</tr>
+<tr class="tablerow1">
+<td>
+<b>Total</b>
+</td>
+<td align="right">
+<b>250</b>
+</td>
+</tr>
+</table>
+<h1>Warnings</h1>
+<p>Click on a warning row to see full context information.</p>
+<h2>
+<a name="Warnings_BAD_PRACTICE">Bad practice Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71552');">
+<td>
+<span class="priority-3">DE</span>
+</td>
+<td>com.changhong.iwater.manage.service.impl.PersonServiceImpl.getByUserId(String) might ignore java.lang.Exception</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71552" style="display: none;">
+<a href="#DE_MIGHT_IGNORE">Bug type DE_MIGHT_IGNORE (click for details)</a>
+<br/>In class com.changhong.iwater.manage.service.impl.PersonServiceImpl<br/>In method com.changhong.iwater.manage.service.impl.PersonServiceImpl.getByUserId(String)<br/>Exception class java.lang.Exception<br/>At PersonServiceImpl.java:[line 66]<br/>At PersonServiceImpl.java:[line 66]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71498');">
+<td>
+<span class="priority-2">Eq</span>
+</td>
+<td>com.changhong.iwater.manage.entity.Region defines compareTo(Region) and uses Object.equals()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71498" style="display: none;">
+<a href="#EQ_COMPARETO_USE_OBJECT_EQUALS">Bug type EQ_COMPARETO_USE_OBJECT_EQUALS (click for details)</a>
+<br/>In class com.changhong.iwater.manage.entity.Region<br/>In method com.changhong.iwater.manage.entity.Region.compareTo(Region)<br/>At Region.java:[lines 57-59]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78478');">
+<td>
+<span class="priority-2">ES</span>
+</td>
+<td>Comparison of String objects using == or != in com.changhong.iwater.util.UtilFuns.ConvertZero(Object) </td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78478" style="display: none;">
+<a href="#ES_COMPARING_STRINGS_WITH_EQ">Bug type ES_COMPARING_STRINGS_WITH_EQ (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertZero(Object)<br/>Actual type String<br/>String constant ""<br/>Value loaded from s<br/>At UtilFuns.java:[line 448]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78561');">
+<td>
+<span class="priority-2">ES</span>
+</td>
+<td>Comparison of String objects using == or != in com.changhong.iwater.util.UtilFuns.cvtPecrent(Object) </td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78561" style="display: none;">
+<a href="#ES_COMPARING_STRINGS_WITH_EQ">Bug type ES_COMPARING_STRINGS_WITH_EQ (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.cvtPecrent(Object)<br/>Actual type String<br/>String constant ""<br/>Value loaded from s<br/>At UtilFuns.java:[line 463]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65790');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.config.RedisConfig.CommonCacheManager(RedisTemplate) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65790" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.config.RedisConfig<br/>In method com.changhong.iwater.config.RedisConfig.CommonCacheManager(RedisTemplate)<br/>At RedisConfig.java:[lines 44-46]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65844');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.config.RedisConfig.SmsCodeCacheManager(RedisTemplate) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65844" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.config.RedisConfig<br/>In method com.changhong.iwater.config.RedisConfig.SmsCodeCacheManager(RedisTemplate)<br/>At RedisConfig.java:[lines 66-68]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65898');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.config.RedisConfig.UserCacheManager(RedisTemplate) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65898" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.config.RedisConfig<br/>In method com.changhong.iwater.config.RedisConfig.UserCacheManager(RedisTemplate)<br/>At RedisConfig.java:[lines 51-53]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65952');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.config.RedisConfig.UserManageCacheManager(RedisTemplate) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65952" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.config.RedisConfig<br/>In method com.changhong.iwater.config.RedisConfig.UserManageCacheManager(RedisTemplate)<br/>At RedisConfig.java:[lines 58-60]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66006');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>Confusing to have methods com.changhong.iwater.config.SystemConfig$MqttConfig.getUsername() and com.changhong.iwater.manage.dto.LogDto.getUserName()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66006" style="display: none;">
+<a href="#NM_CONFUSING">Bug type NM_CONFUSING (click for details)</a>
+<br/>In class com.changhong.iwater.config.SystemConfig$MqttConfig<br/>In method com.changhong.iwater.config.SystemConfig$MqttConfig.getUsername()<br/>In class com.changhong.iwater.manage.dto.LogDto<br/>In method com.changhong.iwater.manage.dto.LogDto.getUserName()<br/>At SystemConfig.java:[line 37]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66087');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>Confusing to have methods com.changhong.iwater.config.SystemConfig$MqttConfig.setUsername(String) and com.changhong.iwater.manage.dto.LogDto.setUserName(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66087" style="display: none;">
+<a href="#NM_CONFUSING">Bug type NM_CONFUSING (click for details)</a>
+<br/>In class com.changhong.iwater.config.SystemConfig$MqttConfig<br/>In method com.changhong.iwater.config.SystemConfig$MqttConfig.setUsername(String)<br/>In class com.changhong.iwater.manage.dto.LogDto<br/>In method com.changhong.iwater.manage.dto.LogDto.setUserName(String)<br/>At SystemConfig.java:[line 32]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66337');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.device.controller.ConsumptionAppController.UpdateInfo(DeviceAppItemVo) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66337" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.device.controller.ConsumptionAppController<br/>In method com.changhong.iwater.device.controller.ConsumptionAppController.UpdateInfo(DeviceAppItemVo)<br/>At ConsumptionAppController.java:[lines 293-307]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67347');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The field name com.changhong.iwater.device.dto.CommunityDto.Id doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67347" style="display: none;">
+<a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.device.dto.CommunityDto<br/>Field com.changhong.iwater.device.dto.CommunityDto.Id<br/>In CommunityDto.java</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67449');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The field name com.changhong.iwater.device.entity.MeterChange.Household doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67449" style="display: none;">
+<a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.device.entity.MeterChange<br/>Field com.changhong.iwater.device.entity.MeterChange.Household<br/>In MeterChange.java</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70338');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.manage.controller.SuperManageController.AuthorizationException() doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70338" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.manage.controller.SuperManageController<br/>In method com.changhong.iwater.manage.controller.SuperManageController.AuthorizationException()<br/>At SuperManageController.java:[line 34]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75004');">
+<td>
+<span class="priority-3">Nm</span>
+</td>
+<td>The field name com.changhong.iwater.user.bean.UserBean.LoginName doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75004" style="display: none;">
+<a href="#NM_FIELD_NAMING_CONVENTION">Bug type NM_FIELD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.user.bean.UserBean<br/>Field com.changhong.iwater.user.bean.UserBean.LoginName<br/>In UserBean.java</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75173');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.user.controller.UserController.DeviceType(Integer, Integer) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75173" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.user.controller.UserController<br/>In method com.changhong.iwater.user.controller.UserController.DeviceType(Integer, Integer)<br/>At UserController.java:[lines 153-163]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76006');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.ByteUtil.HexToByte(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76006" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.HexToByte(String)<br/>At ByteUtil.java:[lines 194-201]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76746');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.HttpClientUtil.InputStreamTOByte(InputStream) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76746" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.InputStreamTOByte(InputStream)<br/>At HttpClientUtil.java:[lines 323-335]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76800');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.HttpClientUtil.InputStreamTOString(InputStream, String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76800" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.InputStreamTOString(InputStream, String)<br/>At HttpClientUtil.java:[line 349]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76854');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.HttpClientUtil.String2Inputstream(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76854" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.String2Inputstream(String)<br/>At HttpClientUtil.java:[line 311]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78644');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ArrayListToString(ArrayList) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78644" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ArrayListToString(ArrayList)<br/>At UtilFuns.java:[lines 862-866]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78698');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ComboList(String, String[]) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78698" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboList(String, String[])<br/>At UtilFuns.java:[lines 890-904]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78752');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ComboList(String, String[], String[]) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78752" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboList(String, String[], String[])<br/>At UtilFuns.java:[lines 938-956]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78806');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[]) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78806" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[])<br/>At UtilFuns.java:[lines 909-922]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78860');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[], String[]) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78860" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[], String[])<br/>At UtilFuns.java:[lines 961-975]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78914');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ConvertCH(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78914" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertCH(String)<br/>At UtilFuns.java:[lines 570-581]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78968');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ConvertCStr(Object) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78968" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertCStr(Object)<br/>At UtilFuns.java:[lines 602-614]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79022');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ConvertCStr(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79022" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertCStr(String)<br/>At UtilFuns.java:[lines 588-596]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79076');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ConvertSpaceTD(Object) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79076" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertSpaceTD(Object)<br/>At UtilFuns.java:[lines 551-559]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79130');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ConvertTD(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79130" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertTD(String)<br/>At UtilFuns.java:[lines 537-544]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79184');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.ConvertZero(Object) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79184" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ConvertZero(Object)<br/>At UtilFuns.java:[lines 447-454]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79238');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.FormatNumber(Object, String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79238" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.FormatNumber(Object, String)<br/>At UtilFuns.java:[lines 505-513]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79292');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.FormatNumber(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79292" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.FormatNumber(String)<br/>At UtilFuns.java:[lines 521-529]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79346');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.FormatZero(Object) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79346" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.FormatZero(Object)<br/>At UtilFuns.java:[lines 477-484]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79400');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.FormatZero(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79400" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.FormatZero(String)<br/>At UtilFuns.java:[lines 492-498]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79454');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.IsIndexOfElements(String, ArrayList) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79454" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.IsIndexOfElements(String, ArrayList)<br/>At UtilFuns.java:[lines 846-854]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79508');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.StrToDateTimeFormat(String, String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79508" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.StrToDateTimeFormat(String, String)<br/>At UtilFuns.java:[lines 998-1003]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79562');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.StrToTimestamp(String, String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79562" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.StrToTimestamp(String, String)<br/>At UtilFuns.java:[lines 986-993]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79616');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.SysTime(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79616" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.SysTime(String)<br/>At UtilFuns.java:[lines 292-299]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79670');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.UrlDecoder(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79670" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.UrlDecoder(String)<br/>At UtilFuns.java:[lines 643-655]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79724');">
+<td>
+<span class="priority-2">Nm</span>
+</td>
+<td>The method name com.changhong.iwater.util.UtilFuns.UrlEncoder(String) doesn't start with a lower case letter</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79724" style="display: none;">
+<a href="#NM_METHOD_NAMING_CONVENTION">Bug type NM_METHOD_NAMING_CONVENTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.UrlEncoder(String)<br/>At UtilFuns.java:[lines 623-635]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67609');">
+<td>
+<span class="priority-3">OS</span>
+</td>
+<td>com.changhong.iwater.device.service.AnalysisService.getImage() may fail to close stream on exception</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67609" style="display: none;">
+<a href="#OS_OPEN_STREAM_EXCEPTION_PATH">Bug type OS_OPEN_STREAM_EXCEPTION_PATH (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.AnalysisService<br/>In method com.changhong.iwater.device.service.AnalysisService.getImage()<br/>Need to close java.io.InputStream <br/>At AnalysisService.java:[line 52]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76996');">
+<td>
+<span class="priority-3">OS</span>
+</td>
+<td>com.changhong.iwater.util.HttpClientUtil.getCertificate(File) may fail to close stream on exception</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76996" style="display: none;">
+<a href="#OS_OPEN_STREAM_EXCEPTION_PATH">Bug type OS_OPEN_STREAM_EXCEPTION_PATH (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.getCertificate(File)<br/>Need to close java.io.InputStream <br/>At HttpClientUtil.java:[line 266]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N77430');">
+<td>
+<span class="priority-2">OS</span>
+</td>
+<td>com.changhong.iwater.util.PropertiesUtil.&lt;static initializer for PropertiesUtil&gt;() may fail to close stream</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N77430" style="display: none;">
+<a href="#OS_OPEN_STREAM">Bug type OS_OPEN_STREAM (click for details)</a>
+<br/>In class com.changhong.iwater.util.PropertiesUtil<br/>In method com.changhong.iwater.util.PropertiesUtil.&lt;static initializer for PropertiesUtil&gt;()<br/>Need to close java.io.Reader <br/>At PropertiesUtil.java:[line 21]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77551');">
+<td>
+<span class="priority-3">OS</span>
+</td>
+<td>com.changhong.iwater.util.RemoteCallUtil.doPost(HttpURLConnection, byte[]) may fail to close stream on exception</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77551" style="display: none;">
+<a href="#OS_OPEN_STREAM_EXCEPTION_PATH">Bug type OS_OPEN_STREAM_EXCEPTION_PATH (click for details)</a>
+<br/>In class com.changhong.iwater.util.RemoteCallUtil<br/>In method com.changhong.iwater.util.RemoteCallUtil.doPost(HttpURLConnection, byte[])<br/>Need to close java.io.OutputStream <br/>At RemoteCallUtil.java:[line 257]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67731');">
+<td>
+<span class="priority-3">RR</span>
+</td>
+<td>com.changhong.iwater.device.service.AnalysisService.getImage() ignores result of java.io.FileInputStream.read(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67731" style="display: none;">
+<a href="#RR_NOT_CHECKED">Bug type RR_NOT_CHECKED (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.AnalysisService<br/>In method com.changhong.iwater.device.service.AnalysisService.getImage()<br/>Called method java.io.FileInputStream.read(byte[])<br/>At AnalysisService.java:[line 54]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69080');">
+<td>
+<span class="priority-2">RV</span>
+</td>
+<td>Exceptional return value of java.io.File.mkdirs() ignored in com.changhong.iwater.fileserver.service.impl.FileServiceImpl.saveFileEntity(InputStream, String, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69080" style="display: none;">
+<a href="#RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">Bug type RV_RETURN_VALUE_IGNORED_BAD_PRACTICE (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.FileServiceImpl<br/>In method com.changhong.iwater.fileserver.service.impl.FileServiceImpl.saveFileEntity(InputStream, String, String)<br/>Called method java.io.File.mkdirs()<br/>At FileServiceImpl.java:[line 98]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68895');">
+<td>
+<span class="priority-3">SnVI</span>
+</td>
+<td>com.changhong.iwater.fileserver.entity.FileSizeLimitEntity is Serializable; consider declaring a serialVersionUID</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68895" style="display: none;">
+<a href="#SE_NO_SERIALVERSIONID">Bug type SE_NO_SERIALVERSIONID (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.entity.FileSizeLimitEntity<br/>At FileSizeLimitEntity.java:[lines 12-23]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N81326');">
+<td>
+<span class="priority-3">UI</span>
+</td>
+<td>Usage of GetResource in com.changhong.iwater.util.UtilFuns.getClassRootPath() may be unsafe if class is extended</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N81326" style="display: none;">
+<a href="#UI_INHERITANCE_UNSAFE_GETRESOURCE">Bug type UI_INHERITANCE_UNSAFE_GETRESOURCE (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getClassRootPath()<br/>At UtilFuns.java:[line 1523]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_CORRECTNESS">Correctness Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75052');">
+<td>
+<span class="priority-1">EC</span>
+</td>
+<td>Call to com.changhong.iwater.user.dto.UserDto.equals(String) in com.changhong.iwater.user.controller.UserController.changePwd(UserDto, UserBean)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75052" style="display: none;">
+<a href="#EC_UNRELATED_TYPES">Bug type EC_UNRELATED_TYPES (click for details)</a>
+<br/>In class com.changhong.iwater.user.controller.UserController<br/>In method com.changhong.iwater.user.controller.UserController.changePwd(UserDto, UserBean)<br/>Actual type String<br/>Expected com.changhong.iwater.user.dto.UserDto<br/>Return value of com.changhong.iwater.user.dto.UserDto.getPwd() of type String<br/>Value loaded from userDto<br/>Object.equals(Object) used to determine equality<br/>At UserController.java:[line 90]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78424');">
+<td>
+<span class="priority-2">EC</span>
+</td>
+<td>Call to equals(null) in com.changhong.iwater.util.UtilFuns.convertNull(Object)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78424" style="display: none;">
+<a href="#EC_NULL_ARG">Bug type EC_NULL_ARG (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.convertNull(Object)<br/>At UtilFuns.java:[line 433]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66675');">
+<td>
+<span class="priority-1">INT</span>
+</td>
+<td>Bad comparison of nonnegative value with -1 in com.changhong.iwater.device.controller.ConsumptionController.createViews(PageModel)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66675" style="display: none;">
+<a href="#INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE">Bug type INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.device.controller.ConsumptionController<br/>In method com.changhong.iwater.device.controller.ConsumptionController.createViews(PageModel)<br/>Value -1<br/>At ConsumptionController.java:[line 227]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66734');">
+<td>
+<span class="priority-1">INT</span>
+</td>
+<td>Bad comparison of nonnegative value with -1 in com.changhong.iwater.device.controller.ConsumptionController.listConsumption(HttpServletResponse, String, String, String, Integer, Integer, String, Integer, boolean)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66734" style="display: none;">
+<a href="#INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE">Bug type INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.device.controller.ConsumptionController<br/>In method com.changhong.iwater.device.controller.ConsumptionController.listConsumption(HttpServletResponse, String, String, String, Integer, Integer, String, Integer, boolean)<br/>Value -1<br/>At ConsumptionController.java:[line 99]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75944');">
+<td>
+<span class="priority-3">IP</span>
+</td>
+<td>The parameter path to com.changhong.iwater.util.ByteUtil.uploadFile(byte[], String) is dead upon entry but overwritten</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75944" style="display: none;">
+<a href="#IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN">Bug type IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.uploadFile(byte[], String)<br/>Local variable named path<br/>At ByteUtil.java:[line 261]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71685');">
+<td>
+<span class="priority-1">NP</span>
+</td>
+<td>Null pointer dereference of region in com.changhong.iwater.manage.service.impl.RegionServiceImpl.save(Region)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71685" style="display: none;">
+<a href="#NP_ALWAYS_NULL">Bug type NP_ALWAYS_NULL (click for details)</a>
+<br/>In class com.changhong.iwater.manage.service.impl.RegionServiceImpl<br/>In method com.changhong.iwater.manage.service.impl.RegionServiceImpl.save(Region)<br/>Value loaded from region<br/>Dereferenced at RegionServiceImpl.java:[line 55]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79778');">
+<td>
+<span class="priority-1">NP</span>
+</td>
+<td>Null pointer dereference of allString in com.changhong.iwater.util.UtilFuns.getNoExistString(String[], String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79778" style="display: none;">
+<a href="#NP_ALWAYS_NULL">Bug type NP_ALWAYS_NULL (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getNoExistString(String[], String)<br/>Value loaded from allString<br/>Dereferenced at UtilFuns.java:[line 1334]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73294');">
+<td>
+<span class="priority-3">SIO</span>
+</td>
+<td>com.changhong.iwater.nio.udp.handler.UDPServerHandler.messageReceived(ChannelHandlerContext, UDPMessage) does an unnecessary type check using instanceof operator when it can be determined statically</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73294" style="display: none;">
+<a href="#SIO_SUPERFLUOUS_INSTANCEOF">Bug type SIO_SUPERFLUOUS_INSTANCEOF (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.handler.UDPServerHandler<br/>In method com.changhong.iwater.nio.udp.handler.UDPServerHandler.messageReceived(ChannelHandlerContext, UDPMessage)<br/>At UDPServerHandler.java:[line 26]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72898');">
+<td>
+<span class="priority-2">USELESS_STRING</span>
+</td>
+<td>Invocation of toString on data in com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.decode(ChannelHandlerContext, DatagramPacket, List)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72898" style="display: none;">
+<a href="#DMI_INVOKING_TOSTRING_ON_ARRAY">Bug type DMI_INVOKING_TOSTRING_ON_ARRAY (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder<br/>In method com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.decode(ChannelHandlerContext, DatagramPacket, List)<br/>Local variable named data<br/>At UDPMessageDecoder.java:[line 88]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_EXPERIMENTAL">Experimental Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67497');">
+<td>
+<span class="priority-2">OBL</span>
+</td>
+<td>com.changhong.iwater.device.service.AnalysisService.getImage() may fail to clean up java.io.InputStream on checked exception</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67497" style="display: none;">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Bug type OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.AnalysisService<br/>In method com.changhong.iwater.device.service.AnalysisService.getImage()<br/>Reference type java.io.InputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at AnalysisService.java:[line 52] is not discharged<br/>Path continues at AnalysisService.java:[line 53]<br/>Path continues at AnalysisService.java:[line 61]<br/>Path continues at AnalysisService.java:[line 62]<br/>Remaining obligations: {InputStream x 1}</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76908');">
+<td>
+<span class="priority-2">OBL</span>
+</td>
+<td>com.changhong.iwater.util.HttpClientUtil.getCertificate(File) may fail to clean up java.io.InputStream on checked exception</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76908" style="display: none;">
+<a href="#OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">Bug type OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.getCertificate(File)<br/>Reference type java.io.InputStream<br/>1 instances of obligation remaining<br/>Obligation to clean up resource created at HttpClientUtil.java:[line 266] is not discharged<br/>Path continues at HttpClientUtil.java:[line 267]<br/>Remaining obligations: {InputStream x 1}</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_I18N">Internationalization Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65550');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.common.dao.BaseMongoDaoImpl.parse2FieldName(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65550" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.common.dao.BaseMongoDaoImpl<br/>In method com.changhong.iwater.common.dao.BaseMongoDaoImpl.parse2FieldName(String)<br/>At BaseMongoDaoImpl.java:[line 511]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67147');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.device.dao.impl.DeviceInfoDaoImpl.findDeviceByImei(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67147" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.device.dao.impl.DeviceInfoDaoImpl<br/>In method com.changhong.iwater.device.dao.impl.DeviceInfoDaoImpl.findDeviceByImei(String)<br/>At DeviceInfoDaoImpl.java:[line 76]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67395');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.device.entity.DeviceInfo.getImei()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67395" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.device.entity.DeviceInfo<br/>In method com.changhong.iwater.device.entity.DeviceInfo.getImei()<br/>At DeviceInfo.java:[line 81]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68317');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.add(DeviceInfoDto)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68317" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl<br/>In method com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.add(DeviceInfoDto)<br/>At DeviceInfoServiceImpl.java:[line 87]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68371');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.changeDeviceMeter(String, String, Double, Double)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68371" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl<br/>In method com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.changeDeviceMeter(String, String, Double, Double)<br/>At DeviceInfoServiceImpl.java:[line 217]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68425');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.update(DeviceInfoDto)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68425" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl<br/>In method com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.update(DeviceInfoDto)<br/>At DeviceInfoServiceImpl.java:[line 136]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69151');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.fileserver.service.impl.FileSizeLimitServiceImpl.init(): String.getBytes()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69151" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.FileSizeLimitServiceImpl<br/>In method com.changhong.iwater.fileserver.service.impl.FileSizeLimitServiceImpl.init()<br/>Called method String.getBytes()<br/>At FileSizeLimitServiceImpl.java:[line 33]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69390');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml.main(String[]): new String(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69390" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml<br/>In method com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml.main(String[])<br/>Called method new String(byte[])<br/>At PoiExcelToHtml.java:[line 61]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72169');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in new com.changhong.iwater.nio.mqtt.message.LoRaWANData(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72169" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.message.LoRaWANData<br/>In method new com.changhong.iwater.nio.mqtt.message.LoRaWANData(String)<br/>At LoRaWANData.java:[line 68]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72625');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.nio.server.LineListener$TaskThread.handleDevicePic(Device)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72625" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.nio.server.LineListener$TaskThread<br/>In method com.changhong.iwater.nio.server.LineListener$TaskThread.handleDevicePic(Device)<br/>At LineListener.java:[line 108]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75372');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.AESUtil.aesDecryptByBytes(byte[], String): new String(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75372" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.AESUtil<br/>In method com.changhong.iwater.util.AESUtil.aesDecryptByBytes(byte[], String)<br/>Called method new String(byte[])<br/>At AESUtil.java:[line 143]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75442');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.AESUtil.aesDecryptByBytes(byte[], String): String.getBytes()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75442" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.AESUtil<br/>In method com.changhong.iwater.util.AESUtil.aesDecryptByBytes(byte[], String)<br/>Called method String.getBytes()<br/>At AESUtil.java:[line 135]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75512');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.AESUtil.aesEncryptToBytes(String, String): String.getBytes()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75512" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.AESUtil<br/>In method com.changhong.iwater.util.AESUtil.aesEncryptToBytes(String, String)<br/>Called method String.getBytes()<br/>At AESUtil.java:[line 99]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75582');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.AESUtil.md5(String): String.getBytes()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75582" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.AESUtil<br/>In method com.changhong.iwater.util.AESUtil.md5(String)<br/>Called method String.getBytes()<br/>At AESUtil.java:[line 76]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75712');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.ByteUtil.byteToHexString(byte)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75712" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.byteToHexString(byte)<br/>At ByteUtil.java:[line 69]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75766');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.ByteUtil.bytesToHexString(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75766" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.bytesToHexString(byte[])<br/>At ByteUtil.java:[line 85]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75820');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.ByteUtil.hexStringToBytes(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75820" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.hexStringToBytes(String)<br/>At ByteUtil.java:[line 98]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75874');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.ByteUtil.&lt;static initializer for ByteUtil&gt;(): String.getBytes()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75874" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.&lt;static initializer for ByteUtil&gt;()<br/>Called method String.getBytes()<br/>At ByteUtil.java:[line 18]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76239');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.ColorUtil.toHexFromColor(Color)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76239" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ColorUtil<br/>In method com.changhong.iwater.util.ColorUtil.toHexFromColor(Color)<br/>At ColorUtil.java:[line 21]<br/>Another occurrence at ColorUtil.java:[line 22]<br/>Another occurrence at ColorUtil.java:[line 23]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76676');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.HttpClientUtil.String2Inputstream(String): String.getBytes()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76676" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.String2Inputstream(String)<br/>Called method String.getBytes()<br/>At HttpClientUtil.java:[line 311]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77251');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.MD5Util.MD5Encode(String, String): String.getBytes()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77251" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.MD5Util<br/>In method com.changhong.iwater.util.MD5Util.MD5Encode(String, String)<br/>Called method String.getBytes()<br/>At MD5Util.java:[line 31]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N77497');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.RemoteCallUtil.callHttp()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N77497" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.RemoteCallUtil<br/>In method com.changhong.iwater.util.RemoteCallUtil.callHttp()<br/>At RemoteCallUtil.java:[line 131]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77727');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.Sha1Util.byteArrayToHexString(byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77727" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.Sha1Util<br/>In method com.changhong.iwater.util.Sha1Util.byteArrayToHexString(byte[])<br/>At Sha1Util.java:[line 185]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N77781');">
+<td>
+<span class="priority-1">Dm</span>
+</td>
+<td>Found reliance on default encoding in com.changhong.iwater.util.Sha1Util.getSha1(String): String.getBytes()</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N77781" style="display: none;">
+<a href="#DM_DEFAULT_ENCODING">Bug type DM_DEFAULT_ENCODING (click for details)</a>
+<br/>In class com.changhong.iwater.util.Sha1Util<br/>In method com.changhong.iwater.util.Sha1Util.getSha1(String)<br/>Called method String.getBytes()<br/>At Sha1Util.java:[line 211]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77960');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.StringUtil.getLowerHeadStrNo_(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77960" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.StringUtil<br/>In method com.changhong.iwater.util.StringUtil.getLowerHeadStrNo_(String)<br/>At StringUtil.java:[line 346]<br/>Another occurrence at StringUtil.java:[line 349]<br/>Another occurrence at StringUtil.java:[line 351]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78038');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.StringUtil.getUpperHeadStrNo_(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78038" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.StringUtil<br/>In method com.changhong.iwater.util.StringUtil.getUpperHeadStrNo_(String)<br/>At StringUtil.java:[line 325]<br/>Another occurrence at StringUtil.java:[line 328]<br/>Another occurrence at StringUtil.java:[line 330]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78116');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.StringUtil.strTransHump(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78116" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.StringUtil<br/>In method com.changhong.iwater.util.StringUtil.strTransHump(String)<br/>At StringUtil.java:[line 405]<br/>Another occurrence at StringUtil.java:[line 407]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78316');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.UtilFuns.convertNull(String[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78316" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.convertNull(String[])<br/>At UtilFuns.java:[line 419]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78370');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>Use of non-localized String.toUpperCase() or String.toLowerCase() in com.changhong.iwater.util.UtilFuns.format_Aaa(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78370" style="display: none;">
+<a href="#DM_CONVERT_CASE">Bug type DM_CONVERT_CASE (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.format_Aaa(String)<br/>At UtilFuns.java:[line 670]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_MALICIOUS_CODE">Malicious code vulnerability Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65604');">
+<td>
+<span class="priority-3">DP</span>
+</td>
+<td>Invocation of reflect.Field.setAccessible(boolean), which should be invoked from within a doPrivileged block, in com.changhong.iwater.common.dao.BaseMongoDaoImpl.getCriteriaByEntity(Object, String, String[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65604" style="display: none;">
+<a href="#DP_DO_INSIDE_DO_PRIVILEGED">Bug type DP_DO_INSIDE_DO_PRIVILEGED (click for details)</a>
+<br/>In class com.changhong.iwater.common.dao.BaseMongoDaoImpl<br/>In method com.changhong.iwater.common.dao.BaseMongoDaoImpl.getCriteriaByEntity(Object, String, String[])<br/>Called method reflect.Field.setAccessible(boolean)<br/>At BaseMongoDaoImpl.java:[line 345]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N65670');">
+<td>
+<span class="priority-3">DP</span>
+</td>
+<td>Invocation of reflect.Field.setAccessible(boolean), which should be invoked from within a doPrivileged block, in com.changhong.iwater.common.dao.BaseMongoDaoImpl.parseEntity(Object)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N65670" style="display: none;">
+<a href="#DP_DO_INSIDE_DO_PRIVILEGED">Bug type DP_DO_INSIDE_DO_PRIVILEGED (click for details)</a>
+<br/>In class com.changhong.iwater.common.dao.BaseMongoDaoImpl<br/>In method com.changhong.iwater.common.dao.BaseMongoDaoImpl.parseEntity(Object)<br/>Called method reflect.Field.setAccessible(boolean)<br/>At BaseMongoDaoImpl.java:[line 479]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69622');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.homecensus.entity.SupplyWater.getInDate() may expose internal representation by returning SupplyWater.inDate</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69622" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.homecensus.entity.SupplyWater<br/>In method com.changhong.iwater.homecensus.entity.SupplyWater.getInDate()<br/>Field com.changhong.iwater.homecensus.entity.SupplyWater.inDate<br/>At SupplyWater.java:[line 72]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72045');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.model.AbstractDevice.getNewPackage() may expose internal representation by returning AbstractDevice.newBytes</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72045" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.model.AbstractDevice<br/>In method com.changhong.iwater.nio.model.AbstractDevice.getNewPackage()<br/>Field com.changhong.iwater.nio.model.AbstractDevice.newBytes<br/>At AbstractDevice.java:[line 95]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72223');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.mqtt.message.LoRaWANData.getBytes() may expose internal representation by returning LoRaWANData.bytes</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72223" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.message.LoRaWANData<br/>In method com.changhong.iwater.nio.mqtt.message.LoRaWANData.getBytes()<br/>Field com.changhong.iwater.nio.mqtt.message.LoRaWANData.bytes<br/>At LoRaWANData.java:[line 57]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72293');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.mqtt.message.LoRaWANData.getData() may expose internal representation by returning LoRaWANData.data</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72293" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.message.LoRaWANData<br/>In method com.changhong.iwater.nio.mqtt.message.LoRaWANData.getData()<br/>Field com.changhong.iwater.nio.mqtt.message.LoRaWANData.data<br/>At LoRaWANData.java:[line 59]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73348');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getBatteryEnergy() may expose internal representation by returning UDPDeviceMsg.batteryEnergy</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73348" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getBatteryEnergy()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.batteryEnergy<br/>At UDPDeviceMsg.java:[line 130]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73418');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getCellLAC() may expose internal representation by returning UDPDeviceMsg.cellLAC</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73418" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getCellLAC()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.cellLAC<br/>At UDPDeviceMsg.java:[line 114]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73488');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getHead() may expose internal representation by returning UDPDeviceMsg.head</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73488" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getHead()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.head<br/>At UDPDeviceMsg.java:[line 48]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73558');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getIMEI() may expose internal representation by returning UDPDeviceMsg.IMEI</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73558" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getIMEI()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.IMEI<br/>At UDPDeviceMsg.java:[line 56]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73628');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getPhyCellId() may expose internal representation by returning UDPDeviceMsg.phyCellId</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73628" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getPhyCellId()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.phyCellId<br/>At UDPDeviceMsg.java:[line 122]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73698');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getPivDate() may expose internal representation by returning UDPDeviceMsg.pivDate</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73698" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getPivDate()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.pivDate<br/>At UDPDeviceMsg.java:[line 138]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73768');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getSigRSRQ() may expose internal representation by returning UDPDeviceMsg.sigRSRQ</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73768" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getSigRSRQ()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.sigRSRQ<br/>At UDPDeviceMsg.java:[line 98]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73838');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getSigSNR() may expose internal representation by returning UDPDeviceMsg.sigSNR</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73838" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.getSigSNR()<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.sigSNR<br/>At UDPDeviceMsg.java:[line 106]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74601');">
+<td>
+<span class="priority-2">EI</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPMessage.getHead() may expose internal representation by returning UDPMessage.head</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74601" style="display: none;">
+<a href="#EI_EXPOSE_REP">Bug type EI_EXPOSE_REP (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPMessage<br/>In method com.changhong.iwater.nio.udp.message.UDPMessage.getHead()<br/>Field com.changhong.iwater.nio.udp.message.UDPMessage.head<br/>At UDPMessage.java:[line 20]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68818');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.fileserver.entity.FileEntity.setUploadDate(Date) may expose internal representation by storing an externally mutable object into FileEntity.uploadDate</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68818" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.entity.FileEntity<br/>In method com.changhong.iwater.fileserver.entity.FileEntity.setUploadDate(Date)<br/>Field com.changhong.iwater.fileserver.entity.FileEntity.uploadDate<br/>Local variable named uploadDate<br/>At FileEntity.java:[line 108]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69692');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.homecensus.entity.SupplyWater.setInDate(Date) may expose internal representation by storing an externally mutable object into SupplyWater.inDate</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69692" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.homecensus.entity.SupplyWater<br/>In method com.changhong.iwater.homecensus.entity.SupplyWater.setInDate(Date)<br/>Field com.changhong.iwater.homecensus.entity.SupplyWater.inDate<br/>Local variable named inDate<br/>At SupplyWater.java:[line 76]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72363');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.mqtt.message.LoRaWANData.setBytes(byte[]) may expose internal representation by storing an externally mutable object into LoRaWANData.bytes</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72363" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.message.LoRaWANData<br/>In method com.changhong.iwater.nio.mqtt.message.LoRaWANData.setBytes(byte[])<br/>Field com.changhong.iwater.nio.mqtt.message.LoRaWANData.bytes<br/>Local variable named bytes<br/>At LoRaWANData.java:[line 23]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72440');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.mqtt.message.LoRaWANData.setData(byte[]) may expose internal representation by storing an externally mutable object into LoRaWANData.data</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72440" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.message.LoRaWANData<br/>In method com.changhong.iwater.nio.mqtt.message.LoRaWANData.setData(byte[])<br/>Field com.changhong.iwater.nio.mqtt.message.LoRaWANData.data<br/>Local variable named data<br/>At LoRaWANData.java:[line 23]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73908');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setBatteryEnergy(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.batteryEnergy</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73908" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setBatteryEnergy(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.batteryEnergy<br/>Local variable named batteryEnergy<br/>At UDPDeviceMsg.java:[line 134]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73985');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setCellLAC(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.cellLAC</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73985" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setCellLAC(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.cellLAC<br/>Local variable named cellLAC<br/>At UDPDeviceMsg.java:[line 118]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74062');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setHead(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.head</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74062" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setHead(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.head<br/>Local variable named head<br/>At UDPDeviceMsg.java:[line 52]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74139');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setIMEI(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.IMEI</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74139" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setIMEI(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.IMEI<br/>Local variable named iMEI<br/>At UDPDeviceMsg.java:[line 60]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74216');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setPhyCellId(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.phyCellId</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74216" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setPhyCellId(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.phyCellId<br/>Local variable named phyCellId<br/>At UDPDeviceMsg.java:[line 126]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74293');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setPivDate(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.pivDate</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74293" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setPivDate(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.pivDate<br/>Local variable named pivDate<br/>At UDPDeviceMsg.java:[line 142]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74370');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setSegSize(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.segSize</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74370" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setSegSize(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.segSize<br/>Local variable named segSize<br/>At UDPDeviceMsg.java:[line 84]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74447');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setSigRSRQ(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.sigRSRQ</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74447" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setSigRSRQ(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.sigRSRQ<br/>Local variable named sigRSRQ<br/>At UDPDeviceMsg.java:[line 102]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74524');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setSigSNR(byte[]) may expose internal representation by storing an externally mutable object into UDPDeviceMsg.sigSNR</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74524" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>In method com.changhong.iwater.nio.udp.message.UDPDeviceMsg.setSigSNR(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPDeviceMsg.sigSNR<br/>Local variable named sigSNR<br/>At UDPDeviceMsg.java:[line 110]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74671');">
+<td>
+<span class="priority-2">EI2</span>
+</td>
+<td>com.changhong.iwater.nio.udp.message.UDPMessage.setHead(byte[]) may expose internal representation by storing an externally mutable object into UDPMessage.head</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74671" style="display: none;">
+<a href="#EI_EXPOSE_REP2">Bug type EI_EXPOSE_REP2 (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPMessage<br/>In method com.changhong.iwater.nio.udp.message.UDPMessage.setHead(byte[])<br/>Field com.changhong.iwater.nio.udp.message.UDPMessage.head<br/>Local variable named head<br/>At UDPMessage.java:[line 24]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69221');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>com.changhong.iwater.fileserver.service.impl.FileSizeLimitServiceImpl.systemFileLimit isn't final and can't be protected from malicious code </td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69221" style="display: none;">
+<a href="#MS_CANNOT_BE_FINAL">Bug type MS_CANNOT_BE_FINAL (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.FileSizeLimitServiceImpl<br/>Field com.changhong.iwater.fileserver.service.impl.FileSizeLimitServiceImpl.systemFileLimit<br/>In FileSizeLimitServiceImpl.java</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72959');">
+<td>
+<span class="priority-2">MS</span>
+</td>
+<td>com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.NB_WATER_WATERMETER_HEAD should be package protected</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72959" style="display: none;">
+<a href="#MS_PKGPROTECT">Bug type MS_PKGPROTECT (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder<br/>Field com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.NB_WATER_WATERMETER_HEAD<br/>At UDPMessageDecoder.java:[line 20]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_PERFORMANCE">Performance Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66523');">
+<td>
+<span class="priority-2">Bx</span>
+</td>
+<td>Boxed value is unboxed and then immediately reboxed in com.changhong.iwater.device.controller.ConsumptionController.createViews(PageModel)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66523" style="display: none;">
+<a href="#BX_UNBOXING_IMMEDIATELY_REBOXED">Bug type BX_UNBOXING_IMMEDIATELY_REBOXED (click for details)</a>
+<br/>In class com.changhong.iwater.device.controller.ConsumptionController<br/>In method com.changhong.iwater.device.controller.ConsumptionController.createViews(PageModel)<br/>Called method Integer.valueOf(int)<br/>At ConsumptionController.java:[line 235]<br/>Another occurrence at ConsumptionController.java:[line 238]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66605');">
+<td>
+<span class="priority-2">Bx</span>
+</td>
+<td>Boxed value is unboxed and then immediately reboxed in com.changhong.iwater.device.controller.ConsumptionController.listConsumption(HttpServletResponse, String, String, String, Integer, Integer, String, Integer, boolean)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66605" style="display: none;">
+<a href="#BX_UNBOXING_IMMEDIATELY_REBOXED">Bug type BX_UNBOXING_IMMEDIATELY_REBOXED (click for details)</a>
+<br/>In class com.changhong.iwater.device.controller.ConsumptionController<br/>In method com.changhong.iwater.device.controller.ConsumptionController.listConsumption(HttpServletResponse, String, String, String, Integer, Integer, String, Integer, boolean)<br/>Called method Integer.valueOf(int)<br/>At ConsumptionController.java:[line 95]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68193');">
+<td>
+<span class="priority-2">Bx</span>
+</td>
+<td>Boxed value is unboxed and then immediately reboxed in com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$2$3.format(String, Object)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68193" style="display: none;">
+<a href="#BX_UNBOXING_IMMEDIATELY_REBOXED">Bug type BX_UNBOXING_IMMEDIATELY_REBOXED (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$2$3<br/>In method com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$2$3.format(String, Object)<br/>Called method Integer.valueOf(int)<br/>At ConsumptionServiceImpl.java:[line 227]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68263');">
+<td>
+<span class="priority-2">Bx</span>
+</td>
+<td>Primitive value is unboxed and coerced for ternary operator in com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.importDevice(String, InputStream)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68263" style="display: none;">
+<a href="#BX_UNBOXED_AND_COERCED_FOR_TERNARY_OPERATOR">Bug type BX_UNBOXED_AND_COERCED_FOR_TERNARY_OPERATOR (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl<br/>In method com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.importDevice(String, InputStream)<br/>At DeviceInfoServiceImpl.java:[line 271]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71810');">
+<td>
+<span class="priority-2">Bx</span>
+</td>
+<td>Boxed value is unboxed and then immediately reboxed in com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl.getLogList(String, String, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71810" style="display: none;">
+<a href="#BX_UNBOXING_IMMEDIATELY_REBOXED">Bug type BX_UNBOXING_IMMEDIATELY_REBOXED (click for details)</a>
+<br/>In class com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl<br/>In method com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl.getLogList(String, String, String)<br/>Called method Integer.valueOf(int)<br/>At UserLogHandleServiceImpl.java:[line 54]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69460');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>com.changhong.iwater.homecensus.controller.HomePageController.getChartList(HttpServletRequest) invokes toString() method on a String</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69460" style="display: none;">
+<a href="#DM_STRING_TOSTRING">Bug type DM_STRING_TOSTRING (click for details)</a>
+<br/>In class com.changhong.iwater.homecensus.controller.HomePageController<br/>In method com.changhong.iwater.homecensus.controller.HomePageController.getChartList(HttpServletRequest)<br/>At HomePageController.java:[line 97]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69514');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>com.changhong.iwater.homecensus.controller.StatisticsController.export(HttpServletRequest, HttpServletResponse) invokes toString() method on a String</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69514" style="display: none;">
+<a href="#DM_STRING_TOSTRING">Bug type DM_STRING_TOSTRING (click for details)</a>
+<br/>In class com.changhong.iwater.homecensus.controller.StatisticsController<br/>In method com.changhong.iwater.homecensus.controller.StatisticsController.export(HttpServletRequest, HttpServletResponse)<br/>At StatisticsController.java:[line 74]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69568');">
+<td>
+<span class="priority-3">Dm</span>
+</td>
+<td>com.changhong.iwater.homecensus.controller.StatisticsController.getOverallList(HttpServletRequest) invokes toString() method on a String</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69568" style="display: none;">
+<a href="#DM_STRING_TOSTRING">Bug type DM_STRING_TOSTRING (click for details)</a>
+<br/>In class com.changhong.iwater.homecensus.controller.StatisticsController<br/>In method com.changhong.iwater.homecensus.controller.StatisticsController.getOverallList(HttpServletRequest)<br/>At StatisticsController.java:[line 54]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77321');">
+<td>
+<span class="priority-2">Dm</span>
+</td>
+<td>com.changhong.iwater.util.MD5Util.MD5Encode(String, String) invokes inefficient new String(String) constructor</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77321" style="display: none;">
+<a href="#DM_STRING_CTOR">Bug type DM_STRING_CTOR (click for details)</a>
+<br/>In class com.changhong.iwater.util.MD5Util<br/>In method com.changhong.iwater.util.MD5Util.MD5Encode(String, String)<br/>At MD5Util.java:[line 28]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N77906');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>com.changhong.iwater.util.Sha1Util.byteArrayToHexString(byte[]) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N77906" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class com.changhong.iwater.util.Sha1Util<br/>In method com.changhong.iwater.util.Sha1Util.byteArrayToHexString(byte[])<br/>At Sha1Util.java:[line 183]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N78262');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>com.changhong.iwater.util.StringUtil.strTransHump(String) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N78262" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class com.changhong.iwater.util.StringUtil<br/>In method com.changhong.iwater.util.StringUtil.strTransHump(String)<br/>At StringUtil.java:[line 407]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N81164');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>com.changhong.iwater.util.UtilFuns.getPassString(String, int) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N81164" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getPassString(String, int)<br/>At UtilFuns.java:[line 1184]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N81218');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>com.changhong.iwater.util.UtilFuns.getPassString(String, int, int, int) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N81218" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getPassString(String, int, int, int)<br/>At UtilFuns.java:[line 1225]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N81272');">
+<td>
+<span class="priority-2">SBSC</span>
+</td>
+<td>com.changhong.iwater.util.UtilFuns.getPatternString(String, int, int, String, int) concatenates strings using + in a loop</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N81272" style="display: none;">
+<a href="#SBSC_USE_STRINGBUFFER_CONCATENATION">Bug type SBSC_USE_STRINGBUFFER_CONCATENATION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getPatternString(String, int, int, String, int)<br/>At UtilFuns.java:[line 1274]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66168');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should com.changhong.iwater.config.SystemConfig$MqttConfig be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66168" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class com.changhong.iwater.config.SystemConfig$MqttConfig<br/>At SystemConfig.java:[lines 32-38]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66205');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.controller.AnalysisController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66205" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.controller.AnalysisController$1<br/>In class com.changhong.iwater.device.controller.AnalysisController<br/>In method com.changhong.iwater.device.controller.AnalysisController.downLoadImage(HttpServletResponse)<br/>At AnalysisController.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66271');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.controller.AnalysisController$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66271" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.controller.AnalysisController$2<br/>In class com.changhong.iwater.device.controller.AnalysisController<br/>In method com.changhong.iwater.device.controller.AnalysisController.callback(CallBackDto[])<br/>At AnalysisController.java:[line 56]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66391');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.controller.ConsumptionAppController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66391" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.controller.ConsumptionAppController$1<br/>In class com.changhong.iwater.device.controller.ConsumptionAppController<br/>In method com.changhong.iwater.device.controller.ConsumptionAppController.trend(String, String, String)<br/>At ConsumptionAppController.java:[line 103]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66457');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.controller.ConsumptionAppController$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66457" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.controller.ConsumptionAppController$2<br/>In class com.changhong.iwater.device.controller.ConsumptionAppController<br/>In method com.changhong.iwater.device.controller.ConsumptionAppController.trend(String, String, String)<br/>At ConsumptionAppController.java:[line 132]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N66869');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.controller.DeviceController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N66869" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.controller.DeviceController$1<br/>In class com.changhong.iwater.device.controller.DeviceController<br/>In method com.changhong.iwater.device.controller.DeviceController.itemDevice(String, String)<br/>At DeviceController.java:[line 182]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66935');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.controller.DeviceController$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66935" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.controller.DeviceController$2<br/>In class com.changhong.iwater.device.controller.DeviceController<br/>In method com.changhong.iwater.device.controller.DeviceController.itemDevice(String, String)<br/>At DeviceController.java:[line 186]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67001');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67001" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl$1<br/>In class com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl<br/>In method com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl.findConsumptionByRegionId(String, String, Integer, Integer, int, int, int, int)<br/>At ConsumptionDaoImpl.java:[line 27]<br/>Local variable named l</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67074');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67074" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl$2<br/>In class com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl<br/>In method com.changhong.iwater.device.dao.impl.ConsumptionDaoImpl.findConsumptionByImei(String, Integer, int, int, int, int)<br/>At ConsumptionDaoImpl.java:[line 63]<br/>Local variable named l</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67201');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.dao.impl.HouseholdDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67201" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.dao.impl.HouseholdDaoImpl$1<br/>In class com.changhong.iwater.device.dao.impl.HouseholdDaoImpl<br/>In method com.changhong.iwater.device.dao.impl.HouseholdDaoImpl.findHouseholdByDeviceId(String)<br/>At HouseholdDaoImpl.java:[line 27]<br/>Local variable named list</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67274');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.dao.impl.HouseholdDaoImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67274" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.dao.impl.HouseholdDaoImpl$2<br/>In class com.changhong.iwater.device.dao.impl.HouseholdDaoImpl<br/>In method com.changhong.iwater.device.dao.impl.HouseholdDaoImpl.findHouseholdByConsumptionId(String)<br/>At HouseholdDaoImpl.java:[line 38]<br/>Local variable named list</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67801');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.service.AnalysisService$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67801" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.service.AnalysisService$1<br/>In class com.changhong.iwater.device.service.AnalysisService<br/>In method com.changhong.iwater.device.service.AnalysisService.getImage()<br/>At AnalysisService.java:[line 38]<br/>Local variable named list</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67874');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.service.AnalysisService$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67874" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.service.AnalysisService$2<br/>In class com.changhong.iwater.device.service.AnalysisService<br/>In method com.changhong.iwater.device.service.AnalysisService.getImage()<br/>At AnalysisService.java:[line 57]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N67940');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N67940" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$1<br/>In class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl<br/>In method com.changhong.iwater.device.service.impl.ConsumptionServiceImpl.getDeviceInfoWorkbook(List)<br/>At ConsumptionServiceImpl.java:[line 94]<br/>Local variable named hashMap</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68013');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68013" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$2<br/>In class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl<br/>In method com.changhong.iwater.device.service.impl.ConsumptionServiceImpl.getWorkbook(List)<br/>At ConsumptionServiceImpl.java:[line 173]<br/>Local variable named hashMap</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68479');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68479" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl$2<br/>In class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl<br/>In method com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl.getExcelHousehold()<br/>At DeviceInfoServiceImpl.java:[line 353]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69769');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.homecensus.service.impl.HomeServiceImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69769" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.homecensus.service.impl.HomeServiceImpl$1<br/>In class com.changhong.iwater.homecensus.service.impl.HomeServiceImpl<br/>In method com.changhong.iwater.homecensus.service.impl.HomeServiceImpl.getChartList(String, String)<br/>At HomeServiceImpl.java:[line 166]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69835');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.homecensus.service.impl.HomeServiceImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69835" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.homecensus.service.impl.HomeServiceImpl$2<br/>In class com.changhong.iwater.homecensus.service.impl.HomeServiceImpl<br/>In method com.changhong.iwater.homecensus.service.impl.HomeServiceImpl.getChartList(String, String)<br/>At HomeServiceImpl.java:[line 186]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70265');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.controller.LoginController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70265" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.controller.LoginController$1<br/>In class com.changhong.iwater.manage.controller.LoginController<br/>In method com.changhong.iwater.manage.controller.LoginController.login(UserDto)<br/>At LoginController.java:[line 48]<br/>Local variable named hashMap</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70447');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.controller.UserManageController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70447" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.controller.UserManageController$1<br/>In class com.changhong.iwater.manage.controller.UserManageController<br/>In method com.changhong.iwater.manage.controller.UserManageController.getVariableList()<br/>At UserManageController.java:[line 203]<br/>Local variable named map</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70697');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.RegionDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70697" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.RegionDaoImpl$1<br/>In class com.changhong.iwater.manage.dao.impl.RegionDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.RegionDaoImpl.findRegions(String, RegionEnum, int, int)<br/>At RegionDaoImpl.java:[line 27]<br/>Local variable named arrayList</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70770');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.RegionDaoImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70770" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.RegionDaoImpl$2<br/>In class com.changhong.iwater.manage.dao.impl.RegionDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.RegionDaoImpl.findRootNode(String)<br/>At RegionDaoImpl.java:[line 41]<br/>Local variable named arrayList</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70843');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.RegionDaoImpl$3 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70843" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.RegionDaoImpl$3<br/>In class com.changhong.iwater.manage.dao.impl.RegionDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.RegionDaoImpl.findRegions(String, int, int)<br/>At RegionDaoImpl.java:[line 68]<br/>Local variable named arrayList</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70987');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70987" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl$1<br/>In class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.ResourceDaoImpl.getResources()<br/>At ResourceDaoImpl.java:[line 28]<br/>Local variable named aggregateOperations</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71060');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71060" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl$2<br/>In class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.ResourceDaoImpl.getResourcesByUid(String)<br/>At ResourceDaoImpl.java:[line 37]<br/>Local variable named aggregateOperations</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71133');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl$3 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71133" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl$3<br/>In class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.ResourceDaoImpl.getResourcesByUid(String)<br/>At ResourceDaoImpl.java:[line 49]<br/>Local variable named aggregateOperations</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71206');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.RoleDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71206" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.RoleDaoImpl$1<br/>In class com.changhong.iwater.manage.dao.impl.RoleDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.RoleDaoImpl.findRoleByUserId(String)<br/>At RoleDaoImpl.java:[line 26]<br/>Local variable named aggregations</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71279');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.RoleDaoImpl$2 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71279" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.RoleDaoImpl$2<br/>In class com.changhong.iwater.manage.dao.impl.RoleDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.RoleDaoImpl.findRolesByResourceId(String)<br/>At RoleDaoImpl.java:[line 37]<br/>Local variable named aggregations</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71352');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.UserLogHandleDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71352" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.UserLogHandleDaoImpl$1<br/>In class com.changhong.iwater.manage.dao.impl.UserLogHandleDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.UserLogHandleDaoImpl.findLogs(String, int, int)<br/>At UserLogHandleDaoImpl.java:[line 31]<br/>Local variable named list</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71425');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.dao.impl.UserManageDaoImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71425" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.dao.impl.UserManageDaoImpl$1<br/>In class com.changhong.iwater.manage.dao.impl.UserManageDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.UserManageDaoImpl.findUsers(int, int)<br/>At UserManageDaoImpl.java:[line 29]<br/>Local variable named list</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71880');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71880" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl$1<br/>In class com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl<br/>In method com.changhong.iwater.manage.service.impl.UserLogHandleServiceImpl.getWorkbook(String, String, String)<br/>At UserLogHandleServiceImpl.java:[line 67]<br/>Local variable named hashMap</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72008');">
+<td>
+<span class="priority-2">SIC</span>
+</td>
+<td>Should com.changhong.iwater.nio.iotplatform.message.IoTDeviceDataChanged$Server be a _static_ inner class?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72008" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC">Bug type SIC_INNER_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class com.changhong.iwater.nio.iotplatform.message.IoTDeviceDataChanged$Server<br/>At IoTDeviceDataChanged.java:[lines 16-32]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N74800');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.nio.udp.server.UDPServer$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N74800" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.nio.udp.server.UDPServer$1<br/>In class com.changhong.iwater.nio.udp.server.UDPServer<br/>In method com.changhong.iwater.nio.udp.server.UDPServer.start()<br/>At UDPServer.java:[line 30]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74938');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.sms.service.impl.SMSServiceImpl$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74938" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.sms.service.impl.SMSServiceImpl$1<br/>In class com.changhong.iwater.sms.service.impl.SMSServiceImpl<br/>In method com.changhong.iwater.sms.service.impl.SMSServiceImpl.sendCode(String)<br/>At SMSServiceImpl.java:[line 62]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75299');">
+<td>
+<span class="priority-3">SIC</span>
+</td>
+<td>The class com.changhong.iwater.user.controller.UserController$1 could be refactored into a named _static_ inner class</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75299" style="display: none;">
+<a href="#SIC_INNER_SHOULD_BE_STATIC_ANON">Bug type SIC_INNER_SHOULD_BE_STATIC_ANON (click for details)</a>
+<br/>Anonymous class com.changhong.iwater.user.controller.UserController$1<br/>In class com.changhong.iwater.user.controller.UserController<br/>In method com.changhong.iwater.user.controller.UserController.getBindDeviceInfo(UserBean)<br/>At UserController.java:[line 209]<br/>Local variable named hashMap</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74748');">
+<td>
+<span class="priority-2">SS</span>
+</td>
+<td>Unread field: com.changhong.iwater.nio.udp.message.UDPMessage.DEFAULT_CHARSET; should this field be static?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74748" style="display: none;">
+<a href="#SS_SHOULD_BE_STATIC">Bug type SS_SHOULD_BE_STATIC (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.message.UDPMessage<br/>Field com.changhong.iwater.nio.udp.message.UDPMessage.DEFAULT_CHARSET<br/>At UDPMessage.java:[line 11]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72571');">
+<td>
+<span class="priority-3">UPM</span>
+</td>
+<td>Private method com.changhong.iwater.nio.mqtt.protocol.Publish.sendPublishMessage(Channel, String, MqttQoS, byte[], boolean, boolean) is never called</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72571" style="display: none;">
+<a href="#UPM_UNCALLED_PRIVATE_METHOD">Bug type UPM_UNCALLED_PRIVATE_METHOD (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.protocol.Publish<br/>In method com.changhong.iwater.nio.mqtt.protocol.Publish.sendPublishMessage(Channel, String, MqttQoS, byte[], boolean, boolean)<br/>At Publish.java:[lines 75-78]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72844');">
+<td>
+<span class="priority-3">UPM</span>
+</td>
+<td>Private method com.changhong.iwater.nio.server.LineListener$TaskThread.imgHandleByUrl(byte[]) is never called</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72844" style="display: none;">
+<a href="#UPM_UNCALLED_PRIVATE_METHOD">Bug type UPM_UNCALLED_PRIVATE_METHOD (click for details)</a>
+<br/>In class com.changhong.iwater.nio.server.LineListener$TaskThread<br/>In method com.changhong.iwater.nio.server.LineListener$TaskThread.imgHandleByUrl(byte[])<br/>At LineListener.java:[lines 175-192]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N65736');">
+<td>
+<span class="priority-2">WMI</span>
+</td>
+<td>com.changhong.iwater.common.dao.BaseMongoDaoImpl.update(Object) makes inefficient use of keySet iterator instead of entrySet iterator</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N65736" style="display: none;">
+<a href="#WMI_WRONG_MAP_ITERATOR">Bug type WMI_WRONG_MAP_ITERATOR (click for details)</a>
+<br/>In class com.changhong.iwater.common.dao.BaseMongoDaoImpl<br/>In method com.changhong.iwater.common.dao.BaseMongoDaoImpl.update(Object)<br/>At BaseMongoDaoImpl.java:[line 73]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76459');">
+<td>
+<span class="priority-2">WMI</span>
+</td>
+<td>com.changhong.iwater.util.ExcelUtil.listToWorkbook(List, LinkedHashMap, String) makes inefficient use of keySet iterator instead of entrySet iterator</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76459" style="display: none;">
+<a href="#WMI_WRONG_MAP_ITERATOR">Bug type WMI_WRONG_MAP_ITERATOR (click for details)</a>
+<br/>In class com.changhong.iwater.util.ExcelUtil<br/>In method com.changhong.iwater.util.ExcelUtil.listToWorkbook(List, LinkedHashMap, String)<br/>At ExcelUtil.java:[line 89]<br/>Another occurrence at ExcelUtil.java:[line 105]</p>
+</td>
+</tr>
+</table>
+<h2>
+<a name="Warnings_STYLE">Dodgy code Warnings</a>
+</h2>
+<table class="warningtable" width="100%" cellspacing="0">
+<tr class="tableheader">
+<th align="left">Code</th>
+<th align="left">Warning</th>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73122');">
+<td>
+<span class="priority-3">BC</span>
+</td>
+<td>Unchecked/unconfirmed cast from com.changhong.iwater.nio.udp.message.UDPMessage to com.changhong.iwater.nio.udp.message.UDPDeviceMsg in com.changhong.iwater.nio.udp.handler.UDPServerHandler.messageReceived(ChannelHandlerContext, UDPMessage)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73122" style="display: none;">
+<a href="#BC_UNCONFIRMED_CAST">Bug type BC_UNCONFIRMED_CAST (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.handler.UDPServerHandler<br/>In method com.changhong.iwater.nio.udp.handler.UDPServerHandler.messageReceived(ChannelHandlerContext, UDPMessage)<br/>Actual type com.changhong.iwater.nio.udp.message.UDPMessage<br/>Expected com.changhong.iwater.nio.udp.message.UDPDeviceMsg<br/>Value loaded from msg<br/>At UDPServerHandler.java:[line 28]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73211');">
+<td>
+<span class="priority-2">BC</span>
+</td>
+<td>instanceof will always return true for all non-null values in com.changhong.iwater.nio.udp.handler.UDPServerHandler.messageReceived(ChannelHandlerContext, UDPMessage), since all com.changhong.iwater.nio.udp.message.UDPMessage are instances of com.changhong.iwater.nio.udp.message.UDPMessage</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73211" style="display: none;">
+<a href="#BC_VACUOUS_INSTANCEOF">Bug type BC_VACUOUS_INSTANCEOF (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.handler.UDPServerHandler<br/>In method com.changhong.iwater.nio.udp.handler.UDPServerHandler.messageReceived(ChannelHandlerContext, UDPMessage)<br/>Actual type com.changhong.iwater.nio.udp.message.UDPMessage<br/>Expected com.changhong.iwater.nio.udp.message.UDPMessage<br/>At UDPServerHandler.java:[line 26]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68545');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to household in new com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl$1(DeviceInfoServiceImpl)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68545" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl$1<br/>In method new com.changhong.iwater.device.service.impl.DeviceInfoServiceImpl$1(DeviceInfoServiceImpl)<br/>Local variable named household<br/>At DeviceInfoServiceImpl.java:[line 326]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68670');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to boo in com.changhong.iwater.fileserver.controller.FileController.fileDelete(String, HttpServletRequest)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68670" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.controller.FileController<br/>In method com.changhong.iwater.fileserver.controller.FileController.fileDelete(String, HttpServletRequest)<br/>Local variable named boo<br/>At FileController.java:[line 89]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68744');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to result in com.changhong.iwater.fileserver.controller.FileController.showFile(String, HttpServletRequest)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68744" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.controller.FileController<br/>In method com.changhong.iwater.fileserver.controller.FileController.showFile(String, HttpServletRequest)<br/>Local variable named result<br/>At FileController.java:[line 97]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68932');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to path in com.changhong.iwater.fileserver.service.impl.FileServiceImpl.showFileById(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68932" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.FileServiceImpl<br/>In method com.changhong.iwater.fileserver.service.impl.FileServiceImpl.showFileById(String)<br/>Local variable named path<br/>At FileServiceImpl.java:[line 243]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69006');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to rootPath in com.changhong.iwater.fileserver.service.impl.FileServiceImpl.showFileById(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69006" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.FileServiceImpl<br/>In method com.changhong.iwater.fileserver.service.impl.FileServiceImpl.showFileById(String)<br/>Local variable named rootPath<br/>At FileServiceImpl.java:[line 242]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69977');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to beginTime in com.changhong.iwater.manage.aop.SystemLogAspect.doAfter(JoinPoint)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69977" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.manage.aop.SystemLogAspect<br/>In method com.changhong.iwater.manage.aop.SystemLogAspect.doAfter(JoinPoint)<br/>Local variable named beginTime<br/>At SystemLogAspect.java:[line 119]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70048');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to method in com.changhong.iwater.manage.aop.SystemLogAspect.doAfter(JoinPoint)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70048" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.manage.aop.SystemLogAspect<br/>In method com.changhong.iwater.manage.aop.SystemLogAspect.doAfter(JoinPoint)<br/>Local variable named method<br/>At SystemLogAspect.java:[line 110]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70122');">
+<td>
+<span class="priority-2">DLS</span>
+</td>
+<td>Dead store to params in com.changhong.iwater.manage.aop.SystemLogAspect.doAfter(JoinPoint)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70122" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.manage.aop.SystemLogAspect<br/>In method com.changhong.iwater.manage.aop.SystemLogAspect.doAfter(JoinPoint)<br/>Local variable named params<br/>At SystemLogAspect.java:[line 111]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70916');">
+<td>
+<span class="priority-1">DLS</span>
+</td>
+<td>Dead store to aggregateOperations in com.changhong.iwater.manage.dao.impl.ResourceDaoImpl.getResources()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70916" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.manage.dao.impl.ResourceDaoImpl<br/>In method com.changhong.iwater.manage.dao.impl.ResourceDaoImpl.getResources()<br/>Local variable named aggregateOperations<br/>At ResourceDaoImpl.java:[line 28]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76317');">
+<td>
+<span class="priority-3">DLS</span>
+</td>
+<td>Dead store to $L10 in com.changhong.iwater.util.ExcelUtil.excelToList(InputStream, String[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76317" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ExcelUtil<br/>In method com.changhong.iwater.util.ExcelUtil.excelToList(InputStream, String[])<br/>Local variable stored in JVM register 10<br/>At ExcelUtil.java:[line 47]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76388');">
+<td>
+<span class="priority-3">DLS</span>
+</td>
+<td>Dead store to row in com.changhong.iwater.util.ExcelUtil.exportToExcelXSSF(String, Vector, Vector, ServletOutputStream)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76388" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ExcelUtil<br/>In method com.changhong.iwater.util.ExcelUtil.exportToExcelXSSF(String, Vector, Vector, ServletOutputStream)<br/>Local variable named row<br/>At ExcelUtil.java:[line 235]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76525');">
+<td>
+<span class="priority-1">DLS</span>
+</td>
+<td>Dead store to destDirName in com.changhong.iwater.util.FileUtil.createDir(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76525" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE">Bug type DLS_DEAD_LOCAL_STORE (click for details)</a>
+<br/>In class com.changhong.iwater.util.FileUtil<br/>In method com.changhong.iwater.util.FileUtil.createDir(String)<br/>Local variable named destDirName<br/>At FileUtil.java:[line 14]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N76602');">
+<td>
+<span class="priority-3">DLS</span>
+</td>
+<td>Dead store of null to data in com.changhong.iwater.util.HttpClientUtil.InputStreamTOByte(InputStream)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N76602" style="display: none;">
+<a href="#DLS_DEAD_LOCAL_STORE_OF_NULL">Bug type DLS_DEAD_LOCAL_STORE_OF_NULL (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.InputStreamTOByte(InputStream)<br/>Local variable named data<br/>At HttpClientUtil.java:[line 331]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69270');">
+<td>
+<span class="priority-2">DMI</span>
+</td>
+<td>Hard coded reference to an absolute pathname in com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml.main(String[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69270" style="display: none;">
+<a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml<br/>In method com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml.main(String[])<br/>File name D:\\poi-test\\<br/>At PoiExcelToHtml.java:[line 63]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N69330');">
+<td>
+<span class="priority-2">DMI</span>
+</td>
+<td>Hard coded reference to an absolute pathname in com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml.main(String[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N69330" style="display: none;">
+<a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+<br/>In class com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml<br/>In method com.changhong.iwater.fileserver.service.impl.PoiExcelToHtml.main(String[])<br/>File name D:\\poi-test\\111111.xls<br/>At PoiExcelToHtml.java:[line 34]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N75652');">
+<td>
+<span class="priority-2">DMI</span>
+</td>
+<td>Hard coded reference to an absolute pathname in com.changhong.iwater.util.ByteUtil.uploadFile(byte[], String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N75652" style="display: none;">
+<a href="#DMI_HARDCODED_ABSOLUTE_FILENAME">Bug type DMI_HARDCODED_ABSOLUTE_FILENAME (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.uploadFile(byte[], String)<br/>File name D:\\AbstractDevice.png<br/>At ByteUtil.java:[line 262]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77196');">
+<td>
+<span class="priority-2">ICAST</span>
+</td>
+<td>Integral division result cast to double or float in com.changhong.iwater.util.ImageUtil.spin(int, byte[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77196" style="display: none;">
+<a href="#ICAST_IDIV_CAST_TO_DOUBLE">Bug type ICAST_IDIV_CAST_TO_DOUBLE (click for details)</a>
+<br/>In class com.changhong.iwater.util.ImageUtil<br/>In method com.changhong.iwater.util.ImageUtil.spin(int, byte[])<br/>At ImageUtil.java:[line 58]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71748');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Load of known null value in com.changhong.iwater.manage.service.impl.RegionServiceImpl.save(Region)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71748" style="display: none;">
+<a href="#NP_LOAD_OF_KNOWN_NULL_VALUE">Bug type NP_LOAD_OF_KNOWN_NULL_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.manage.service.impl.RegionServiceImpl<br/>In method com.changhong.iwater.manage.service.impl.RegionServiceImpl.save(Region)<br/>Value loaded from region<br/>At RegionServiceImpl.java:[line 55]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79841');">
+<td>
+<span class="priority-2">NP</span>
+</td>
+<td>Load of known null value in com.changhong.iwater.util.UtilFuns.getNoExistString(String[], String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79841" style="display: none;">
+<a href="#NP_LOAD_OF_KNOWN_NULL_VALUE">Bug type NP_LOAD_OF_KNOWN_NULL_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getNoExistString(String[], String)<br/>Value loaded from allString<br/>At UtilFuns.java:[line 1334]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76060');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.ByteUtil.hexStringToBytes(String) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76060" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.hexStringToBytes(String)<br/>At ByteUtil.java:[line 96]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77063');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.HttpClientUtil.str2CharArray(String) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77063" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.str2CharArray(String)<br/>At HttpClientUtil.java:[line 280]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N77618');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.SerializeUtil.serialize(Object) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N77618" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.SerializeUtil<br/>In method com.changhong.iwater.util.SerializeUtil.serialize(Object)<br/>At SerializeUtil.java:[line 24]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N79903');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.UtilFuns.convertNull(String[]) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N79903" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.convertNull(String[])<br/>At UtilFuns.java:[line 425]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N79957');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.UtilFuns.splitFindStr(String) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N79957" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.splitFindStr(String)<br/>At UtilFuns.java:[line 163]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80011');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.UtilFuns.splitStair(String, String) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80011" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.splitStair(String, String)<br/>At UtilFuns.java:[line 181]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80065');">
+<td>
+<span class="priority-3">PZLA</span>
+</td>
+<td>Should com.changhong.iwater.util.UtilFuns.splitStr(String, String) return a zero length array rather than null?</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80065" style="display: none;">
+<a href="#PZLA_PREFER_ZERO_LENGTH_ARRAYS">Bug type PZLA_PREFER_ZERO_LENGTH_ARRAYS (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.splitStr(String, String)<br/>At UtilFuns.java:[line 155]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N66793');">
+<td>
+<span class="priority-2">RCN</span>
+</td>
+<td>Redundant nullcheck of deviceInfo, which is known to be non-null in com.changhong.iwater.device.controller.ConsumptionController.itemListConsumption(String, Integer, boolean)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N66793" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">Bug type RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.device.controller.ConsumptionController<br/>In method com.changhong.iwater.device.controller.ConsumptionController.itemListConsumption(String, Integer, boolean)<br/>Value loaded from deviceInfo<br/>Return value of com.changhong.iwater.device.service.DeviceInfoService.get(String) of type com.changhong.iwater.device.entity.DeviceInfo<br/>Redundant null check at ConsumptionController.java:[line 281]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N69901');">
+<td>
+<span class="priority-2">RCN</span>
+</td>
+<td>Redundant nullcheck of oldCensus, which is known to be non-null in com.changhong.iwater.homecensus.service.impl.StatisticsServiceImpl.coreStats(Consumption)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N69901" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">Bug type RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.homecensus.service.impl.StatisticsServiceImpl<br/>In method com.changhong.iwater.homecensus.service.impl.StatisticsServiceImpl.coreStats(Consumption)<br/>Value loaded from oldCensus<br/>Return value of com.changhong.iwater.homecensus.dao.IStatisticsDao.findCensusByDate(String, int, int) of type com.changhong.iwater.homecensus.entity.Census<br/>Redundant null check at StatisticsServiceImpl.java:[line 242]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77117');">
+<td>
+<span class="priority-3">RCN</span>
+</td>
+<td>Redundant nullcheck of k, which is known to be non-null in com.changhong.iwater.util.HttpClientUtil.putMapByPair(String, Map)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77117" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">Bug type RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.util.HttpClientUtil<br/>In method com.changhong.iwater.util.HttpClientUtil.putMapByPair(String, Map)<br/>Value loaded from k<br/>Return value of String.substring(int, int) of type String<br/>Redundant null check at HttpClientUtil.java:[line 154]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N78182');">
+<td>
+<span class="priority-2">RCN</span>
+</td>
+<td>Redundant nullcheck of valueString, which is known to be non-null in com.changhong.iwater.util.StringUtil.isEmpty(Object)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N78182" style="display: none;">
+<a href="#RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">Bug type RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE (click for details)</a>
+<br/>In class com.changhong.iwater.util.StringUtil<br/>In method com.changhong.iwater.util.StringUtil.isEmpty(Object)<br/>Value loaded from valueString<br/>Return value of com.changhong.iwater.util.StringUtil.nullToEmpty(Object) of type String<br/>Redundant null check at StringUtil.java:[line 228]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N67676');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.device.service.AnalysisService.getImage()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N67676" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.AnalysisService<br/>In method com.changhong.iwater.device.service.AnalysisService.getImage()<br/>At AnalysisService.java:[line 61]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68138');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$1$3.format(String, Object)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68138" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$1$3<br/>In method com.changhong.iwater.device.service.impl.ConsumptionServiceImpl$1$3.format(String, Object)<br/>At ConsumptionServiceImpl.java:[line 157]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70392');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.manage.controller.UserManageController.getVariableItem(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70392" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.manage.controller.UserManageController<br/>In method com.changhong.iwater.manage.controller.UserManageController.getVariableItem(String)<br/>At UserManageController.java:[line 240]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70642');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in new com.changhong.iwater.manage.controller.UserManageController$1(UserManageController, GlobalVariable)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70642" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.manage.controller.UserManageController$1<br/>In method new com.changhong.iwater.manage.controller.UserManageController$1(UserManageController, GlobalVariable)<br/>At UserManageController.java:[line 213]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N71630');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.manage.service.impl.PersonServiceImpl.getByUserId(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N71630" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.manage.service.impl.PersonServiceImpl<br/>In method com.changhong.iwater.manage.service.impl.PersonServiceImpl.getByUserId(String)<br/>At PersonServiceImpl.java:[line 57]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N71953');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.manage.service.impl.UserManageServiceImpl$1$1.format(String, Object)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N71953" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.manage.service.impl.UserManageServiceImpl$1$1<br/>In method com.changhong.iwater.manage.service.impl.UserManageServiceImpl$1$1.format(String, Object)<br/>At UserManageServiceImpl.java:[line 71]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72679');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.nio.server.LineListener$TaskThread.handleDevicePic(Device)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72679" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.nio.server.LineListener$TaskThread<br/>In method com.changhong.iwater.nio.server.LineListener$TaskThread.handleDevicePic(Device)<br/>At LineListener.java:[line 158]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72734');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.nio.server.LineListener$TaskThread.imgHandleByUrl(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72734" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.nio.server.LineListener$TaskThread<br/>In method com.changhong.iwater.nio.server.LineListener$TaskThread.imgHandleByUrl(byte[])<br/>At LineListener.java:[line 191]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72789');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.nio.server.LineListener$TaskThread.run()</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72789" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.nio.server.LineListener$TaskThread<br/>In method com.changhong.iwater.nio.server.LineListener$TaskThread.run()<br/>At LineListener.java:[line 99]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N73012');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.decode(ChannelHandlerContext, DatagramPacket, List)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N73012" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder<br/>In method com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.decode(ChannelHandlerContext, DatagramPacket, List)<br/>At UDPMessageDecoder.java:[line 114]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N73067');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.decode(ChannelHandlerContext, DatagramPacket, List)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N73067" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder<br/>In method com.changhong.iwater.nio.udp.decoder.UDPMessageDecoder.decode(ChannelHandlerContext, DatagramPacket, List)<br/>At UDPMessageDecoder.java:[lines 31-124]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76114');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.ByteUtil.uploadFile(byte[], String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76114" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.uploadFile(byte[], String)<br/>At ByteUtil.java:[line 265]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77375');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.MD5Util.MD5Encode(String, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77375" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.MD5Util<br/>In method com.changhong.iwater.util.MD5Util.MD5Encode(String, String)<br/>At MD5Util.java:[line 34]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N77672');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.SerializeUtil.unserialize(byte[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N77672" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.SerializeUtil<br/>In method com.changhong.iwater.util.SerializeUtil.unserialize(byte[])<br/>At SerializeUtil.java:[line 35]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N77851');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.Sha1Util.getSha1(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N77851" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.Sha1Util<br/>In method com.changhong.iwater.util.Sha1Util.getSha1(String)<br/>At Sha1Util.java:[line 223]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80119');">
+<td>
+<span class="priority-2">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.formatDateTimeCN(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80119" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.formatDateTimeCN(String)<br/>At UtilFuns.java:[line 1058]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80174');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.ComboList(String, String[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80174" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboList(String, String[])<br/>At UtilFuns.java:[line 903]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80229');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.ComboList(String, String[], String[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80229" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboList(String, String[], String[])<br/>At UtilFuns.java:[line 955]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80284');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80284" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[])<br/>At UtilFuns.java:[line 921]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80339');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[], String[])</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80339" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.ComboListMust(String, String[], String[])<br/>At UtilFuns.java:[line 974]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80394');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.IsIndexOfElements(String, ArrayList)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80394" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.IsIndexOfElements(String, ArrayList)<br/>At UtilFuns.java:[line 853]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80449');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.convertNull(Object)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80449" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.convertNull(Object)<br/>At UtilFuns.java:[line 438]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80504');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.convertNull(String[])</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80504" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.convertNull(String[])<br/>At UtilFuns.java:[line 424]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80559');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.dateTimeFormat(Date)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80559" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.dateTimeFormat(Date)<br/>At UtilFuns.java:[line 1024]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80614');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.dateTimeFormat(Date, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80614" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.dateTimeFormat(Date, String)<br/>At UtilFuns.java:[line 1014]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80669');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.fixSpaceStr(String, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80669" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.fixSpaceStr(String, int)<br/>At UtilFuns.java:[line 84]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80724');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.formatDateEN(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80724" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.formatDateEN(String)<br/>At UtilFuns.java:[line 1100]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80779');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.getPassString(String, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80779" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getPassString(String, int)<br/>At UtilFuns.java:[line 1191]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80834');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.getPassString(String, int, int, int)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80834" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getPassString(String, int, int, int)<br/>At UtilFuns.java:[line 1233]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80889');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.getQQString(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80889" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.getQQString(String)<br/>At UtilFuns.java:[line 1322]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N80944');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.htmlReplaceAll(String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N80944" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.htmlReplaceAll(String)<br/>At UtilFuns.java:[line 1148]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N80999');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.prefixSpaceStr(String, int)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N80999" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.prefixSpaceStr(String, int)<br/>At UtilFuns.java:[line 106]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N81054');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.splitStair(String, String)</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N81054" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.splitStair(String, String)<br/>At UtilFuns.java:[line 180]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N81109');">
+<td>
+<span class="priority-3">REC</span>
+</td>
+<td>Exception is caught when Exception is not thrown in com.changhong.iwater.util.UtilFuns.splitStr(String, String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N81109" style="display: none;">
+<a href="#REC_CATCH_EXCEPTION">Bug type REC_CATCH_EXCEPTION (click for details)</a>
+<br/>In class com.changhong.iwater.util.UtilFuns<br/>In method com.changhong.iwater.util.UtilFuns.splitStr(String, String)<br/>At UtilFuns.java:[line 154]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70193');">
+<td>
+<span class="priority-2">RV</span>
+</td>
+<td>Return value of com.changhong.iwater.manage.service.UserManageCacheService.putUser(String, UserBean) ignored, but method has no side effect</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70193" style="display: none;">
+<a href="#RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">Bug type RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT (click for details)</a>
+<br/>In class com.changhong.iwater.manage.controller.LoginController<br/>In method com.changhong.iwater.manage.controller.LoginController.login(UserDto)<br/>Called method com.changhong.iwater.manage.service.UserManageCacheService.putUser(String, UserBean)<br/>At LoginController.java:[line 46]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N74866');">
+<td>
+<span class="priority-2">RV</span>
+</td>
+<td>Return value of com.changhong.iwater.sms.service.SmsCacheService.putCode(String, String) ignored, but method has no side effect</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N74866" style="display: none;">
+<a href="#RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">Bug type RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT (click for details)</a>
+<br/>In class com.changhong.iwater.sms.service.impl.SMSServiceImpl<br/>In method com.changhong.iwater.sms.service.impl.SMSServiceImpl.sendCode(String)<br/>Called method com.changhong.iwater.sms.service.SmsCacheService.putCode(String, String)<br/>At SMSServiceImpl.java:[line 66]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N75227');">
+<td>
+<span class="priority-2">RV</span>
+</td>
+<td>Return value of com.changhong.iwater.user.service.UserCacheService.putUser(String, UserBean) ignored, but method has no side effect</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N75227" style="display: none;">
+<a href="#RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">Bug type RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT (click for details)</a>
+<br/>In class com.changhong.iwater.user.controller.UserController<br/>In method com.changhong.iwater.user.controller.UserController.userNameLogin(UserDto)<br/>Called method com.changhong.iwater.user.service.UserCacheService.putUser(String, UserBean)<br/>At UserController.java:[line 139]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N68616');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.changhong.iwater.device.service.impl.HouseholdServiceImpl.save(Household) where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N68616" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.HouseholdServiceImpl<br/>In method com.changhong.iwater.device.service.impl.HouseholdServiceImpl.save(Household)<br/>At HouseholdServiceImpl.java:[lines 60-81]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N72115');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.changhong.iwater.nio.mqtt.handler.NettyMQTTHandler.messageReceived(ChannelHandlerContext, MqttMessage) where default case is missing</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N72115" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.handler.NettyMQTTHandler<br/>In method com.changhong.iwater.nio.mqtt.handler.NettyMQTTHandler.messageReceived(ChannelHandlerContext, MqttMessage)<br/>At NettyMQTTHandler.java:[lines 20-25]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N72517');">
+<td>
+<span class="priority-2">SF</span>
+</td>
+<td>Switch statement found in com.changhong.iwater.nio.mqtt.message.LoRaWANData.dismantling() where default case is missing</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N72517" style="display: none;">
+<a href="#SF_SWITCH_NO_DEFAULT">Bug type SF_SWITCH_NO_DEFAULT (click for details)</a>
+<br/>In class com.changhong.iwater.nio.mqtt.message.LoRaWANData<br/>In method com.changhong.iwater.nio.mqtt.message.LoRaWANData.dismantling()<br/>At LoRaWANData.java:[lines 83-107]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N70520');">
+<td>
+<span class="priority-1">UC</span>
+</td>
+<td>Useless condition: it's known that i != -1 at this point</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N70520" style="display: none;">
+<a href="#UC_USELESS_CONDITION">Bug type UC_USELESS_CONDITION (click for details)</a>
+<br/>In class com.changhong.iwater.manage.controller.UserManageController<br/>In method com.changhong.iwater.manage.controller.UserManageController.updBehaviorUser(AdminDto)<br/>Value i != -1<br/>Unreachable code at UserManageController.java:[line 80]<br/>At UserManageController.java:[line 79]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N76169');">
+<td>
+<span class="priority-2">UC</span>
+</td>
+<td>Useless object stored in variable temp of method com.changhong.iwater.util.ByteUtil.convertHexToString(String)</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N76169" style="display: none;">
+<a href="#UC_USELESS_OBJECT">Bug type UC_USELESS_OBJECT (click for details)</a>
+<br/>In class com.changhong.iwater.util.ByteUtil<br/>In method com.changhong.iwater.util.ByteUtil.convertHexToString(String)<br/>Value temp<br/>Type StringBuilder<br/>At ByteUtil.java:[line 220]</p>
+</td>
+</tr>
+<tr class="tablerow1" onclick="toggleRow('N68086');">
+<td>
+<span class="priority-2">UrF</span>
+</td>
+<td>Unread public/protected field: com.changhong.iwater.device.service.impl.ConsumptionServiceImpl.logger</td>
+</tr>
+<tr class="detailrow1">
+<td/>
+<td>
+<p id="N68086" style="display: none;">
+<a href="#URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD">Bug type URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD (click for details)</a>
+<br/>In class com.changhong.iwater.device.service.impl.ConsumptionServiceImpl<br/>Field com.changhong.iwater.device.service.impl.ConsumptionServiceImpl.logger<br/>At ConsumptionServiceImpl.java:[line 26]</p>
+</td>
+</tr>
+<tr class="tablerow0" onclick="toggleRow('N70590');">
+<td>
+<span class="priority-3">UrF</span>
+</td>
+<td>Unread public/protected field: com.changhong.iwater.manage.controller.UserManageController.LOGGER</td>
+</tr>
+<tr class="detailrow0">
+<td/>
+<td>
+<p id="N70590" style="display: none;">
+<a href="#URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD">Bug type URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD (click for details)</a>
+<br/>In class com.changhong.iwater.manage.controller.UserManageController<br/>Field com.changhong.iwater.manage.controller.UserManageController.LOGGER<br/>At UserManageController.java:[line 47]</p>
+</td>
+</tr>
+</table>
+<h1>
+<a name="Details">Details</a>
+</h1>
+<h2>
+<a name="BC_VACUOUS_INSTANCEOF">BC_VACUOUS_INSTANCEOF: instanceof will always return true</a>
+</h2>
+
+<p>
+This instanceof test will always return true (unless the value being tested is null).
+Although this is safe, make sure it isn't
+an indication of some misunderstanding or some other logic error.
+If you really want to test the value for being null, perhaps it would be clearer to do
+better to do a null test rather than an instanceof test.
+</p>
+
+    
+<h2>
+<a name="BC_UNCONFIRMED_CAST">BC_UNCONFIRMED_CAST: Unchecked/unconfirmed cast</a>
+</h2>
+
+<p>
+This cast is unchecked, and not all instances of the type casted from can be cast to
+the type it is being cast to. Check that your program logic ensures that this
+cast will not fail.
+</p>
+
+    
+<h2>
+<a name="BX_UNBOXING_IMMEDIATELY_REBOXED">BX_UNBOXING_IMMEDIATELY_REBOXED: Boxed value is unboxed and then immediately reboxed</a>
+</h2>
+
+  <p>A boxed value is unboxed and then immediately reboxed.
+</p>
+
+    
+<h2>
+<a name="BX_UNBOXED_AND_COERCED_FOR_TERNARY_OPERATOR">BX_UNBOXED_AND_COERCED_FOR_TERNARY_OPERATOR: Primitive value is unboxed and coerced for ternary operator</a>
+</h2>
+
+  <p>A wrapped primitive value is unboxed and converted to another primitive type as part of the
+evaluation of a conditional ternary operator (the <code> b ? e1 : e2</code> operator). The
+semantics of Java mandate that if <code>e1</code> and <code>e2</code> are wrapped
+numeric values, the values are unboxed and converted/coerced to their common type (e.g,
+if <code>e1</code> is of type <code>Integer</code>
+and <code>e2</code> is of type <code>Float</code>, then <code>e1</code> is unboxed,
+converted to a floating point value, and boxed. See JLS Section 15.25.
+</p>
+
+    
+<h2>
+<a name="DE_MIGHT_IGNORE">DE_MIGHT_IGNORE: Method might ignore exception</a>
+</h2>
+
+  <p> This method might ignore an exception.&nbsp; In general, exceptions
+  should be handled or reported in some way, or they should be thrown
+  out of the method.</p>
+
+    
+<h2>
+<a name="DLS_DEAD_LOCAL_STORE_OF_NULL">DLS_DEAD_LOCAL_STORE_OF_NULL: Dead store of null to local variable</a>
+</h2>
+
+<p>The code stores null into a local variable, and the stored value is not
+read. This store may have been introduced to assist the garbage collector, but
+as of Java SE 6.0, this is no longer needed or useful.
+</p>
+
+    
+<h2>
+<a name="DLS_DEAD_LOCAL_STORE">DLS_DEAD_LOCAL_STORE: Dead store to local variable</a>
+</h2>
+
+<p>
+This instruction assigns a value to a local variable,
+but the value is not read or used in any subsequent instruction.
+Often, this indicates an error, because the value computed is never
+used.
+</p>
+<p>
+Note that Sun's javac compiler often generates dead stores for
+final local variables.  Because SpotBugs is a bytecode-based tool,
+there is no easy way to eliminate these false positives.
+</p>
+
+    
+<h2>
+<a name="DM_CONVERT_CASE">DM_CONVERT_CASE: Consider using Locale parameterized version of invoked method</a>
+</h2>
+
+  <p> A String is being converted to upper or lowercase, using the platform's default encoding. This may
+      result in improper conversions when used with international characters. Use the </p>
+      <ul>
+    <li>String.toUpperCase( Locale l )</li>
+    <li>String.toLowerCase( Locale l )</li>
+    </ul>
+      <p>versions instead.</p>
+
+    
+<h2>
+<a name="DM_STRING_CTOR">DM_STRING_CTOR: Method invokes inefficient new String(String) constructor</a>
+</h2>
+
+  <p> Using the <code>java.lang.String(String)</code> constructor wastes memory
+  because the object so constructed will be functionally indistinguishable
+  from the <code>String</code> passed as a parameter.&nbsp; Just use the
+  argument <code>String</code> directly.</p>
+
+    
+<h2>
+<a name="DM_STRING_TOSTRING">DM_STRING_TOSTRING: Method invokes toString() method on a String</a>
+</h2>
+
+  <p> Calling <code>String.toString()</code> is just a redundant operation.
+  Just use the String.</p>
+
+    
+<h2>
+<a name="DM_DEFAULT_ENCODING">DM_DEFAULT_ENCODING: Reliance on default encoding</a>
+</h2>
+
+<p> Found a call to a method which will perform a byte to String (or String to byte) conversion, and will assume that the default platform encoding is suitable. This will cause the application behaviour to vary between platforms. Use an alternative API and specify a charset name or Charset object explicitly.  </p>
+
+      
+<h2>
+<a name="DMI_HARDCODED_ABSOLUTE_FILENAME">DMI_HARDCODED_ABSOLUTE_FILENAME: Code contains a hard coded reference to an absolute pathname</a>
+</h2>
+
+<p>This code constructs a File object using a hard coded to an absolute pathname
+(e.g., <code>new File("/home/dannyc/workspace/j2ee/src/share/com/sun/enterprise/deployment");</code>
+</p>
+
+    
+<h2>
+<a name="DP_DO_INSIDE_DO_PRIVILEGED">DP_DO_INSIDE_DO_PRIVILEGED: Method invoked that should be only be invoked inside a doPrivileged block</a>
+</h2>
+
+  <p> This code invokes a method that requires a security permission check.
+  If this code will be granted security permissions, but might be invoked by code that does not
+  have security permissions, then the invocation needs to occur inside a doPrivileged block.</p>
+
+    
+<h2>
+<a name="EC_UNRELATED_TYPES">EC_UNRELATED_TYPES: Call to equals() comparing different types</a>
+</h2>
+
+<p> This method calls equals(Object) on two references of different
+class types and analysis suggests they will be to objects of different classes
+at runtime. Further, examination of the equals methods that would be invoked suggest that either
+this call will always return false, or else the equals method is not be symmetric (which is
+a property required by the contract
+for equals in class Object).
+</p>
+
+    
+<h2>
+<a name="EC_NULL_ARG">EC_NULL_ARG: Call to equals(null)</a>
+</h2>
+
+<p> This method calls equals(Object), passing a null value as
+the argument. According to the contract of the equals() method,
+this call should always return <code>false</code>.</p>
+
+    
+<h2>
+<a name="EI_EXPOSE_REP">EI_EXPOSE_REP: May expose internal representation by returning reference to mutable object</a>
+</h2>
+
+  <p> Returning a reference to a mutable object value stored in one of the object's fields
+  exposes the internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Returning a new copy of the object is better approach in many situations.</p>
+
+    
+<h2>
+<a name="EI_EXPOSE_REP2">EI_EXPOSE_REP2: May expose internal representation by incorporating reference to mutable object</a>
+</h2>
+
+  <p> This code stores a reference to an externally mutable object into the
+  internal representation of the object.&nbsp;
+   If instances
+   are accessed by untrusted code, and unchecked changes to
+   the mutable object would compromise security or other
+   important properties, you will need to do something different.
+  Storing a copy of the object is better approach in many situations.</p>
+
+    
+<h2>
+<a name="EQ_COMPARETO_USE_OBJECT_EQUALS">EQ_COMPARETO_USE_OBJECT_EQUALS: Class defines compareTo(...) and uses Object.equals()</a>
+</h2>
+
+  <p> This class defines a <code>compareTo(...)</code> method but inherits its
+  <code>equals()</code> method from <code>java.lang.Object</code>.
+    Generally, the value of compareTo should return zero if and only if
+    equals returns true. If this is violated, weird and unpredictable
+    failures will occur in classes such as PriorityQueue.
+    In Java 5 the PriorityQueue.remove method uses the compareTo method,
+    while in Java 6 it uses the equals method.</p>
+
+<p>From the JavaDoc for the compareTo method in the Comparable interface:
+<blockquote>
+It is strongly recommended, but not strictly required that <code>(x.compareTo(y)==0) == (x.equals(y))</code>.
+Generally speaking, any class that implements the Comparable interface and violates this condition
+should clearly indicate this fact. The recommended language
+is "Note: this class has a natural ordering that is inconsistent with equals."
+</blockquote></p>
+
+    
+<h2>
+<a name="ES_COMPARING_STRINGS_WITH_EQ">ES_COMPARING_STRINGS_WITH_EQ: Comparison of String objects using == or !=</a>
+</h2>
+
+  <p>This code compares <code>java.lang.String</code> objects for reference
+equality using the == or != operators.
+Unless both strings are either constants in a source file, or have been
+interned using the <code>String.intern()</code> method, the same string
+value may be represented by two different String objects. Consider
+using the <code>equals(Object)</code> method instead.</p>
+
+    
+<h2>
+<a name="ICAST_IDIV_CAST_TO_DOUBLE">ICAST_IDIV_CAST_TO_DOUBLE: Integral division result cast to double or float</a>
+</h2>
+
+<p>
+This code casts the result of an integral division (e.g., int or long division)
+operation to double or
+float.
+Doing division on integers truncates the result
+to the integer value closest to zero.  The fact that the result
+was cast to double suggests that this precision should have been retained.
+What was probably meant was to cast one or both of the operands to
+double <em>before</em> performing the division.  Here is an example:
+</p>
+<pre><code>int x = 2;
+int y = 5;
+// Wrong: yields result 0.0
+double value1 = x / y;
+
+// Right: yields result 0.4
+double value2 = x / (double) y;
+</code></pre>
+
+    
+<h2>
+<a name="INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE">INT_BAD_COMPARISON_WITH_NONNEGATIVE_VALUE: Bad comparison of nonnegative value with negative constant or zero</a>
+</h2>
+
+<p> This code compares a value that is guaranteed to be non-negative with a negative constant or zero.
+</p>
+
+    
+<h2>
+<a name="IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN">IP_PARAMETER_IS_DEAD_BUT_OVERWRITTEN: A parameter is dead upon entry to a method but overwritten</a>
+</h2>
+
+<p>
+The initial value of this parameter is ignored, and the parameter
+is overwritten here. This often indicates a mistaken belief that
+the write to the parameter will be conveyed back to
+the caller.
+</p>
+
+    
+<h2>
+<a name="MS_CANNOT_BE_FINAL">MS_CANNOT_BE_FINAL: Field isn't final and can't be protected from malicious code</a>
+</h2>
+
+  <p>
+ A mutable static field could be changed by malicious code or
+        by accident from another package.
+   Unfortunately, the way the field is used doesn't allow
+   any easy fix to this problem.</p>
+
+    
+<h2>
+<a name="MS_PKGPROTECT">MS_PKGPROTECT: Field should be package protected</a>
+</h2>
+
+  <p> A mutable static field could be changed by malicious code or
+   by accident.
+   The field could be made package protected to avoid
+   this vulnerability.</p>
+
+    
+<h2>
+<a name="NM_CONFUSING">NM_CONFUSING: Confusing method names</a>
+</h2>
+
+  <p> The referenced methods have names that differ only by capitalization.</p>
+
+    
+<h2>
+<a name="NM_FIELD_NAMING_CONVENTION">NM_FIELD_NAMING_CONVENTION: Field names should start with a lower case letter</a>
+</h2>
+
+  <p>
+Names of fields that are not final should be in mixed case with a lowercase first letter and the first letters of subsequent words capitalized.
+</p>
+
+    
+<h2>
+<a name="NM_METHOD_NAMING_CONVENTION">NM_METHOD_NAMING_CONVENTION: Method names should start with a lower case letter</a>
+</h2>
+
+  <p>
+Methods should be verbs, in mixed case with the first letter lowercase, with the first letter of each internal word capitalized.
+</p>
+
+    
+<h2>
+<a name="NP_LOAD_OF_KNOWN_NULL_VALUE">NP_LOAD_OF_KNOWN_NULL_VALUE: Load of known null value</a>
+</h2>
+
+  <p> The variable referenced at this point is known to be null due to an earlier
+   check against null. Although this is valid, it might be a mistake (perhaps you
+intended to refer to a different variable, or perhaps the earlier check to see if the
+variable is null should have been a check to see if it was non-null).
+</p>
+
+    
+<h2>
+<a name="NP_ALWAYS_NULL">NP_ALWAYS_NULL: Null pointer dereference</a>
+</h2>
+
+<p> A null pointer is dereferenced here.&nbsp; This will lead to a
+<code>NullPointerException</code> when the code is executed.</p>
+
+    
+<h2>
+<a name="OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE">OBL_UNSATISFIED_OBLIGATION_EXCEPTION_EDGE: Method may fail to clean up stream or resource on checked exception</a>
+</h2>
+          
+          <p>
+          This method may fail to clean up (close, dispose of) a stream,
+          database object, or other
+          resource requiring an explicit cleanup operation.
+          </p>
+
+          <p>
+          In general, if a method opens a stream or other resource,
+          the method should use a try/finally block to ensure that
+          the stream or resource is cleaned up before the method
+          returns.
+          </p>
+
+          <p>
+          This bug pattern is essentially the same as the
+          OS_OPEN_STREAM and ODR_OPEN_DATABASE_RESOURCE
+          bug patterns, but is based on a different
+          (and hopefully better) static analysis technique.
+          We are interested is getting feedback about the
+          usefulness of this bug pattern.
+          For sending feedback, check:
+          </p>
+          <ul>
+            <li><a href="https://github.com/spotbugs/spotbugs/blob/master/CONTRIBUTING.md">contributing guideline</a></li>
+            <li><a href="https://github.com/spotbugs/discuss/issues?q=">malinglist</a></li>
+          </ul>
+
+          <p>
+          In particular,
+          the false-positive suppression heuristics for this
+          bug pattern have not been extensively tuned, so
+          reports about false positives are helpful to us.
+          </p>
+
+          <p>
+          See Weimer and Necula, <i>Finding and Preventing Run-Time Error Handling Mistakes</i>, for
+          a description of the analysis technique.
+          </p>
+          
+      
+<h2>
+<a name="OS_OPEN_STREAM">OS_OPEN_STREAM: Method may fail to close stream</a>
+</h2>
+
+<p> The method creates an IO stream object, does not assign it to any
+fields, pass it to other methods that might close it,
+or return it, and does not appear to close
+the stream on all paths out of the method.&nbsp; This may result in
+a file descriptor leak.&nbsp; It is generally a good
+idea to use a <code>finally</code> block to ensure that streams are
+closed.</p>
+
+    
+<h2>
+<a name="OS_OPEN_STREAM_EXCEPTION_PATH">OS_OPEN_STREAM_EXCEPTION_PATH: Method may fail to close stream on exception</a>
+</h2>
+
+<p> The method creates an IO stream object, does not assign it to any
+fields, pass it to other methods, or return it, and does not appear to close
+it on all possible exception paths out of the method.&nbsp;
+This may result in a file descriptor leak.&nbsp; It is generally a good
+idea to use a <code>finally</code> block to ensure that streams are
+closed.</p>
+
+    
+<h2>
+<a name="PZLA_PREFER_ZERO_LENGTH_ARRAYS">PZLA_PREFER_ZERO_LENGTH_ARRAYS: Consider returning a zero length array rather than null</a>
+</h2>
+
+<p> It is often a better design to
+return a length zero array rather than a null reference to indicate that there
+are no results (i.e., an empty list of results).
+This way, no explicit check for null is needed by clients of the method.</p>
+
+<p>On the other hand, using null to indicate
+"there is no answer to this question" is probably appropriate.
+For example, <code>File.listFiles()</code> returns an empty list
+if given a directory containing no files, and returns null if the file
+is not a directory.</p>
+
+    
+<h2>
+<a name="RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE">RCN_REDUNDANT_NULLCHECK_OF_NONNULL_VALUE: Redundant nullcheck of value known to be non-null</a>
+</h2>
+
+<p> This method contains a redundant check of a known non-null value against
+the constant null.</p>
+
+    
+<h2>
+<a name="REC_CATCH_EXCEPTION">REC_CATCH_EXCEPTION: Exception is caught when Exception is not thrown</a>
+</h2>
+  
+  <p>
+  This method uses a try-catch block that catches Exception objects, but Exception is not
+  thrown within the try block, and RuntimeException is not explicitly caught.  It is a common bug pattern to
+  say try { ... } catch (Exception e) { something } as a shorthand for catching a number of types of exception
+  each of whose catch blocks is identical, but this construct also accidentally catches RuntimeException as well,
+  masking potential bugs.
+  </p>
+  <p>A better approach is to either explicitly catch the specific exceptions that are thrown,
+  or to explicitly catch RuntimeException exception, rethrow it, and then catch all non-Runtime Exceptions, as shown below:</p>
+<pre><code>try {
+    ...
+} catch (RuntimeException e) {
+    throw e;
+} catch (Exception e) {
+    ... deal with all non-runtime exceptions ...
+}
+</code></pre>
+  
+     
+<h2>
+<a name="RR_NOT_CHECKED">RR_NOT_CHECKED: Method ignores results of InputStream.read()</a>
+</h2>
+
+  <p> This method ignores the return value of one of the variants of
+  <code>java.io.InputStream.read()</code> which can return multiple bytes.&nbsp;
+  If the return value is not checked, the caller will not be able to correctly
+  handle the case where fewer bytes were read than the caller requested.&nbsp;
+  This is a particularly insidious kind of bug, because in many programs,
+  reads from input streams usually do read the full amount of data requested,
+  causing the program to fail only sporadically.</p>
+
+    
+<h2>
+<a name="RV_RETURN_VALUE_IGNORED_BAD_PRACTICE">RV_RETURN_VALUE_IGNORED_BAD_PRACTICE: Method ignores exceptional return value</a>
+</h2>
+
+   <p> This method returns a value that is not checked. The return value should be checked
+since it can indicate an unusual or unexpected function execution. For
+example, the <code>File.delete()</code> method returns false
+if the file could not be successfully deleted (rather than
+throwing an Exception).
+If you don't check the result, you won't notice if the method invocation
+signals unexpected behavior by returning an atypical return value.
+</p>
+
+    
+<h2>
+<a name="RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT">RV_RETURN_VALUE_IGNORED_NO_SIDE_EFFECT: Return value of method without side effect is ignored</a>
+</h2>
+
+<p>This code calls a method and ignores the return value. However our analysis shows that
+the method (including its implementations in subclasses if any) does not produce any effect
+other than return value. Thus this call can be removed.
+</p>
+<p>We are trying to reduce the false positives as much as possible, but in some cases this warning might be wrong.
+Common false-positive cases include:</p>
+<p>- The method is designed to be overridden and produce a side effect in other projects which are out of the scope of the analysis.</p>
+<p>- The method is called to trigger the class loading which may have a side effect.</p>
+<p>- The method is called just to get some exception.</p>
+<p>If you feel that our assumption is incorrect, you can use a @CheckReturnValue annotation
+to instruct SpotBugs that ignoring the return value of this method is acceptable.
+</p>
+
+    
+<h2>
+<a name="SBSC_USE_STRINGBUFFER_CONCATENATION">SBSC_USE_STRINGBUFFER_CONCATENATION: Method concatenates strings using + in a loop</a>
+</h2>
+
+<p> The method seems to be building a String using concatenation in a loop.
+In each iteration, the String is converted to a StringBuffer/StringBuilder,
+   appended to, and converted back to a String.
+   This can lead to a cost quadratic in the number of iterations,
+   as the growing string is recopied in each iteration. </p>
+
+<p>Better performance can be obtained by using
+a StringBuffer (or StringBuilder in Java 1.5) explicitly.</p>
+
+<p> For example:</p>
+<pre><code>// This is bad
+String s = "";
+for (int i = 0; i &lt; field.length; ++i) {
+    s = s + field[i];
+}
+
+// This is better
+StringBuffer buf = new StringBuffer();
+for (int i = 0; i &lt; field.length; ++i) {
+    buf.append(field[i]);
+}
+String s = buf.toString();
+</code></pre>
+
+    
+<h2>
+<a name="SF_SWITCH_NO_DEFAULT">SF_SWITCH_NO_DEFAULT: Switch statement found where default case is missing</a>
+</h2>
+
+  <p> This method contains a switch statement where default case is missing.
+  Usually you need to provide a default case.</p>
+  <p>Because the analysis only looks at the generated bytecode, this warning can be incorrect triggered if
+the default case is at the end of the switch statement and the switch statement doesn't contain break statements for other
+cases.
+
+    
+<h2>
+<a name="SIC_INNER_SHOULD_BE_STATIC_ANON">SIC_INNER_SHOULD_BE_STATIC_ANON: Could be refactored into a named static inner class</a>
+</h2>
+
+  <p> This class is an inner class, but does not use its embedded reference
+  to the object which created it.&nbsp; This reference makes the instances
+  of the class larger, and may keep the reference to the creator object
+  alive longer than necessary.&nbsp; If possible, the class should be
+  made into a <em>static</em> inner class. Since anonymous inner
+classes cannot be marked as static, doing this will require refactoring
+the inner class so that it is a named inner class.</p>
+
+    
+<h2>
+<a name="SIC_INNER_SHOULD_BE_STATIC">SIC_INNER_SHOULD_BE_STATIC: Should be a static inner class</a>
+</h2>
+
+  <p> This class is an inner class, but does not use its embedded reference
+  to the object which created it.&nbsp; This reference makes the instances
+  of the class larger, and may keep the reference to the creator object
+  alive longer than necessary.&nbsp; If possible, the class should be
+   made static.
+</p>
+
+    
+<h2>
+<a name="SIO_SUPERFLUOUS_INSTANCEOF">SIO_SUPERFLUOUS_INSTANCEOF: Unnecessary type check done using instanceof operator</a>
+</h2>
+
+<p> Type check performed using the instanceof operator where it can be statically determined whether the object
+is of the type requested. </p>
+
+    
+<h2>
+<a name="SE_NO_SERIALVERSIONID">SE_NO_SERIALVERSIONID: Class is Serializable, but doesn't define serialVersionUID</a>
+</h2>
+
+  <p> This class implements the <code>Serializable</code> interface, but does
+  not define a <code>serialVersionUID</code> field.&nbsp;
+  A change as simple as adding a reference to a .class object
+    will add synthetic fields to the class,
+   which will unfortunately change the implicit
+   serialVersionUID (e.g., adding a reference to <code>String.class</code>
+   will generate a static field <code>class$java$lang$String</code>).
+   Also, different source code to bytecode compilers may use different
+   naming conventions for synthetic variables generated for
+   references to class objects or inner classes.
+   To ensure interoperability of Serializable across versions,
+   consider adding an explicit serialVersionUID.</p>
+
+    
+<h2>
+<a name="SS_SHOULD_BE_STATIC">SS_SHOULD_BE_STATIC: Unread field: should this field be static?</a>
+</h2>
+
+  <p> This class contains an instance final field that
+   is initialized to a compile-time static value.
+   Consider making the field static.</p>
+
+    
+<h2>
+<a name="UC_USELESS_CONDITION">UC_USELESS_CONDITION: Condition has no effect</a>
+</h2>
+
+<p>This condition always produces the same result as the value of the involved variable that was narrowed before.
+Probably something else was meant or the condition can be removed.</p>
+
+    
+<h2>
+<a name="UC_USELESS_OBJECT">UC_USELESS_OBJECT: Useless object created</a>
+</h2>
+
+<p>Our analysis shows that this object is useless.
+It's created and modified, but its value never go outside of the method or produce any side-effect.
+Either there is a mistake and object was intended to be used or it can be removed.</p>
+<p>This analysis rarely produces false-positives. Common false-positive cases include:</p>
+<p>- This object used to implicitly throw some obscure exception.</p>
+<p>- This object used as a stub to generalize the code.</p>
+<p>- This object used to hold strong references to weak/soft-referenced objects.</p>
+
+    
+<h2>
+<a name="UI_INHERITANCE_UNSAFE_GETRESOURCE">UI_INHERITANCE_UNSAFE_GETRESOURCE: Usage of GetResource may be unsafe if class is extended</a>
+</h2>
+
+<p>Calling <code>this.getClass().getResource(...)</code> could give
+results other than expected if this class is extended by a class in
+another package.</p>
+
+    
+<h2>
+<a name="UPM_UNCALLED_PRIVATE_METHOD">UPM_UNCALLED_PRIVATE_METHOD: Private method is never called</a>
+</h2>
+
+<p> This private method is never called. Although it is
+possible that the method will be invoked through reflection,
+it is more likely that the method is never used, and should be
+removed.
+</p>
+
+
+<h2>
+<a name="URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD">URF_UNREAD_PUBLIC_OR_PROTECTED_FIELD: Unread public/protected field</a>
+</h2>
+
+  <p> This field is never read.&nbsp;
+The field is public or protected, so perhaps
+    it is intended to be used with classes not seen as part of the analysis. If not,
+consider removing it from the class.</p>
+
+    
+<h2>
+<a name="DMI_INVOKING_TOSTRING_ON_ARRAY">DMI_INVOKING_TOSTRING_ON_ARRAY: Invocation of toString on an array</a>
+</h2>
+
+<p>
+The code invokes toString on an array, which will generate a fairly useless result
+such as [C@16f0472. Consider using Arrays.toString to convert the array into a readable
+String that gives the contents of the array. See Programming Puzzlers, chapter 3, puzzle 12.
+</p>
+
+    
+<h2>
+<a name="WMI_WRONG_MAP_ITERATOR">WMI_WRONG_MAP_ITERATOR: Inefficient use of keySet iterator instead of entrySet iterator</a>
+</h2>
+
+<p> This method accesses the value of a Map entry, using a key that was retrieved from
+a keySet iterator. It is more efficient to use an iterator on the entrySet of the map, to avoid the
+Map.get(key) lookup.</p>
+
+        </body>
+</html>

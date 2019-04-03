@@ -1,0 +1,38 @@
+server:
+# Enable response compression
+  compression:
+    enabled: true
+# The comma-separated list of mime types that should be compressed
+    mime-types: text/html,text/xml,text/plain,text/css,text/javascript,application/javascript,application/json
+# Compress the response only if the response size is at least 1KB
+    min-response-size: 1024
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-active: 1000
+      max-wait: 1000
+      max-idle: 100
+    timeout: 100000
+  #mongodb相关配置
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: geography
+    cassandra:
+      connect-timeout-millis: 10000
+logging:
+  config: classpath:xml/logback_boot.xml
+management:
+  security:
+    enabled: false
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 60000
+        readTimeout: 60000
+baidu:
+  ak: hBYGCk3CFE3QGM45RrGf1yGFzDNNAlv8

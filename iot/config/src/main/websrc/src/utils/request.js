@@ -1,0 +1,254 @@
+import fetch from 'dva/fetch';
+import {notification, message} from 'antd';
+import {routerRedux} from 'dva/router';
+import store from '../index';
+import {getUrl, regUrl, getInervalHour, callStatusInfo} from './utils';
+import moment from 'moment';
+import {getAuthority} from './authority';
+
+const codeMessage = {
+  10102: "您的登录信息已过期，请重新登录。",
+  200: '服务器成功返回请求的数据。',
+  201: '新建或修改数据成功。',
+  202: '一个请求已经进入后台排队（异步任务）。',
+  204: '删除数据成功。',
+  400: '发出的请求有错误，服务器没有进行新建或修改数据的操作。',
+  401: '权限认证失败，请重新登录!',
+  403: '用户得到授权，但是访问是被禁止的。',
+  404: '发出的请求针对的是不存在的记录，服务器没有进行操作。',
+  406: '请求的格式不可得。',
+  410: '请求的资源被永久删除，且不会再得到的。',
+  422: '当创建一个对象时，发生一个验证错误。',
+  500: '服务器发生错误，请检查服务器。',
+  502: '网关错误。',
+  503: '服务不可用，服务器暂时过载或维护。',
+  504: '网关超时。',
+};
+
+function checkStatus(response) {
+  if (response.status >= 200 && response.status < 300) {
+    return response
+  }
+  const errortext = codeMessage[response.status] || response.statusText;
+  if(response.status===401){
+    const {dispatch} = store;
+    dispatch(routerRedux.push('/user/login'));
+  }
+  message.error(errortext);
+  // notification.error({
+  //   message: `请求错误 ${response.status}: ${response.url}`,
+  //   description: errortext,
+  // });
+
+  const error = new Error(errortext);
+  error.name = response.status;
+  error.response = response;
+  throw error;
+}
+
+
+/**
+ * Requests a URL, returning a promise.
+ *
+ * @param  {string} url       The URL we want to request
+ * @param  {object} [options] The options we want to pass to "fetch"
+ * @return {object}           An object containing either "data" or "err"
+ */
+
+// export default function request(url, options) {
+//   const lastReqTime = sessionStorage.getItem('lastRequestTime')?JSON.parse(sessionStorage.getItem('lastRequestTime')):null;
+//   if(lastReqTime&&getInervalHour(new Date(),new Date(lastReqTime)) < 8||regUrl(url)){
+//     return realRequest(url,options);
+//   }else {
+//     const token = getAuthority() && getAuthority().value && getAuthority().value.token || '';
+//     const defaultOptions = {
+//       //credentials: 'include',
+//     };
+//     const newOptions = {...defaultOptions, ...options};
+//     newOptions.headers = {
+//       'Authorization': token,
+//     };
+//     if (
+//       newOptions.method === 'POST' ||
+//       newOptions.method === 'PUT' ||
+//       newOptions.method === 'DELETE'
+//     ) {
+//       if (!(newOptions.body instanceof FormData)) {
+//         newOptions.headers = {
+//           Accept: 'application/json',
+//           'Content-Type': 'application/json; charset=utf-8',
+//           ...newOptions.headers,
+//         };
+//         newOptions.body = JSON.stringify(newOptions.body);
+//       } else {
+//         newOptions.headers = {
+//           Accept: 'application/json',
+//           ...newOptions.headers,
+//         };
+//       }
+//     }
+//     return Promise.race([
+//       fetch(getUrl('/permissionservice/api/menu/tree'), newOptions),
+//       new Promise(function (resolve, reject) {
+//         var error = new Error('request timeout');
+//         error.name = 408;
+//         setTimeout(() => reject(error), 20 * 1000)
+//       })]).then(checkStatus)
+//       .then(response => {
+//         const {dispatch} = store;
+//         if(response.status===401){
+//           dispatch(routerRedux.push('/user/login'));
+//           return
+//         }else{
+//           return realRequest(url,options)
+//         }
+//       })
+//       .catch(e => {
+//         const {dispatch} = store;
+//         const status = e.name;
+//         if (status === 408) {
+//           return;
+//         }
+//         if (status === 401) {
+//           dispatch(routerRedux.push('/user/login'));
+//           //dispatch(routerRedux.push('/exception/403'));
+//           return;
+//         }
+//         if (status === 403) {
+//           dispatch(routerRedux.push('/exception/403'));
+//           return;
+//         }
+//         if (status <= 504 && status >= 500) {
+//           dispatch(routerRedux.push('/exception/500'));
+//           return;
+//         }
+//         if (status >= 404 && status < 422) {
+//           dispatch(routerRedux.push('/exception/404'));
+//         }
+//       })
+//   }
+// }
+export default function request(url, options) {
+  const token = getAuthority() && getAuthority().value && getAuthority().value.token || '';
+  let uu = url.indexOf('http://120.79.148.212') != -1;
+  const defaultOptions = {
+    //credentials: 'include',
+  };
+
+  if(url.indexOf('?')===-1){
+    url = `${url}?_=${moment().format('x')}`;
+  }else{
+    url = `${url}&_=${moment().format('x')}`;
+  }
+  const isExport = options && options.export || false;
+
+  const newOptions = {...defaultOptions, ...options};
+  newOptions.headers = {
+    'Authorization': token,
+  };
+  if (
+    newOptions.method === 'POST' ||
+    newOptions.method === 'PUT' ||
+    newOptions.method === 'DELETE'
+  ) {
+    if (!(newOptions.body instanceof FormData)) {
+      newOptions.headers = {
+        Accept: 'application/json',
+        'Content-Type': 'application/json; charset=utf-8',
+        ...newOptions.headers,
+      };
+      newOptions.body = JSON.stringify(newOptions.body);
+    } else {
+      newOptions.headers = {
+        Accept: 'application/json',
+        ...newOptions.headers,
+      };
+    }
+  }
+
+  if(uu){
+    return Promise.race([
+      fetch(url, newOptions),
+      new Promise(function (resolve, reject) {
+        var error = new Error('request timeout');
+        error.name = 408;
+        sessionStorage.setItem('lastRequestTime', Date.parse(new Date()));
+        setTimeout(() => reject(error), 30 * 1000)
+      })]).then(checkStatus)
+      .then(response => {
+        if (isExport) {
+          let filename = response.headers.get('Content-disposition').split('filename=')[1];
+          return {
+            filename: filename,
+            blob: response.blob(),
+          };
+        }
+        return response.json();
+      })
+      .catch(e => {
+        const {dispatch} = store;
+        const status = e.name;
+        if (status === 408) {
+          return;
+        }
+        if (status === 401) {
+          dispatch(routerRedux.push('/user/login'));
+          return;
+        }
+        if (status === 403) {
+          dispatch(routerRedux.push('/exception/403'));
+          return;
+        }
+        if (status <= 504 && status >= 500) {
+          dispatch(routerRedux.push('/exception/500'));
+          return;
+        }
+        if (status >= 404 && status < 422) {
+          dispatch(routerRedux.push('/exception/404'));
+        }
+      })
+  }else{
+
+    return Promise.race([
+      fetch(getUrl(url), newOptions),
+      new Promise(function (resolve, reject) {
+        var error = new Error('request timeout');
+        error.name = 408;
+        sessionStorage.setItem('lastRequestTime', Date.parse(new Date()));
+        setTimeout(() => reject(error), 20 * 1000)
+      })]).then(checkStatus)
+      .then(response => {
+        if (isExport) {
+          console.log(response.headers.get('Export-Excel'))
+          return {
+            filename: response.headers.get('Export-Excel'),
+            blob: response.blob(),
+          };
+        }
+        return response.json();
+      })
+      .catch(e => {
+        const {dispatch} = store;
+        const status = e.name;
+        if (status === 408) {
+          return;
+        }
+        if (status === 401) {
+          dispatch(routerRedux.push('/user/login'));
+          return;
+        }
+        if (status === 403) {
+          dispatch(routerRedux.push('/exception/403'));
+          return;
+        }
+        if (status <= 504 && status >= 500) {
+          dispatch(routerRedux.push('/exception/500'));
+          return;
+        }
+        if (status >= 404 && status < 422) {
+          dispatch(routerRedux.push('/exception/404'));
+        }
+      })
+  }
+
+}

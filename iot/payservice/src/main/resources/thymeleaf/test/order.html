@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+<div>
+    <span>消息:<span id="msg"></span></span>
+    <div>
+        账号:<input id="userName"/>
+        密码:<input id="password"/>
+        类型:<input id="type"/>
+
+        <button id="login">登陆</button>
+    </div>
+
+
+    <span><span>订单号码:</span><span id="ordersn"></span><br/></span>
+    <div>
+        订单名称:<input id="subject"/>
+        订单价格:<input id="totalFee"/>
+        备注:<input id="detail"/>
+        <button id="make_order">预下单</button>
+    </div>
+
+    <div>
+        订单号码:<input id="order_sn"/>
+        支付渠道:<select id="tradeChannel">
+        <option value="0">微信</option>
+        <option value="1">支付宝</option>
+    </select>
+        支付方式:<input value="CODE" disabled="disabled" id="form"/>
+        <button id="submit_order">提交订单</button>
+        <div id="pay_status"></div>
+        <span id="code">
+
+        </span>
+    </div>
+
+    <div>
+        appID:<input id="app_id"/>
+        <button id="set_app_id">设置APPID</button>
+    </div>
+    <div>
+        密匙:<input id="secret"/>
+        <button id="set_secret">设置密匙</button>
+    </div>
+</div>
+</body>
+<script src="http://libs.baidu.com/jquery/2.1.4/jquery.min.js"></script>
+<script src="/qrcode.min.js"></script>
+<script src="/test.js"></script>
+</html>

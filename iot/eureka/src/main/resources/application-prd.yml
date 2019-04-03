@@ -1,0 +1,22 @@
+server:
+  port: 8031 #注册中心端口号
+eureka:
+  instance:
+    hostname: 47.94.154.65 #注册中心ip地址
+  client:
+    #不让自己注册到注册中心中
+    register-with-eureka: false
+    # 注册中心的具体连接地址，
+    eureka-server-u-r-l-context:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+     #为true时，可以启动，但报异常：Cannot execute request on any known server
+    fetch-registry: false
+#开始认证，服务发布到注册中心需要密码，访问注册中心地址需要登录
+security:
+  #开启认证
+  basic:
+    enabled: true
+  #用户名，密码
+  user:
+    name: admin
+    password: admin

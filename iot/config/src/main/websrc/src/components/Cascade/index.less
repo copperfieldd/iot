@@ -1,0 +1,107 @@
+@import '~antd/lib/style/themes/default.less';
+
+// .cascader{
+//     :global{
+//         .ant-input{
+//             border: 1px solid rgba(234, 234, 234, 0.2);
+//             background: rgba(0, 0, 0, 0.2);
+//         }
+//     }
+// }
+.closeBox {
+  position: relative;
+  &:hover .close {
+    display: block;
+  }
+  .close {
+    display: none;
+    //position: absolute;
+    cursor: pointer;
+    top: 2px;
+    right: 5px;
+    color: #aaa;
+    &:hover {
+      //color: #fff;
+    }
+  }
+}
+:global{
+  .ant-modal-footer{
+    text-align: center;
+  }
+}
+
+
+.cascade {
+  display: flex;
+  justify-content: space-around;
+  .item {
+    .title_item {
+      text-align: center;
+      height: 48px;
+      line-height: 48px;
+    }
+    .content_item {
+      :global {
+        .ant-input {
+          border: 1px solid #aaa;
+        }
+        .ant-input-search-icon {
+          color: #fff;
+        }
+      }
+      height: 380px;
+      border: 1px solid #aaa;
+    }
+  }
+}
+
+.infinite_container {
+  overflow-y: scroll;
+  height: 350px;
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  border: solid 1px #999;
+  margin: 5px 2px;
+  .list_item {
+    color: rgba(255, 255, 255, 0.65);
+    padding-right: 20px;
+    padding-left: 12px;
+    cursor: pointer;
+    height: 36px;
+    line-height: 36px;
+    width: 100%;
+    &:hover {
+      color: #fff;
+    }
+  }
+  :global {
+    .ant-list-item {
+      padding: 0;
+    }
+    .ant-list-empty-text {
+      //color: #fff;
+    }
+    .ant-list-split .ant-list-item {
+      border: none;
+    }
+    .ant-list-item-content {
+      display: block;
+    }
+  }
+}
+
+.loading_container {
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  text-align: center;
+}
+
+.detail {
+  color: rgba(255, 255, 255, 0.65);
+  padding-right: 20px;
+  padding-left: 12px;
+  margin-top: 6px;
+}

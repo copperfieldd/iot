@@ -1,0 +1,127 @@
+server:
+  port: 8027 #端口号
+  nio:
+    tcp:
+      port: 18089
+eureka:
+  # 公网ip进行注册，不用内网ip
+  instance:
+      prefer-ip-address: true
+#      ip-address: 47.94.154.65
+#      instance-id: http://47.94.154.65:8764/
+  client:
+    service-url:
+      #发布注册中心地址，需要加用户名和密码
+      #defaultZone: http://admin:admin@47.94.154.65:8761/eureka/eureka
+      defaultZone: http://admin:admin@192.168.3.8:8031/eureka
+       #为true时，可以启动，但报异常：Cannot execute request on any known server
+      fetch-registry: false
+spring:
+  application:
+    name: audit
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    password: 123
+  #redis相关配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-active: 1000
+      max-wait: 1000
+      max-idle: 100
+    timeout: 100000
+  #mongodb相关配置
+  data:
+    mongodb:
+      host: 192.168.3.8
+      port: 27017
+      database: audit
+    cassandra:
+      connect-timeout-millis: 10000
+#扫面mybatis的映射xml文件
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+# === 验证码服务器配置 ===↓
+captcha:
+  server:
+    url: http://api.chanzor.com/send
+  client:
+    account: 98a51f
+    password: k1b4oa2wvx
+    template: 您好，您的手机验证码为{captcha_code}，切勿将验证码泄露于他人。
+# === 验证码服务器配置 ===↑
+
+success:
+  message:
+    import: 导入成功！！
+    export: 导出成功！！
+    save: 保存成功！！
+    update: 修改成功！！
+    delete: 删除成功！！
+    list: 查询成功！！
+    requestSuccess: 请求成功！！
+failure:
+  message:
+    import: 导入失败！！
+    export: 导出失败！！
+    save: 保存失败！！
+    update: 修改失败！！
+    delete: 删除失败！！
+    list: 查询失败！！
+    nameIsNull: 参数name为空！！
+    idIsNull: 参数id为空！！
+    databaseIdNull: 需要操作的数据在数据库中不存在！！
+    nameRepeat: 名称重复！！
+    dataIsNull: 整个数据为空！！
+    numberIsNull: 编号为空！！
+    areaIsNull: 区域和上级id不可以同时为空！！
+    numberRepeat: 编码重复！！
+    typeIsNull: 类型为空！！
+    startOrCountIdNull: 分页参数为空！！
+    hardwareIdIsNull: 硬件id为空！！
+    gatewayIdIsNull: 网关id为空！！
+    hardwareIdRepeat: 硬件id重复！！
+    statusIsNull: 状态为空！！
+    departmentIdIsNull: 部门id为空！！
+    requestFailure: 请求失败！！
+    unitIdIsNull: 部门id为空！！
+    formatError: 文件格式不正确！！！
+    dataErroe: 文件内容不符合要求！！！
+    deptIdIsNull: 部门id为空！！
+    gatewayIsNotNull: 逻辑单元下已经有网关！！
+    logicalUnitIdIsNull: 站点id为空！！
+    logicalUnitIsParent: 站点为父节点!!
+    remarkIsNull: 描述信息为空!!
+    lengthISError: 长度错误!!
+    typeIsError: 类型错误
+    userIdIsNull: 用户id为空！！
+    assetIdIsNull: 资产id为空！！
+    endAddressIdIsNull: 目标位置为空！！
+    flagIsNull: flag为空！！
+    courseIsNull: 原因为空！！
+    idsIsNull: ids为空！！
+    gpsIsNull: 经纬度为空！！
+    descIsNull: 描述为空！！
+
+jwt:
+  header: Authorization
+  secret: mySecret123456
+  expiration: 604800
+  route:
+    authentication:
+      path: /api/login
+      refresh: /api/token/refresh
+
+# === \u90ae\u4ef6\u914d\u7f6e ===\u2193
+mail:
+  host: smtp.163.com
+  port: 25
+  username: yangxd@bytecloud.cn
+  password: xxxxxxxx
+  to: admin@bytecloud.cn
+  subject:

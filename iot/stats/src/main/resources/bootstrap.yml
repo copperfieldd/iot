@@ -1,0 +1,19 @@
+spring:
+  profiles:
+    active: dev
+  application:
+    name: statsservice
+  cloud:
+    config:
+      discovery:
+        enable: true
+        #service-Id: config
+      profile: cloud
+      #uri: http://192.168.3.8:8022
+
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone:  http://admin:admin@47.94.154.65:8031/eureka

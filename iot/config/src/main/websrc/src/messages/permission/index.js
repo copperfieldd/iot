@@ -1,0 +1,92 @@
+import {defineMessages} from 'react-intl';
+
+export default defineMessages({
+  newApi:{
+    id:"permission.api.new",
+    defineMessages:"新增接口"
+  },
+  tenantSelect:{
+    id:"permission.api.tenant.select",
+    defineMessages:"请选择租户",
+  },
+  interface:{
+    id:"permission.api.tenant.interface",
+    defineMessages:"接口名称"
+  },
+  selectServiceName:{
+    id:"permission.api.select.service",
+    defineMessages:"请选择服务！"
+  },
+  inputApiName:{
+    id:"permission.api.input.apiName",
+    defineMessages:"请输入接口名"
+  },
+  inputApiAddress:{
+    id:"permission.api.input.apiAddress",
+    defineMessages:"请输入接口地址"
+  },
+  addNewMenu:{
+    id:"permission.menu.new.menu",
+    defineMessages:"新建菜单"
+  },
+  menuDetails:{
+    id:"permission.menu.details",
+    defineMessages:"菜单详情"
+  },
+  parent:{
+    id:"permission.menu.parent",
+    defineMessages:"父亲节点"
+  },
+  selectParent:{
+    id:"permission.menu.select.parent",
+    defineMessages:"请选择父亲节点"
+  },
+  menuName:{
+    id:"permission.menu.name",
+    defineMessages:"菜单名称",
+  },
+  inputMenuName:{
+    id:"permission.menu.input.name",
+    defineMessages:"请输入菜单名称",
+  },
+  menuTag:{
+    id:"permission.menu.tag",
+    defineMessages:"菜单标识"
+  },
+  inputMenuTag:{
+    id:"permission.menu.input.tag",
+    defineMessages:"请输入菜单标识"
+  },
+  menuId:{
+    id:"permission.menu.id",
+    defineMessages:"菜单ID"
+  },
+  menuApiList:{
+    id:"permission.menu.api",
+    defineMessages:"接口列表"
+  },
+
+  menuApiListSelect:{
+    id:"permission.menu.api.select",
+    defineMessages:"请选择接口列表"
+  },
+
+  roleAdd:{
+    id:"permission.role.new",
+    defineMessages:"新增角色"
+  },
+
+  roleName:{
+    id:"permission.role.name",
+    defineMessages:"角色名称"
+  },
+  roleNameInput:{
+    id:"permission.role.input.name",
+    defineMessages:"请输入角色名称"
+  },
+  permission_api_select_interface:{
+    id:"permission_api_select_interface",
+    defineMessages:"请选择类别"
+  }
+
+})

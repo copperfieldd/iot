@@ -1,0 +1,28 @@
+@import "~antd/lib/style/themes/default.less";
+
+.modal{
+    .text{
+        text-align: center;
+        color:#fff;
+        padding: 30px;
+    }
+    padding: 24px;
+    :global{
+        .ant-form-item{
+            margin-bottom: 0;
+        }
+        .ant-modal-body{
+            padding: 0;
+        }
+        .ant-modal-header{
+            background: @primary-color;
+          }
+          .ant-modal-title,.ant-modal-close{
+            color:#fff;
+          }
+          .ant-modal-footer{
+            text-align: center;
+          }
+    }
+
+}

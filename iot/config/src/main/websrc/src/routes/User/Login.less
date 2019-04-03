@@ -1,0 +1,137 @@
+@import "~antd/lib/style/themes/default.less";
+
+@keyframes scroll {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fscroll {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.left {
+  float: left;
+  margin-left: 16%;
+  .wrap {
+    position: relative;
+    .wrapimg {
+      transform-origin: 52% 52%;
+      animation: scroll 20s infinite linear;
+      position: absolute;
+      left: -114px;
+      top: -43px;
+      width: 500px;
+    }
+    .ball {
+      animation: fscroll 20s infinite linear;
+      position: absolute;
+      top: 89px;
+    }
+  }
+}
+
+.main {
+  box-shadow: 5px 2px 20px #477eb1;
+  width: 450px;
+  background: #fff;
+  float: right;
+  margin-right: 16%;
+  border-radius: 5px;
+  padding: 0 45px 5px;
+  position: relative;
+  .top {
+    margin-bottom: 36px;
+    margin-top: 12px;
+    .loginLogo {
+      width: 150px;
+    }
+    .loginBox {
+      white-space: nowrap;
+      //margin-left: 18px;
+      font-weight: 500;
+      font-size: 24px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: @primary-color;
+    }
+    .loginBoxs {
+      white-space: nowrap;
+      //margin-left: 18px;
+      font-weight: 500;
+      font-size: 14px;
+      text-align: center;
+      margin-bottom: 40px;
+      color: @primary-color;
+      line-height: 40px;
+    }
+  }
+  :global {
+    ::-webkit-input-placeholder {
+      color: #bbb;
+    }
+    .ant-btn {
+      background-color: @primary-color !important;
+    }
+    .anticon {
+      color: #bbb;
+    }
+    .ant-alert-icon {
+      top: 6.5px;
+    }
+    .has-error .ant-form-explain {
+      float: left;
+    }
+    .ant-input-affix-wrapper {
+      border-radius: 5px;
+    }
+    .ant-alert-message {
+      margin-left: 20px;
+    }
+    .anticon {
+      font-size: 25px !important;
+    }
+    .ant-input.ant-input-lg {
+      text-indent: 12px;
+    }
+  }
+  .icon {
+    font-size: 24px;
+    color: rgba(0, 0, 0, 0.2);
+    margin-left: 16px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: color .3s;
+    &:hover {
+      color: @primary-color;
+    }
+  }
+
+  .other {
+    text-align: left;
+    margin-top: 24px;
+    line-height: 22px;
+    .register {
+      color: #12c5cc;
+      float: right;
+    }
+  }
+  .loginType {
+    :global {
+      .ant-select-selection--single {
+        height: 40px;
+      }
+      .ant-select-selection__rendered {
+        line-height: 40px;
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+server:
+  port: 8031 #注册中心端口号
+eureka:
+  server:
+    enable-self-preservation: false
+  instance:
+    hostname: 127.0.0.1
+  client:
+    #不让自己注册到注册中心中
+    register-with-eureka: false
+    # 注册中心的具体连接地址，
+    eureka-server-url-context:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}
+     #为true时，可以启动，但报异常：Cannot execute request on any known server
+    fetch-registry: false
+#开始认证，服务发布到注册中心需要密码，访问注册中心地址需要登录
+security:
+  #开启认证
+  basic:
+    enabled: true
+  #用户名，密码
+  user:
+    name: admin
+    password: admin
+management:
+  security:
+    enabled: false
+spring:
+  jmx:
+    default-domain: eureka

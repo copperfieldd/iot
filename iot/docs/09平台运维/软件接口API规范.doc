@@ -1,0 +1,2020 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、配置管理</h1><div style="margin-left:20px;"><h2>1.1、配置文件列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>配置文件查询</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/config/api-eoms/config/file/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>筛选</td>
+</tr>
+<tr>
+<td style="text-align: left;">sort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选filter：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">configFile</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>文件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>修改时间范围</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选createTime创建时间范围：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>sort排序：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>需要排序的字段</td>
+</tr>
+<tr>
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>asc或desc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "message": "查询成功！！",
+    "value": {
+        "firstPage": true,
+        "firstResult": 0,
+        "lastPage": false,
+        "list": [
+            {
+                "configFile": "3d0282cd530148c7851a9a3e73e13ab0",
+                "serviceName": "{\"alarmContent\":\"大我的好\"}",
+                "createTime": "2018/12/12 12:12:12",
+                "updateTime": "2018/12/12 12:12:12",
+                "id": "5af9ac6d757c7e239cb1c4ee"
+            },
+            {
+               "configFile": "3d0282cd530148c7851a9a3e73e13ab0",
+                "serviceName": "{\"alarmContent\":\"大我的好\"}",
+                "createTime": "2018/12/12 12:12:12",
+                "updateTime": "2018/12/12 12:12:12",
+                "id": "5af9ac6d757c7e239cb1c4ee"
+            }
+        ],
+        "nextPage": 2,
+        "pageNo": 1,
+        "pageSize": 2,
+        "prevPage": 1,
+        "totalCount": 3,
+        "totalPage": 2
+    },
+    "status": "0"
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1,
+    "message": "查询失败",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fileName</td>
+<td style="text-align: left;">String</td>
+<td>配置文件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">String</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h2>1.2、配置文件详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>配置文件详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/config/api-eoms/config/file/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "message": "查询成功！！",
+    "value": {
+        "id":"xxxx",
+        "serviceName":"xxx",
+        "fileName":"xxxx",
+        "content":"aa:sss"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fileName</td>
+<td style="text-align: left;">String</td>
+<td>配置文件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">String</td>
+<td>内容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h2>1.3、添加配置文件</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加配置文件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://host:port/config/api-eoms/config/file/add">http://host:port/config/api-eoms/config/file/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fileName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>文件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>配置文件内容 （content和id二选一，id优先）</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>需要复制的配置文件id（content和id二选一，id优先）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "serviceName":"aaaa",
+    "fileName":"bbb",
+    "content":"a:aa",
+    "id":"xxxxxxxxxxxxx"
+}
+</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功",
+    "value":{
+        "id":"xxx",
+        "serviceName":"xxx",
+        "configFile":"xxx",
+        "createTime":"xxx",
+        "updateTime":"xxx",
+        "isDelete":"xxx",
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">string</td>
+<td>服务名</td>
+</tr>
+<tr>
+<td style="text-align: left;">configFile</td>
+<td style="text-align: left;">string</td>
+<td>文件名</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">isDelete</td>
+<td style="text-align: left;">int</td>
+<td>0：未删除，1：删除</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.4、修改配置文件</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改配置文件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://host:port/config/api-eoms/config/file/upd">http://host:port/config/api-eoms/config/file/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">content</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>配置文件内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "content":"a:aa",
+    "id":"xxxxxxxxxxxxx"
+}
+</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.5、下载配置文件</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>下载配置文件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://host:port/config/api-eoms/config/file/download">http://host:port/config/api-eoms/config/file/download</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>文件id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.6、删除配置</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>历史抄表信息删除</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api-eoms/config/file/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>配置文件id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>2、子服务实例管理</h1><div style="margin-left:20px;"><h2>2.1、服务实例下拉</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例下拉 </li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/config/api-eoms/service/instances/opt</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "message": "查询成功！！",
+    "value": {
+        "totalCount": 3,
+        "list": [
+            {
+                "serviceName": "3d0282cd530148c7851a9a3e73e13ab0",
+                "id": "5af9ac6d757c7e239cb1c4ee"
+            },
+            {
+                "serviceName": "3d0282cd530148c7851a9a3e73e13ab0",
+                "id": "5af9ac6d757c7e239cb1c4ee"
+            }
+        ]
+    },
+    "status": "0"
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1,
+    "message": "查询失败",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h2>2.2、服务实例列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/config/api-eoms/service/instances/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>筛选</td>
+</tr>
+<tr>
+<td style="text-align: left;">sort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选filter：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>访问地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceValue</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>时间范围</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选createTime创建时间范围：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>sort排序：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>需要排序的字段</td>
+</tr>
+<tr>
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>asc或desc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "message": "查询成功！！",
+    "value": {
+        "totalCount": 3,
+        "list": [
+            {
+                "serviceName": "3d0282cd530148c7851a9a3e73e13ab0",
+                "serviceHost": "{\"alarmContent\":\"大我的好\"}",
+                "servicePort": "警告的ded",
+                "serviceValue":1,
+                "createTime": "0",
+                "updateTime": "0",
+                "id": "5af9ac6d757c7e239cb1c4ee"
+            },
+            {
+                "serviceName": "3d0282cd530148c7851a9a3e73e13ab0",
+                "serviceHost": "{\"alarmContent\":\"大我的好\"}",
+                "servicePort": "警告的ded",
+                "serviceValue":0,
+                "createTime": "0",
+                "updateTime": "0",
+                "id": "5af9ac6d757c7e239cb1c4ee"
+            }
+        ]
+    },
+    "status": "0"
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1,
+    "message": "查询失败",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">String</td>
+<td>子服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">String</td>
+<td>子服务端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceValue</td>
+<td style="text-align: left;">int</td>
+<td>子服务暂停</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">String</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h2>2.3、添加服务实例</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加/复制配置文件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://host:port/config/api-eoms/service/instances/add">http://host:port/config/api-eoms/service/instances/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务端口（默认80）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "serviceName": "123",
+    "serviceHost":"456",
+    "servicePort":"123"
+  }</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功",
+    "value":{
+        "id":"xxx",
+        "serviceName":"xxx",
+        "serviceHost":"xxx",
+        "servicePort":80,
+        "serviceValue":1,
+        "createTime":"xxx",
+        "updateTime":"xxx",
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">string</td>
+<td>服务名</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">string</td>
+<td>服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">int</td>
+<td>服务端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceValue</td>
+<td style="text-align: left;">int</td>
+<td>0，正常、1：暂停</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.4、修改服务实例</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改服务实例</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://host:port/config/api-eoms/service/instances/upd">http://host:port/config/api-eoms/service/instances/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务端口</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "id":"123124134",
+    "serviceName": "123",
+    "serviceHost":"456",
+    "servicePort":"123"
+  }</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.5、服务实例暂停/恢复</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例暂停/恢复</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api-eoms/service/instances/updStatus</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>子服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceValue</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>服务状态  0，正常、1：暂停</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "id": "123",
+    "serviceValue":1
+  }</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：暂停</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.6、删除服务实例</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除服务实例</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api-eoms/service/instances/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>请求参数说明：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>服务实例id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>3、子服务实例监控</h1><div style="margin-left:20px;"><h2>3.1、服务实例参数查询</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务存活监控</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/instance/{env/beans/health/metrics/...}</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>服务id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.2、服务实例存活列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例存活列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/state/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>start</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>count</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>筛选</td>
+</tr>
+<tr>
+<td style="text-align: left;">sort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选filter：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>访问地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>端口号</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceValue</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>时间范围</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选createTime创建时间范围：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>sort排序：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>需要排序的字段</td>
+</tr>
+<tr>
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>asc或desc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+        "totalCount": 4,
+        "list": [
+            {
+                "id": "5bd80daddc2ddd1c1f5b7e30",
+                "serviceName": "name",
+                "serviceHost": "host",
+                "servicePort": 80,
+                "value":1, //0:正常，1:异常
+                "recentTime":"20188-12-12 12:12:12"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">String</td>
+<td>子服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">String</td>
+<td>子服务端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">int</td>
+<td>0:正常，1:异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">recentTime</td>
+<td style="text-align: left;">String</td>
+<td>最近探测时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.3、服务实例磁盘列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例磁盘列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/disk/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>start</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>count</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+        "totalCount": 4,
+        "list": [
+            {
+                "id": "5bd80daddc2ddd1c1f5b7e30",
+                "serviceName": "name",
+                "serviceHost": "host",
+                "servicePort": 80,
+                "value":1,
+                "recentTime":"20188-12-12 12:12:12"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">String</td>
+<td>子服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">String</td>
+<td>子服务端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">int</td>
+<td>值</td>
+</tr>
+<tr>
+<td style="text-align: left;">recentTime</td>
+<td style="text-align: left;">String</td>
+<td>最近探测时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.4、服务实例内存列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例内存列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/memory/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>start</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>count</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+        "totalCount": 4,
+        "list": [
+            {
+                "id": "5bd80daddc2ddd1c1f5b7e30",
+                "serviceName": "name",
+                "serviceHost": "host",
+                "servicePort": 80,
+                "value":1,
+                "recentTime":"20188-12-12 12:12:12"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceHost</td>
+<td style="text-align: left;">String</td>
+<td>子服务地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">servicePort</td>
+<td style="text-align: left;">String</td>
+<td>子服务端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">int</td>
+<td>值</td>
+</tr>
+<tr>
+<td style="text-align: left;">recentTime</td>
+<td style="text-align: left;">String</td>
+<td>最近探测时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.5、服务实例存活修改</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例存活修改</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/state/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">failureNumber</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>失败次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>周期</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value":null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.6、服务实例内存修改</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例内存修改</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/memory/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">threshold</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>阈值</td>
+</tr>
+<tr>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>周期</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value":null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.7、服务实例磁盘修改</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例磁盘修改</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/disk/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">threshold</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>阈值</td>
+</tr>
+<tr>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>周期</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value":null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.8、服务实例存活周期查询</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例存活周期查询</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/state/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+        "failureNumber":12,
+        "cycle":12
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">failureNumber</td>
+<td style="text-align: left;">int</td>
+<td>最大探测失败次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">int</td>
+<td>周期（秒）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.9、服务实例内存周期查询</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例内存周期查询</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/memory/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+        "threshold":12,
+        "cycle":12
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">threshold</td>
+<td style="text-align: left;">int</td>
+<td>阈值</td>
+</tr>
+<tr>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">int</td>
+<td>周期（秒）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.10、服务实例磁盘周期查询</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务实例磁盘周期查询</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://host:port/config/api/disk/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value":{
+        "threshold":12,
+        "cycle":12
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">threshold</td>
+<td style="text-align: left;">int</td>
+<td>阈值</td>
+</tr>
+<tr>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">int</td>
+<td>周期（秒）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div></body></html>

@@ -1,0 +1,130 @@
+@import '~antd/lib/style/themes/default.less';
+
+.dashboard{
+  .loading_box{
+    :global{
+      .ant-spin-container{
+        background: transparent;
+      }
+    }
+  }
+  .tabs{
+    .homeIcon{
+      margin-top:10px;
+      margin-left: 12px;
+      margin-right: 24px;
+    }
+    display: inline-block;
+    width: 20%;
+    height: 134px;
+    border-radius: 4px;
+    padding: 0 8px;
+    .tabInner{
+      height: 72px;
+      border-bottom:1px solid #e8e8e8;
+      display: flex;
+      .num{
+        color:@primary-color;
+      }
+    }
+    .trend{
+      text-align: center;
+      margin-top: 8px;
+    }
+  }
+  .card{
+    padding: 0 8px;
+    .row{
+      margin-top: 16px;
+    }
+    .todo{
+      :global{
+        .ant-table-small.ant-table-bordered .ant-table-content,.ant-table-bordered.ant-table-empty .ant-table-placeholder{
+          border: 0;
+        }
+        .ant-card-body{
+          padding: 0;
+        }
+        .ant-table-small{
+          border: 0;
+        }
+      }
+    }
+  }
+  .progressBar{
+    display: flex;
+    justify-content:space-between;
+  }
+  :global{
+    .ant-card-head{
+      margin-bottom: 0;
+    }
+    .ant-card-wider-padding .ant-card-head{
+      padding: 0 24px;
+    }
+    .ant-table-small > .ant-table-content > .ant-table-body > table{
+      padding: 0;
+    }
+    .ant-table-small > .ant-table-content > .ant-table-body > table > .ant-table-thead > tr > th{
+      border-bottom:3px solid  @primary-color!important;
+    }
+    th{
+      color:@primary-color!important;
+      font-size: 14px;
+    }
+    .ant-tabs-bar{
+      border: none;
+    }
+    .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab{
+      padding: 0 24px;
+      line-height: 32px;
+      margin-right: 0;
+      border-radius:4px;
+      border: 1px solid #e8e8e8;
+    }
+    .ant-tabs.ant-tabs-card > .ant-tabs-bar .ant-tabs-tab-active{
+      color:#fff;
+      background: @primary-color;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-xl) {
+  .dashboard{
+    .tabs{
+      width: 20%;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-lg) {
+  .dashboard{
+    .tabs{
+      width: 33%;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-md) {
+  .dashboard{
+    .tabs{
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-sm) {
+  .dashboard{
+    .tabs{
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: @screen-xs) {
+  .dashboard{
+    .tabs{
+      width: 100%;
+    }
+  }
+}

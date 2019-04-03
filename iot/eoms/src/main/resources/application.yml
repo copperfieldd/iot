@@ -1,0 +1,60 @@
+spring:
+  application:
+    name: eoms
+  boot:
+    admin:
+      routes:
+        endpoints: env,metrics,trace,dump,jolokia,info,configprops,trace,logfile,refresh,flyway,liquibase,heapdump,hystrix.stream
+  
+  cloud:
+      config:
+        #文件配置中心里面的文件名为 zuul-cloud.yml和zuul-cloud.properties
+        #必须按照要求来读取，
+        profile: cloud
+        #分支
+        label: master
+        discovery:
+          #文件配置中心项目名
+          service-id: config
+          enabled: true
+management.security.enabled: false
+security:
+  #开启认证
+  basic:
+    enabled: true
+  #用户名，密码
+  user:
+    name: admin
+    password: admin
+server:
+ port: 8089
+eureka:
+  # 公网ip进行注册，不用内网ip
+  instance:
+      prefer-ip-address: true
+#      ip-address: 47.94.154.65
+#      instance-id: http://47.94.154.65:8762/
+  client:
+    service-Url:
+      #发布注册中心地址
+     # defaultZone: http://admin:admin@47.94.154.65:8761/eureka/eureka
+      defaultZone: http://admin:admin@127.0.0.1:8761/eureka/eureka
+       #为true时，可以启动，但报异常：Cannot execute request on any known server
+      fetch-registry: false
+      
+success:
+  message:
+    import: 导入成功！！
+    export: 导出成功！！
+    save: 保存成功！！
+    update: 修改成功！！
+    delete: 删除成功！！
+    list: 查询成功！！
+failure:
+  message:
+    import: 导入失败！！
+    export: 导出失败！！
+    save: 保存失败！！
+    update: 修改失败！！
+    delete: 删除失败！！
+    list: 查询失败！！

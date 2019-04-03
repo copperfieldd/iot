@@ -1,0 +1,33 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/test
+    username: root
+    type: com.alibaba.druid.pool.DruidDataSource
+    password: 123
+  #redis相关配置
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    pool:
+      max-active: 1000
+      max-wait: 1000
+      max-idle: 100
+    timeout: 100000
+  #mongodb相关配置
+  data:
+    mongodb:
+      host: 127.0.0.1
+      port: 27017
+      database: alarmservice
+    cassandra:
+      connect-timeout-millis: 10000
+#扫面mybatis的映射xml文件
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+#指定日志文件
+logging:
+  config: classpath:xml/logback_boot.xml
+management:
+  security:
+    enabled: false

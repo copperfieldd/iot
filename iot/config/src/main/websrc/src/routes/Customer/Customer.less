@@ -1,0 +1,139 @@
+@import '~antd/lib/style/themes/default.less';
+@import '../../utils/utils.less';
+
+.site_table_styles {
+  height: 12px;
+  :global {
+    .ant-spin-nested-loading {
+      border: solid 1px #cccccc;
+    }
+    .ant-table-placeholder {
+      border-bottom: none;
+    }
+  }
+}
+
+.icon_user {
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-left: -10px;
+  background-image: url("../../assets/icon_person.png");
+  background-position: center;
+  background-size: 16px;
+  background-repeat: no-repeat;
+  border-radius: 22px;
+}
+
+.search {
+  cursor: pointer;
+}
+
+.role_config {
+  margin-left: 30px;
+  color: #999;
+  cursor: pointer;
+}
+
+.flexDirR {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.list {
+  :global {
+    .ant-list-item {
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+      margin: 0 auto;
+      cursor: pointer;
+      &:hover {
+        background: @primary-color;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.treeCheck {
+  .infinite_container {
+    overflow: auto;
+    height: 433px;
+    width: 100%;
+    text-align: center;
+  }
+  .closeList {
+    position: absolute;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    font-size: 16px;
+    right: 8px;
+    top: 6px;
+  }
+}
+
+.a_list_container {
+  display: inline-block;
+  color: #666;
+  width: 100%;
+  a.a_list_container:active {
+    color: #eff3fb;
+  }
+  a.a_list_container:hover {
+    color: #eff3fb;
+  }
+}
+
+.address_config_box {
+  position: relative;
+}
+
+.address_config_close {
+  position: absolute;
+  right: 5px;
+  top: 12px;
+}
+
+.formTree {
+  height: 300px;
+  overflow: scroll;
+  border: solid 1px #d9d9d9;
+  border-radius: 4px;
+}
+
+.down_icon {
+  position: absolute;
+  right: 5px;
+  font-size: 8px;
+  color: rgba(0, 0, 0, 0.25);
+  top: 50%;
+  transform: translate(0, -50%);
+}
+
+.ele_input_style {
+  background-color: #fcfcfc;
+  border: solid 1px #e6e9f0;
+  margin: 4px 20px 4px 4px;
+  height: 28px;
+  line-height: 28px;
+  width: auto;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 2px;
+  padding: 0 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ele_input_addStype {
+  border: solid 1px #d9d9d9;
+  min-height: 30px;
+  border-radius: 4px;
+  margin-top: 6px;
+  position: relative;
+  max-height: 200px;
+  overflow-y: scroll;
+}

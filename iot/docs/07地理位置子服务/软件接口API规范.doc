@@ -1,0 +1,1204 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、国家管理</h1><div style="margin-left:20px;"><h2>1.1、国家列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>国家列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/country/list?start=0&count=10</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>start</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>count</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>筛选</td>
+</tr>
+<tr>
+<td style="text-align: left;">sort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选filter：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">telephone</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>手机号码</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>国家代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>创建时间范围</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选createTime创建时间范围：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>sort排序：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>需要排序的字段</td>
+</tr>
+<tr>
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>asc或desc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "totalCount": 1,
+        "list": [
+            {
+                "id": "5bdfe51c796ad012f433da1e",
+                "name": "A国",
+                "code": "AAAA",
+                "regionCodes": [],
+                "createTime": "2018-11-05 14:37:16",
+                "updateTime": "2018-11-05 14:37:16"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">string</td>
+<td>代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionCodes</td>
+<td style="text-align: left;">array</td>
+<td>顶级区域代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.2、国家添加</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>国家添加</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/country/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>国家代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionCodes</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">array</td>
+<td>区域代码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name": "sss",
+    "code": "sss",
+    "regionCodes":["xxxxxxxxxx"] 
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value": {
+        "id":"xxx",
+        "name":"xxx",
+        "code":"xxx",
+        "regionIds":[],
+        "createTime":"2018-12-12 12:12:12",
+        "updateTime":"2018-12-12 12:12:12"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">string</td>
+<td>国家代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionIds</td>
+<td style="text-align: left;">array</td>
+<td>顶级区域ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.3、国家修改</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>国家修改</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/country/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>国家代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionCodes</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">array</td>
+<td>区域代码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxxxxxxxx",
+    "name": "sss",
+    "code": "sss",
+    "regionCodes":["xxxxxxxxxx"] 
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.4、国家详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>国家详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/country/item?id=xxxxxxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "id": "5bdfe51c796ad012f433da1e",
+        "name": "A国",
+        "code": "AAAA",
+        "regionCodes": [],
+        "createTime": "2018-11-05 14:37:16",
+        "updateTime": "2018-11-05 14:37:16"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">string</td>
+<td>代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionCodes</td>
+<td style="text-align: left;">array</td>
+<td>顶级区域代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>1.5、国家删除</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>国家删除</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/country/del?id=xxxxxxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>2、行政区域</h1><div style="margin-left:20px;"><h2>2.1、区域树</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>区域树</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/region/children?countryId=5bdfe854796ad012f433da22&id=xxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>id（id和countryId二选一）</td>
+</tr>
+<tr>
+<td style="text-align: left;">countryId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>国家id （id和countryId二选一，countryId优先）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": [
+        {
+            "id": "5bdfe85f796ad012f433da23",
+            "pid": "0",
+            "name": "a区",
+            "children":[
+                {
+                    "id": "5bdfe85f796ad012f433da23",
+                    "pid": "0",
+                    "name": "a区",
+                    "children":[
+                    ]
+                }
+            ]
+        }
+    ]
+}
+  }</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>上级区域id</td>
+</tr>
+<tr>
+<td style="text-align: left;">children</td>
+<td style="text-align: left;">array</td>
+<td>子区域</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.2、区域添加</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>区域添加</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/region/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>上级区域id</td>
+</tr>
+<tr>
+<td style="text-align: left;">countryId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>国家id （当pid为空时，该参数必传）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "pid":"",
+    "countryId":"xxx",
+    "name":"a区",
+    "regionCode":"aaaaaa"
+}</code></pre></table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value": {
+        "id":"xxx",
+        "pid":"xxx",
+        "name":"xxx",
+        "countryId":"xxx",
+        "regionCode":"sss",
+        "createTime":"2018-12-12 12:12:12",
+        "updateTime":"2018-12-12 12:12:12"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>上级区域id</td>
+</tr>
+<tr>
+<td style="text-align: left;">countryId</td>
+<td style="text-align: left;">string</td>
+<td>国家id</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionCode</td>
+<td style="text-align: left;">array</td>
+<td>区域编码</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.3、区域修改</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>区域修改</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/region/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>区域id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"5bbb232c796ad01910e662fd",
+    "name":"A国",
+    "code":"AAAAAA"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.4、区域详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>区域详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/region/item?id=xxxxxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>区域id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "id": "5bdfe85f796ad012f433da23",
+        "pid": "0",
+        "name": "a区",
+        "regionCode": "aaaaaa",
+        "createTime": "2018-12-12 12:12:12",
+        "updateTime": "2018-12-12 12:12:12"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>上级区域id</td>
+</tr>
+<tr>
+<td style="text-align: left;">regionCode</td>
+<td style="text-align: left;">string</td>
+<td>区域代码</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.5、区域删除</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>区域删除</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/region/del?id=xxxxxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>区域id（id和countryId二选一）</td>
+</tr>
+<tr>
+<td style="text-align: left;">countryId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>国家id （id和countryId二选一，countryId优先）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>2.6、区域导入</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>区域导入</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/api/region/import</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">countryId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>区域id</td>
+</tr>
+<tr>
+<td style="text-align: left;">file</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">file</td>
+<td>导入的excl</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "导入成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>3、位置解析</h1><div style="margin-left:20px;"><h2>3.1、ip解析</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>ip解析</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/ip/decode?ip=222.209.69.232</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ip</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>ip</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "province": "四川省",
+        "city": "成都市",
+        "x": "11584914.3",
+        "y": "3569251.03"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">province</td>
+<td style="text-align: left;">string</td>
+<td>省份</td>
+</tr>
+<tr>
+<td style="text-align: left;">city</td>
+<td style="text-align: left;">string</td>
+<td>城市</td>
+</tr>
+<tr>
+<td style="text-align: left;">x</td>
+<td style="text-align: left;">string</td>
+<td>当前城市中心点经度</td>
+</tr>
+<tr>
+<td style="text-align: left;">y</td>
+<td style="text-align: left;">string</td>
+<td>当前城市中心点纬度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.2、经纬度转位置</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>经纬度转位置</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/address/decode?lng=104.06792346330406&lat=30.679942845419564</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": "中国四川省成都市青羊区王家塘街84号"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.3、位置转经纬度</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>位置转经纬度</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/geography/address/encode?address=成都</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>address</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "lng": 104.06792346330406,
+        "lat": 30.679942845419564
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">lng</td>
+<td style="text-align: left;">string</td>
+<td>经度</td>
+</tr>
+<tr>
+<td style="text-align: left;">lat</td>
+<td style="text-align: left;">string</td>
+<td>纬度</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div></body></html>

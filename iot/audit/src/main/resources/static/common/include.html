@@ -1,0 +1,36 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+<head id="meta" th:fragment='meta'>
+  <meta property="og:title" content=""/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content=""/>
+  <meta property="og:image" content=""/>
+  <meta property="og:description" content=""/>
+  <meta property="og:site_name" content=""/>
+  <meta name="keywords" content=""/>
+  <meta name="description" content=""/>
+  <meta name="baseUrl" th:content="@{/}"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+</head>
+<head id="css-js" th:fragment='css-js'>
+  <link rel="stylesheet" th:href="@{/resources/css/framework7.ios.min.css}"/>
+  <link rel="stylesheet" th:href="@{/resources/css/framework7.ios.colors.min.css}"/>
+  <link rel="stylesheet" th:href="@{/resources/css/icons.css}"/>
+  <link rel="stylesheet" th:href="@{/resources/css/layout.css}"/>
+  <link rel="stylesheet" th:href="@{/resources/css/reclo.css}"/>
+  <script type="text/javascript" th:src="@{/resources/js/jquery.min.js}"></script>
+  <script type="text/javascript" th:src="@{/resources/js/init.js}"></script>
+</head>
+<footer id="js" th:fragment='js'>
+  <script type="text/javascript" th:src="@{/resources/js/framework7.min.js}"></script>
+  <script type="text/javascript" th:src="@{/resources/js/my-app.js}"></script>
+  <script type="text/javascript" th:src="@{/resources/js/util/common.js}"></script>
+</footer>
+</body>
+</html>

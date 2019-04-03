@@ -1,0 +1,89 @@
+@import '~antd/lib/style/themes/default.less';
+@ease-in-out-circ: cubic-bezier(0.78, 0.14, 0.15, 0.86);
+.logo {
+  position: fixed;
+  height: 64px;
+  z-index: 999;
+  //height: 64px;
+  line-height: 64px;
+  padding-left: (@menu-collapsed-width - 32px) / 2;
+  transition: all 0.3s;
+  background: #45495a;
+  overflow: hidden;
+  .logoImg {
+    display: inline-block;
+    vertical-align: middle;
+    width: 32px;
+  }
+  h1 {
+    color: white;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 20px;
+    margin: 0 0 0 12px;
+    font-family: 'Myriad Pro', 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+  }
+}
+
+.sider {
+  min-height: 100vh;
+  height: 100vh;
+  overflow-y: scroll;
+  box-shadow: 2px 0 6px rgba(0, 21, 41, 0.35);
+  background: #393c4c;
+  //position: relative;
+  z-index: 10;
+  position: fixed;
+  &.ligth {
+    background-color: white;
+    .logo {
+
+      background: white;
+      h1 {
+        color: #002140;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: @screen-md) {
+  .sider{
+    position: static;
+  }
+}
+
+.icon {
+  width: 14px;
+  margin-right: 10px;
+}
+
+:global {
+  .drawer .drawer-content {
+    background: #001529;
+  }
+  .ant-menu-inline-collapsed > .ant-menu-submenu > .ant-menu-submenu-title .iconfont + span,.ant-menu-inline-collapsed > .ant-menu-item .iconfont + span{
+    max-width: 0;
+    display: inline-block;
+    opacity: 0;
+  }
+  .ant-menu-inline-collapsed {
+    & > .ant-menu-item .sider-menu-item-img + span,
+    &
+      > .ant-menu-item-group
+      > .ant-menu-item-group-list
+      > .ant-menu-item
+      .sider-menu-item-img
+      + span,
+    & > .ant-menu-submenu > .ant-menu-submenu-title .sider-menu-item-img + span {
+      max-width: 0;
+      display: inline-block;
+      opacity: 0;
+    }
+  }
+  .ant-menu-item .sider-menu-item-img + span,
+  .ant-menu-submenu-title .sider-menu-item-img + span {
+    transition: opacity 0.3s @ease-in-out, width 0.3s @ease-in-out;
+    opacity: 1;
+  }
+}

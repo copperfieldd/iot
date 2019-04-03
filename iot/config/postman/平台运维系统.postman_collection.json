@@ -1,0 +1,574 @@
+{
+	"info": {
+		"_postman_id": "42075c99-57d1-48a4-b01d-3455ad1690d7",
+		"name": "平台运维系统",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "子服务实例管理",
+			"description": "",
+			"item": [
+				{
+					"name": "添加服务实例->http://localhost:8022/api-eoms/service/instances/upd",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\":\"fc9e5ea8-ed62-4e54-b564-4d3e6182ede3\",\r\n    \"serviceName\": \"2\",\r\n    \"serviceHost\":\"2\",\r\n    \"servicePort\":\"2\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/service/instances/upd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"service",
+								"instances",
+								"upd"
+							]
+						},
+						"description": "平台运维系统->子服务实例管理->添加服务实例"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例列表->http://localhost:8022/api-eoms/service/instances/list?start=1&count=5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/service/instances/list?start=1&count=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"service",
+								"instances",
+								"list"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						},
+						"description": "服务实例列表"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例下拉->http://localhost:8022/api-eoms/service/instances/opt?start=1&count=5",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"serviceName\": \"123\",\r\n    \"serviceHost\":\"456\",\r\n    \"servicePort\":\"123\"\r\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/service/instances/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"service",
+								"instances",
+								"add"
+							]
+						},
+						"description": "服务实例下拉"
+					},
+					"response": []
+				},
+				{
+					"name": "添加服务实例->http://localhost:8022/api-eoms/service/instances/add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"serviceName\": \"123\",\r\n    \"serviceHost\":\"456\",\r\n    \"servicePort\":\"123\"\r\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/service/instances/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"service",
+								"instances",
+								"add"
+							]
+						},
+						"description": "添加服务实例"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例暂停/恢复->http://localhost:8022/api-eoms/service/instances/updStatus",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "  {\r\n    \"id\": \"8933a240-491e-44f1-8a7c-6b1be73a973f\",\r\n    \"serviceValue\":1\r\n  }"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/service/instances/updStatus",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"service",
+								"instances",
+								"updStatus"
+							]
+						},
+						"description": "服务实例暂停/恢复"
+					},
+					"response": []
+				},
+				{
+					"name": "删除服务实例->http://localhost:8022/api-eoms/service/instances/del?id=7a3ea2cf-0eb7-47ff-b639-bbd5a7eed0f4",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/service/instances/del?id=7a3ea2cf-0eb7-47ff-b639-bbd5a7eed0f4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"service",
+								"instances",
+								"del"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "7a3ea2cf-0eb7-47ff-b639-bbd5a7eed0f4"
+								}
+							]
+						},
+						"description": "删除服务实例"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "配置管理",
+			"description": null,
+			"item": [
+				{
+					"name": "添加配置文件->http://localhost:8022/api-eoms/config/file/add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceName\":\"aaaa\",\r\n    \"fileName\":\"bbb\",\r\n    \"content\":\"a:aa\",\r\n    \"id\":\"66666666\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/config/file/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"config",
+								"file",
+								"add"
+							]
+						},
+						"description": "添加配置文件\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "修改配置文件->http://localhost:8022/api-eoms/config/file/add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"a:aa\",\r\n    \"id\":\"666666\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/config/file/upd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"config",
+								"file",
+								"upd"
+							]
+						},
+						"description": "修改\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "下载配置文件->http://localhost:8022/api-eoms/config/file/add",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\":\"a:aa\",\r\n    \"id\":\"666666\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/config/file/download?id=666",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"config",
+								"file",
+								"download"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "666"
+								}
+							]
+						},
+						"description": "下载配置文件\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "删除配置->http://localhost:8022/api-eoms/config/file/add",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceName\":\"aaaa\",\r\n    \"fileName\":\"bbb\",\r\n    \"content\":\"a:aa\",\r\n    \"id\":\"66666666\"\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api-eoms/config/file/del?id=55555555",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api-eoms",
+								"config",
+								"file",
+								"del"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "55555555"
+								}
+							]
+						},
+						"description": "删除配置\r\n"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "子服务实例监控",
+			"description": null,
+			"item": [
+				{
+					"name": "服务实例存活列表->http://localhost:8022/api/state/list?start=1&count=5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8022/api/disk/list?start=1&count=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"disk",
+								"list"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						},
+						"description": "服务实例存活列表"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例磁盘列表->http://localhost:8022/api/disk/list?start=1&count=5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8022/api/disk/list?start=1&count=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"disk",
+								"list"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						},
+						"description": "服务实例磁盘列表"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例内存列表->http://localhost:8022/api/memory/list?start=1&count=5",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8022/api/memory/list?start=1&count=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"memory",
+								"list"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "1"
+								},
+								{
+									"key": "count",
+									"value": "5"
+								}
+							]
+						},
+						"description": "服务实例内存列表"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例存活修改->http://localhost:8022/api/state/upd",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"failureNumber\":\"3\",\n\t\"cycle\":\"22\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api/state/upd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"state",
+								"upd"
+							]
+						},
+						"description": "服务实例存活修改"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例内存修改->http://localhost:8022/api/memory/upd",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"threshold\":\"22\",\n\t\"cycle\":\"444\"\n\t\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api/memory/upd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"memory",
+								"upd"
+							]
+						},
+						"description": "服务实例内存修改"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例磁盘修改->http://localhost:8022/api/disk/upd",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"threshold\":\"6\",\n\t\"cycle\":\"66\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8022/api/disk/upd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"disk",
+								"upd"
+							]
+						},
+						"description": "服务实例磁盘修改\r\n"
+					},
+					"response": []
+				},
+				{
+					"name": "服务实例存活内存磁盘周期查询",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8022/api/memory/item",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8022",
+							"path": [
+								"api",
+								"memory",
+								"item"
+							]
+						},
+						"description": "服务实例存活内存磁盘周期查询"
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

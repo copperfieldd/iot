@@ -1,0 +1,736 @@
+[
+  {
+    "serviceName": "用户子服务",
+    "domain": "user",
+    "structure": {
+      "collectionName": "用户表",
+      "collectionId": "user",
+      "structure": [
+        {
+          "fieldId": "tenantSum",
+          "fieldName": "截止当日总租户",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "newTenantSum",
+          "fieldName": "当日新加租户用户总数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "tenantAppSum",
+          "fieldName": "截止当日应用用户总数",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appSum",
+              "fieldType": "Number",
+              "fieldName": "应用用户数量"
+            },
+            {
+              "fieldId": "newAppSum",
+              "fieldType": "Number",
+              "fieldName": "新增应用总数"
+            }
+          ]
+        },
+        {
+          "fieldId": "clientUserSum",
+          "fieldName": "截止当日终端用户数量",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appId",
+              "fieldType": "String",
+              "fieldName": "应用用户ID"
+            },
+            {
+              "fieldId": "clientSum",
+              "fieldType": "Number",
+              "fieldName": "终端用户总数"
+            },
+            {
+              "fieldId": "newClientSum",
+              "fieldType": "Number",
+              "fieldName": "新建终端用户总数"
+            }
+          ]
+        }
+      ],
+      "state": 1
+    },
+    "script": [
+      {
+        "name": "总租户数（汇总）",
+        "remark": "汇总",
+        "tag": "tenantsum",
+        "script": "{aggregate:'user_user',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}"
+      },
+      {
+        "name": "新增租户（汇总）",
+        "remark": "汇总",
+        "tag": "newtenantsum",
+        "script": "{aggregate:'user_user',pipeline:[{$match: {'reportTime': {$gte: #{get('starttime')},$lte: #{get('endtime')}}}},{$group:{_id:null,count:{$sum:'$newTenantSum'}}},{$project:{'count':1,_id:0}}]}"
+      },
+      {
+        "name": "总C端用户（汇总）",
+        "remark": "汇总",
+        "tag": "clientsum",
+        "script": "{aggregate:'user_user',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind: '$clientUserSum'},{$group:{_id:null,count:{$sum:'$clientUserSum.clientSum'}}},{$project:{count:1,_id:0}}]}"
+      },
+      {
+        "name": "新增租户（趋势）",
+        "remark": "趋势",
+        "tag": "newtenanttrend",
+        "script": "{aggregate:'user_user',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$newTenantSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year','month':'$month'},count:{$sum:'$newTenantSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year','month':'$month','day':'$day'},count:{$sum:'$newTenantSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "累计租户（趋势）",
+        "remark": "趋势",
+        "tag": "tenanttrend",
+        "script": "{aggregate:'user_user',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year','month':'$month','day':'$day'},count:{$sum:'$tenantSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}"
+      },
+      {
+        "name": "C端新增用户（趋势）",
+        "remark": "趋势",
+        "tag": "newclienttrend",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month','day':'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "C端累计用户（趋势）",
+        "remark": "趋势",
+        "tag": "clienttrend",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month','day':'$day'},count:{$sum:'$clientUserSum.clientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}"
+      },
+      {
+        "name": "各租户下应用总数（汇总）",
+        "remark": "汇总",
+        "tag": "tenantappsum",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "各租户下C端新增用户数（趋势）",
+        "remark": "趋势",
+        "tag": "newclienttrendbytenant",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "各租户下C端用户累计（趋势）",
+        "remark": "趋势",
+        "tag": "clienttrendbytenant",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.tenantId':'#{get('tenantid')}'}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.clientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}"
+      },
+      {
+        "name": "各应用下总C端用户数（汇总）",
+        "remark": "汇总",
+        "tag": "clientsumbyapp",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "各应用下C端新增用户总数（趋势）",
+        "remark": "趋势",
+        "tag": "newclienttrendbyapp",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "各应用C端累计用户数（趋势）",
+        "remark": "趋势",
+        "tag": "clienttrendbyapp",
+        "script": "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.appId':'#{get('appid')}'}},{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.clientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}"
+      }
+    ]
+  },
+  {
+    "serviceName": "权限子服务",
+    "domain": "permission",
+    "structure": {
+      "collectionName": "权限服务",
+      "collectionId": "permission",
+      "structure": [
+        {
+          "fieldId": "interfaceSum",
+          "fieldName": "接口总数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "useSum",
+          "fieldName": "使用次数",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "interface",
+              "fieldType": "Array",
+              "fieldName": "接口",
+              "childFields": [
+                {
+                  "fieldId": "id",
+                  "fieldType": "String",
+                  "fieldName": "接口ID"
+                },
+                {
+                  "fieldId": "name",
+                  "fieldType": "String",
+                  "fieldName": "接口名称"
+                },
+                {
+                  "fieldId": "url",
+                  "fieldType": "String",
+                  "fieldName": "接口地址"
+                },
+                {
+                  "fieldId": "sum",
+                  "fieldType": "Number",
+                  "fieldName": "使用次数"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "state": 1
+    },
+    "script": [
+      {
+        "name": "接口总数（汇总）",
+        "remark": "汇总",
+        "tag": "interfacesum",
+        "script": "{aggregate:'permission_permission',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$interfaceSum'}}]}"
+      },
+      {
+        "name": "接口调用次数（汇总）",
+        "remark": "汇总",
+        "tag": "interfaceusesum",
+        "script": "{aggregate:'permission_permission',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$group:{_id:null,count:{$sum:'$useSum.interface.sum'}}},{$project:{_id:0,count:1}}]}"
+      },
+      {
+        "name": "接口调用次数（趋势）",
+        "remark": "趋势",
+        "tag": "interfaceusetrend",
+        "script": "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "租户下调用次数（汇总）",
+        "remark": "汇总",
+        "tag": "interfaceusebytenant",
+        "script": "{aggregate:'permission_permission',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$useSum'},{$match:{'useSum.tenantId':'#{get('tenantid')}'}},{$unwind:'$useSum.interface'},{$group:{_id:null,count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'count':1}}]}"
+      },
+      {
+        "name": "接口调用次数（趋势）",
+        "remark": "趋势",
+        "tag": "interfaceusetrendbyid",
+        "script": "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'useSum.interface.id':'#{get('interfaceid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "APP调用接口（趋势）",
+        "remark": "趋势",
+        "tag": "appuseinterfacetrend",
+        "script": "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'useSum.interface.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      },
+      {
+        "name": "租户下调用某接口次数（趋势）",
+        "remark": "趋势",
+        "tag": "tenantuseinterfacetrend",
+        "script": "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'useSum.tenantId':'#{get('tenantid')}','useSum.interface.id':'#{get('interfaceid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}"
+      }
+    ]
+  },
+  {
+    "serviceName": "设备子服务",
+    "domain": "device",
+    "structure": {
+      "collectionName": "用户统计",
+      "collectionId": "device",
+      "structure": [
+        {
+          "fieldId": "tenantSum",
+          "fieldName": "截止当日总租户",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "newTenantSum",
+          "fieldName": "当日新加租户用户总数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "deviceTypeSum",
+          "fieldName": "当日设备总数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "newDeviceTypeSum",
+          "fieldName": "新增设备总数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "tenantAppSum",
+          "fieldName": "截止当日应用用户总数",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appSum",
+              "fieldType": "Number",
+              "fieldName": "应用用户数量"
+            },
+            {
+              "fieldId": "newAppSum",
+              "fieldType": "Number",
+              "fieldName": "新增应用总数"
+            }
+          ]
+        },
+        {
+          "fieldId": "deviceType",
+          "fieldName": "设备类型",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "typeId",
+              "fieldType": "String",
+              "fieldName": "类型ID"
+            },
+            {
+              "fieldId": "newDeviceSum",
+              "fieldType": "Number",
+              "fieldName": "新建终端总数"
+            },
+            {
+              "fieldId": "deviceSum",
+              "fieldType": "Number",
+              "fieldName": "终端总数"
+            }
+          ]
+        },
+        {
+          "fieldId": "appDevice",
+          "fieldName": "截止当日终端用户数量",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appId",
+              "fieldType": "String",
+              "fieldName": "应用用户ID"
+            },
+            {
+              "fieldId": "newDeviceSum",
+              "fieldType": "Number",
+              "fieldName": "新建终端总数"
+            },
+            {
+              "fieldId": "deviceSum",
+              "fieldType": "Number",
+              "fieldName": "终端总数"
+            }
+          ]
+        }
+      ],
+      "state": 1
+    },
+    "script": [
+      {
+        "name": "接入租户数（汇总）",
+        "remark": "汇总",
+        "tag": "tenantsum",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}"
+      },
+      {
+        "name": "总类型数（汇总）",
+        "remark": "汇总",
+        "tag": "typesum",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:{$size:'$deviceType'}}}]}"
+      },
+      {
+        "name": "总设备数(汇总)",
+        "remark": "汇总",
+        "tag": "devicesum",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$deviceType'},{$group:{_id:null,count:{$sum:'$deviceType.deviceSum'}}},{$project:{_id:0,count:1}}]}"
+      },
+      {
+        "name": "新增设备（汇总）",
+        "remark": "汇总",
+        "tag": "newdevicesum",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$deviceType'},{$group:{_id:null,count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{_id:0,count:1}}]}"
+      },
+      {
+        "name": "新增设备类型（趋势）",
+        "remark": "趋势",
+        "tag": "newtypetrend",
+        "script": "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$newDeviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$newDeviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$newDeviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "累计设备类型（趋势）",
+        "remark": "趋势",
+        "tag": "typetrend",
+        "script": "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$deviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      },
+      {
+        "name": "新增设备数（趋势）",
+        "remark": "趋势",
+        "tag": "newdevicetrend",
+        "script": "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$deviceType'},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "累计设备数（趋势）",
+        "remark": "趋势",
+        "tag": "devicetrend",
+        "script": "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$deviceType'},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$deviceType.deviceSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      },
+      {
+        "name": "新增应用（趋势）",
+        "remark": "趋势",
+        "tag": "newapptrend",
+        "script": "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$tenantAppSum'},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "累计应用（趋势）",
+        "remark": "趋势",
+        "tag": "apptrend",
+        "script": "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$tenantAppSum'},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$tenantAppSum.appSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      },
+      {
+        "name": "租户下新增应用（汇总）",
+        "remark": "汇总",
+        "tag": "appsumbytenant",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$tenantAppSum'},{$match:{'tenantAppSum.tenantId':'#{get('tenantid')}'}},{$project:{count:'$tenantAppSum.newAppSum'}}]}"
+      },
+      {
+        "name": "应用下累计设备（汇总）",
+        "remark": "汇总 ",
+        "tag": "clientsumbyapp",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$appDevice'},{$match:{'appDevice.appId':'#{get('appid')}'}},{$project:{count:'$appDevice.deviceSum'}}]}"
+      },
+      {
+        "name": "不同设备类型下设备（汇总）",
+        "remark": "汇总",
+        "tag": "devicesumbytype",
+        "script": "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$deviceType'},{$match:{'deviceType.typeId':'#{get('typeid')}'}},{$project:{count:'$deviceType.deviceSum'}}]}"
+      }
+    ]
+  },
+  {
+    "serviceName": "支付子服务",
+    "domain": "pay",
+    "structure": {
+      "collectionName": "支付",
+      "collectionId": "pay",
+      "structure": [
+        {
+          "fieldId": "tenantSum",
+          "fieldName": "截止当日总租户",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "newTenantSum",
+          "fieldName": "当日新加租户用户总数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "orderSum",
+          "fieldName": "总订单",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "newOrderSum",
+          "fieldName": "新增订单",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "appOrderSum",
+          "fieldName": "新增订单",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldName": "租户ID",
+              "fieldType": "String"
+            },
+            {
+              "fieldId": "appId",
+              "fieldName": "应用Id",
+              "fieldType": "String"
+            },
+            {
+              "fieldId": "orderSum",
+              "fieldName": "总订单",
+              "fieldType": "Number"
+            },
+            {
+              "fieldId": "newOrderSum",
+              "fieldName": "新增订单",
+              "fieldType": "Number"
+            }
+          ]
+        },
+        {
+          "fieldId": "tenantAppSum",
+          "fieldName": "截止当日应用用户总数",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appSum",
+              "fieldType": "Number",
+              "fieldName": "应用用户数量"
+            },
+            {
+              "fieldId": "newAppSum",
+              "fieldType": "Number",
+              "fieldName": "新增应用总数"
+            }
+          ]
+        }
+      ]
+    },
+    "script": [
+      {
+        "name": "接入租户总数（汇总）",
+        "remark": "汇总",
+        "tag": "tenantsum",
+        "script": "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}"
+      },
+      {
+        "name": "总应用数（汇总）",
+        "remark": "汇总",
+        "tag": "appsum",
+        "script": "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$tenantAppSum'},{$group:{_id:null,count:{$sum:'$tenantAppSum.appSum'}}},{$project:{count:1,_id:0}}]}"
+      },
+      {
+        "name": "新增应用数（汇总）",
+        "remark": "汇总",
+        "tag": "newappsum",
+        "script": "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$tenantAppSum'},{$group:{_id:null,count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{count:1,_id:0}}]}"
+      },
+      {
+        "name": "订单总数（汇总）",
+        "remark": "汇总",
+        "tag": "ordersum",
+        "script": "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$orderSum'}}]}"
+      },
+      {
+        "name": "新增订单数（汇总）",
+        "remark": "汇总",
+        "tag": "newordersum",
+        "script": "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$newOrderSum'}}]}"
+      },
+      {
+        "name": "新增订单数（趋势）",
+        "remark": "趋势",
+        "tag": "newordertrend",
+        "script": "{aggregate:'pay_pay',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$appOrderSum'},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "租户下应用订单总数（汇总）",
+        "remark": "汇总",
+        "tag": "appordersumbytenant",
+        "script": "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "租户下新增应用订单数（汇总）",
+        "remark": "汇总",
+        "tag": "newappordersumbytenant",
+        "script": "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},{$project:{count:{$sum:'$appOrderSum.newOrderSum'}}}]}"
+      },
+      {
+        "name": "租户下订单数（趋势）",
+        "remark": "趋势",
+        "tag": "ordertrendbytenant",
+        "script": "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.orderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      },
+      {
+        "name": "租户下新增应用订单数（趋势）",
+        "remark": "趋势",
+        "tag": "newappordertrendbytenant",
+        "script": "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "应用下新增订单数（趋势）",
+        "remark": "趋势",
+        "tag": "newordertrendbyapp",
+        "script": "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}"
+      },
+      {
+        "name": "应用订单总数（趋势）",
+        "remark": "趋势",
+        "tag": "ordertrendbyapp",
+        "script": "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.appId':'#{get('appid')}'}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.orderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      }
+    ]
+  },
+  {
+    "serviceName": "告警子服务",
+    "domain": "alarm",
+    "structure": {
+      "collectionName": "告警",
+      "collectionId": "alarm",
+      "structure": [
+        {
+          "fieldId": "warningSum",
+          "fieldName": "总告警次数",
+          "fieldType": "Number"
+        },
+        {
+          "fieldId": "warningSMS",
+          "fieldName": "截止当日总租户",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "serviceName",
+              "fieldType": "String",
+              "fieldName": "服务名称"
+            },
+            {
+              "fieldId": "sum",
+              "fieldType": "Number",
+              "fieldName": "总数"
+            },
+            {
+              "fieldId": "newSum",
+              "fieldType": "Number",
+              "fieldName": "总数"
+            }
+          ]
+        },
+        {
+          "fieldId": "warningEmail",
+          "fieldName": "邮件报警",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "newSum",
+              "fieldType": "Number",
+              "fieldName": "总数"
+            },
+            {
+              "fieldId": "serviceName",
+              "fieldType": "String",
+              "fieldName": "服务名称"
+            },
+            {
+              "fieldId": "sum",
+              "fieldType": "Number",
+              "fieldName": "总数"
+            }
+          ]
+        }
+      ],
+      "state": 1
+    },
+    "script": [
+      {
+        "name": "总告警次数（汇总）",
+        "remark": "汇总",
+        "tag": "sum",
+        "script": "{aggregate:'alarm_alarm',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$warningSum'}}]}"
+      },
+      {
+        "name": "短信告警次数（汇总）",
+        "remark": "汇总",
+        "tag": "smssum",
+        "script": "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningSMS'},{$sort:{'reportTime':-1}},{$limit:1},{$group:{_id:null,count:{$sum:'warningSMS.sum'}}},{$project:{_id:0,count:1}}]}"
+      },
+      {
+        "name": "邮件告警次数（汇总）",
+        "remark": "汇总",
+        "tag": "emailsum",
+        "script": "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningEmail'},{$sort:{'reportTime':-1}},{$limit:1},{$group:{_id:null,count:{$sum:'warningEmail.sum'}}},{$project:{_id:0,count:1}}]}"
+      },
+      {
+        "name": "总告警次数（趋势）",
+        "remark": "趋势",
+        "tag": "trend",
+        "script": "{aggregate:'alarm_alarm',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$warningSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      },
+      {
+        "name": "短信告警次数（趋势）",
+        "remark": "趋势",
+        "tag": "smstrend",
+        "script": "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningSMS'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$warningSMS.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      },
+      {
+        "name": "邮件告警次数（趋势）",
+        "remark": "趋势",
+        "tag": "emailtrend",
+        "script": "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningEmail'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$warningEmail.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      }
+    ]
+  },
+  {
+    "serviceName": "地理位置子服务",
+    "domain": "position",
+    "structure": {
+      "collectionId": "position",
+      "collectionName": "地理位置",
+      "structure": [
+        {
+          "fieldId": "tenantAppSum",
+          "fieldName": "截止当日应用用户总数",
+          "fieldType": "Array",
+          "childFields": [
+            {
+              "fieldId": "tenantId",
+              "fieldType": "String",
+              "fieldName": "租户ID"
+            },
+            {
+              "fieldId": "appSum",
+              "fieldType": "Number",
+              "fieldName": "应用用户数量"
+            },
+            {
+              "fieldId": "newAppSum",
+              "fieldType": "Number",
+              "fieldName": "新增应用总数"
+            }
+          ]
+        }
+      ],
+      "state": 1
+    },
+    "script": [
+      {
+        "name": "总租户数（汇总）",
+        "remark": "汇总",
+        "tag": "tenantsum",
+        "script": "{aggregate:'position_position',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}"
+      },
+      {
+        "name": "总应用数（汇总）",
+        "remark": "汇总",
+        "tag": "appsum",
+        "script": "{aggregate:'position_position',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$tenantAppSum'},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$tenantAppSum.appSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}"
+      }
+    ]
+  }
+]

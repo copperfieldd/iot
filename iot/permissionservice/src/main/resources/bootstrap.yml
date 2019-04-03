@@ -1,0 +1,30 @@
+server:
+  port: 8021
+eureka:
+  instance:
+    prefer-ip-address: true
+#      ip-address: 47.94.154.65
+#      instance-id: http://47.94.154.65:8764/
+  client:
+    service-url:
+      #发布注册中心地址，需要加用户名和密码
+      #defaultZone: http://admin:admin@192.168.3.8:8031/eureka/eureka
+      defaultZone: http://admin:admin@127.0.0.1:8031/eureka
+       #为true时，可以启动，但报异常：Cannot execute request on any known server
+      fetch-registry: false
+spring:
+  application:
+    name: permissionservice
+  jmx:
+    default-domain: permissionservice
+  cloud:
+    config:
+      #文件配置中心里面的文件名为 permissionservice-cloud.yml permissionservice-cloud.properties
+      #必须按照要求来读取，
+      profile: cloud
+      #分支
+      label: master
+      discovery:
+        #文件配置中心项目名
+        service-id: config
+        enabled: true

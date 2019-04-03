@@ -1,0 +1,44 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head></head>
+
+<body>
+     <div class="toolbar" id="toolbar_div" th:fragment='toolbar' >
+        <div class="toolbar-inner row">
+          <!-- Toolbar links -->
+          <a href="javascript:void(null);" onclick="openUrl('index');" class="external link col-25"><i class="icon icon-home"></i><span>首页</span></a>
+          <a href="javascript:void(null);" onclick="openUrl('public/category/init');" class="external link col-25"><i class="icon icon-catalog"></i><span>分类</span></a>
+          <a href="javascript:void(null);" onclick="openUrl('cart/init');" class="external link col-25"><div class="badge-wrapper"><span class="badge" style="display:none"></span></div><i class="icon icon-cart"></i><span>购物车</span></a>
+          <a href="javascript:void(null);" onclick="openUrl('user/mypage');" class="external link col-25"><i class="icon icon-user"></i><span>我的</span></a>
+        </div>
+
+        <script>
+          function openUrl(url) {
+             window.location.href = BASE_URL + url;
+          }
+          $(document).ready(function(){
+            AJAX({
+                url : 'cart/count',
+                type : "GET",
+                success : function(request) {
+                    if (request.status == 0) {
+                        var count = request.data;
+                        
+                        if (count > 0) {
+                            $(".badge").html(count);
+                            $(".badge").attr("style", "display:''");
+                            setLocVal("badge_count", count);
+                        }
+                        
+                    } else {
+                        myApp.alert(request.message, "提示");
+                    }
+                }
+            });
+          });
+        </script>
+     </div>
+
+</body>
+</html>

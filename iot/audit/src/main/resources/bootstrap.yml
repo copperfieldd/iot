@@ -1,0 +1,39 @@
+##服务启动时会优先加载bootstrap.yml（bootstrap.properties）再去加载appliction.yml(application.properties),
+##yml文件又优先于properties文件，所以相同配置在不用的文件中会发生信息覆盖，
+#
+##本文件是指定config配置中心的文件
+##读取的文件名称为，client1-cloud.properties或者clent1-cloud.yml
+#server:
+#  port: 8763
+#  context-path: /alarmservice
+#eureka:
+#  # 公网ip进行注册，不用内网ip
+#  instance:
+#      prefer-ip-address: true
+##      ip-address: 47.94.154.65
+##      instance-id: http://47.94.154.65:8764/
+#  client:
+#    service-Url:
+#      #发布注册中心地址，需要加用户名和密码
+#      #defaultZone: http://admin:admin@47.94.154.65:8761/eureka/eureka
+#      defaultZone: http://admin:admin@127.0.0.1:8761/eureka/eureka
+#       #为true时，可以启动，但报异常：Cannot execute request on any known server
+#      fetch-registry: false
+#spring:
+#  application:
+#    name: alarmservice
+#  cloud:
+#      config:
+#        #文件配置中心里面的文件名为 alarmservice-cloud.yml和alarmservice-cloud.properties
+#        #必须按照要求来读取，
+#        profile: cloud
+#        #分支
+#        label: master
+#        discovery:
+#          #文件配置中心项目名
+#          service-id: config
+#          enabled: true
+
+
+
+# 加入到微服务时候，需要将此文件注释放开，其他的配置文件全部放入config配置中心，

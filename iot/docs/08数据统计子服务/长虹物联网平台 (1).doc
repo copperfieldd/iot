@@ -1,0 +1,6401 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、获取服务列表</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询服务列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/application/list">http://ip:port/statsservice/api/application/list</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>分页开始</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>分页数</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>域名</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p>（时间实例：2019/01/03 09:54:38）
+<strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "ok",
+    "value": {
+        "totalCount": 4,
+        "list": [
+            {
+                "createTime": "2019/01/03 09:54:38",
+                "id": "4b88888e26734565a7f37c8a68bd4753",
+                "domain": "user",
+                "state": 0,
+                "serviceName": "用户子服务",
+                "founderId": "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b",
+                "founderName": "admin"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">Integer</td>
+<td>总页数</td>
+</tr>
+<tr>
+<td style="text-align: left;">list</td>
+<td style="text-align: left;">Array</td>
+<td>数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderId</td>
+<td style="text-align: left;">String</td>
+<td>创建者ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderName</td>
+<td style="text-align: left;">String</td>
+<td>创建者名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>应用名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">String</td>
+<td>域</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSecret</td>
+<td style="text-align: left;">String</td>
+<td>密钥可忽略</td>
+</tr>
+</tbody>
+</table></div><h1>2、新建服务</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新建服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/application/add">http://ip:port/statsservice/api/application/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>域</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "serviceName":"xxxxxx",
+    "domain":1
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        "founderId":"xx",
+        "founderName":"xxxxx",
+        "serviceKey":"xxxx",
+        "serviceName":"zzzz",
+        "domain":"zzz",
+        "appSecret":"zzzzz",
+        "creatTime":1111,
+        "state":1
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">String</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appName</td>
+<td style="text-align: left;">String</td>
+<td>应用名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderId</td>
+<td style="text-align: left;">String</td>
+<td>创建者ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderName</td>
+<td style="text-align: left;">String</td>
+<td>创建者名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">String</td>
+<td>域</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatTime</td>
+<td style="text-align: left;">int</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSecret</td>
+<td style="text-align: left;">String</td>
+<td>密钥可忽略</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述
+**</li>
+</ul></div><h1>3、查询服务</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/application/item">http://ip:port/statsservice/api/application/item</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        "founderId":"xx",
+        "founderName":"xxxxx",
+        "serviceKey":"xxxx",
+        "serviceName":"zzzz",
+        "domain":"zzz",
+        "appSecret":"zzzzz",
+        "creatTime":1111,
+        "state":1
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">String</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appName</td>
+<td style="text-align: left;">String</td>
+<td>应用名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderId</td>
+<td style="text-align: left;">String</td>
+<td>创建者ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderName</td>
+<td style="text-align: left;">String</td>
+<td>创建者名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">String</td>
+<td>域</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatTime</td>
+<td style="text-align: left;">int</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSecret</td>
+<td style="text-align: left;">String</td>
+<td>密钥可忽略</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>4、修改服务</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/application/upd">http://ip:port/statsservice/api/application/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>域</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxx",
+    "serviceKey":"xxxx",
+    "serviceName":"zzzz",
+    "domain":"zzz",
+    "appSecret":"zzzzz",
+    "state":1
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status":0,
+    "message":"修改成功",
+    "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>5、删除服务</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/application/del">http://ip:port/statsservice/api/application/del</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status":0,
+    "message":"删除成功",
+    "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>6、修改服务状态</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改服务状态</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/application/del">http://ip:port/statsservice/api/application/del</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxx"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+   "status":0,
+   "message":"删除成功",
+   "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>7、获取数据结构列表</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>获取数据结构列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/data/structure/list">http://ip:port/statsservice/api/data/structure/list</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>分页开始</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>分页数</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>表标识</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>表名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        totalCount:111,
+        list:[{
+            "serviceId":"xxxx",
+            "founderName":"founderName",
+            "collectionName":"zzzz",
+            "collectionId":"xxxx",
+            "remark":"zzz",
+            "structure":[{
+                "fieldName":"用户ID",
+                "fieldId":"xxxxx",
+                "fieldType":"Array",
+                "childFields":[{
+                    "fieldName":"用户ID",
+                    "fieldId":"xxxxx",
+                    "fieldType":"Number",
+                    "childFields":[]
+                }]
+            }]
+        }]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">Integer</td>
+<td>数据大小</td>
+</tr>
+<tr>
+<td style="text-align: left;">list</td>
+<td style="text-align: left;">Array</td>
+<td>数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionName</td>
+<td style="text-align: left;">String</td>
+<td>文档名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionId</td>
+<td style="text-align: left;">String</td>
+<td>文档标识</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">structure</td>
+<td style="text-align: left;">JSON</td>
+<td>结构体</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldName</td>
+<td style="text-align: left;">String</td>
+<td>字段名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldId</td>
+<td style="text-align: left;">String</td>
+<td>字段ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldType</td>
+<td style="text-align: left;">String</td>
+<td>{Number or String or Array or Object}</td>
+</tr>
+<tr>
+<td style="text-align: left;">childFields</td>
+<td style="text-align: left;">structure</td>
+<td>子字段</td>
+</tr>
+<tr>
+<td style="text-align: left;">founderName</td>
+<td style="text-align: left;">String</td>
+<td>创建人名称</td>
+</tr>
+</tbody>
+</table></div><h1>8、查询数据结构</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/data/structure/item">http://ip:port/statsservice/api/data/structure/item</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结构ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        "serviceKey":"xxxx",
+        "collectionName":"zzzz",
+        "remark":"zzz",
+        "structure":[{
+            "fieldName":"用户ID",
+            "fieldId":"xxxxx",
+            "fieldType":"Array",
+            "childFields":[{
+                "fieldName":"用户ID",
+                "fieldId":"xxxxx",
+                "fieldType":"Number",
+                "childFields":[]
+            }]
+        }]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceKey</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionName</td>
+<td style="text-align: left;">String</td>
+<td>文档名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">structure</td>
+<td style="text-align: left;">JSON</td>
+<td>结构体</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldName</td>
+<td style="text-align: left;">String</td>
+<td>字段名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldId</td>
+<td style="text-align: left;">String</td>
+<td>字段ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldType</td>
+<td style="text-align: left;">String</td>
+<td>{Number or String or Array or Object}</td>
+</tr>
+<tr>
+<td style="text-align: left;">childFields</td>
+<td style="text-align: left;">structure</td>
+<td>子字段</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>9、创建数据结构</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/data/structure/add">http://ip:port/statsservice/api/data/structure/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>文档名称，中文名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>文档ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">structure</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">JSON</td>
+<td>结构体</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>字段名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>字段ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>{Number or String or Array or Object}</td>
+</tr>
+<tr>
+<td style="text-align: left;">childFields</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">structure</td>
+<td>子字段</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "serviceId":"xxxx",
+    "collectionName":"zzzz",
+    "collectionId":"zzzzzzz",
+    "remark":"zzz",
+    "structure":[{
+        "fieldName":"用户ID",
+        "fieldId":"xxxxx",
+        "fieldType":"Array",
+        "childFields":[{
+            "fieldName":"用户ID",
+            "fieldId":"xxxxx",
+            "fieldType":"Number",
+            "childFields":[]
+        }]
+    },{
+        "fieldName":"用户总数",
+        "fieldId":"xxxxx",
+        "fieldType":"Integer",
+        "childFields":''
+    },{
+        "fieldName":"用户名称",
+        "fieldId":"xxxxx",
+        "fieldType":"String",
+        "childFields":''
+    }]
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        "serviceId":"xxxx",
+        "collectionName":"zzzz",
+        "collectionId":"zzzzzzz",
+        "remark":"zzz",
+        "structure":[{
+            "fieldName":"用户ID",
+            "fieldId":"xxxxx",
+            "fieldType":"Array",
+            "childFields":[{
+                "fieldName":"用户ID",
+                "fieldId":"xxxxx",
+                "fieldType":"Number",
+                "childFields":[]
+            }]
+        },{
+            "fieldName":"用户总数",
+            "fieldId":"xxxxx",
+            "fieldType":"Integer",
+            "childFields":''
+        },{
+            "fieldName":"用户名称",
+            "fieldId":"xxxxx",
+            "fieldType":"String",
+            "childFields":''
+    }]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionName</td>
+<td style="text-align: left;">String</td>
+<td>文档名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">collectionId</td>
+<td style="text-align: left;">String</td>
+<td>文档ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">structure</td>
+<td style="text-align: left;">JSON</td>
+<td>结构体</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldName</td>
+<td style="text-align: left;">String</td>
+<td>字段名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldId</td>
+<td style="text-align: left;">String</td>
+<td>字段ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldType</td>
+<td style="text-align: left;">String</td>
+<td>{Number or String or Array or Object}</td>
+</tr>
+<tr>
+<td style="text-align: left;">childFields</td>
+<td style="text-align: left;">structure</td>
+<td>子字段</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>10、删除表结构</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/data/structure/del">http://ip:port/statsservice/api/data/structure/del</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结构ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong>
+<a href="http://ip:port/statsservice/api/data/structure/del?id=xxxx">http://ip:port/statsservice/api/data/structure/del?id=xxxx</a></p>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>11、修改数据结构</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/data/structure/upd">http://ip:port/statsservice/api/data/structure/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结构ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">structure</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">JSON</td>
+<td>结构体</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>字段名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>字段ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">fieldType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>{Number or String or Array or Object}</td>
+</tr>
+<tr>
+<td style="text-align: left;">childFields</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">structure</td>
+<td>子字段</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxx",
+    "serviceId":"xxzzz",
+    "remark":"zzz",
+    "structure":[{
+        "fieldName":"用户ID",
+        "fieldId":"xxxxx",
+        "fieldType":"Array",
+        "childFields":[{
+            "fieldName":"用户ID",
+            "fieldId":"xxxxx",
+            "fieldType":"Number",
+            "childFields":[]
+        }]
+    }]
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>12、获取解析脚本列表</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>获取解析脚本列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/script/analytic/list">http://ip:port/statsservice/api/script/analytic/list</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>分页开始</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>分页数</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>脚本名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>脚本标签</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "ok",
+    "value": {
+        "totalCount": 1,
+        "list": [
+            {
+                "createTime": "2019/01/03 09:54:39",
+                "updateTime": "2019/01/03 09:54:39",
+                "id": "833026cb03ec496bb3f0dc71fa3dd454",
+                "serviceName": "用户子服务",
+                "serviceId": "4b88888e26734565a7f37c8a68bd4753",
+                "name": "各应用下总C端用户数（汇总）",
+                "remark": "汇总",
+                "tag": "clientsumbyapp"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">Integer</td>
+<td>数据大小</td>
+</tr>
+<tr>
+<td style="text-align: left;">list</td>
+<td style="text-align: left;">Array</td>
+<td>数据列表</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>脚本名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">script</td>
+<td style="text-align: left;">String</td>
+<td>脚本</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">String</td>
+<td>英文字母</td>
+</tr>
+</tbody>
+</table></div><h1>13、获取解析脚本</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/script/analytic/item">http://ip:port/statsservice/api/script/analytic/item</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        "id":"xxxx"
+        "serviceId":"xxx",
+        "name":"xxx",
+        "script":"xxx",
+        "remark":"xxx",
+        "state":"1",
+        "tag":"xxx"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceKey</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>脚本名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">script</td>
+<td style="text-align: left;">String</td>
+<td>脚本</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">String</td>
+<td>英文字母</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>14、新建解析脚本</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/script/analytic/add">http://ip:port/statsservice/api/script/analytic/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>脚本名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">script</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>脚本</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>英文字母</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "serviceId":"xxx",
+    "name":"xxx",
+    "script":"xxx",
+    "remark":"xxx",
+    "state":"1",
+    "tag":"xxx"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":{
+        "id":"xxxx"
+        "serviceKey":"xxx",
+        "name":"xxx",
+        "script":"xxx",
+        "remark":"xxx",
+        "state":"1",
+        "tag":"xxx"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">String</td>
+<td>服务ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>脚本名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">script</td>
+<td style="text-align: left;">String</td>
+<td>脚本</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">String</td>
+<td>英文字母</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>15、修改解析脚本</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/script/analytic/upd">http://ip:port/statsservice/api/script/analytic/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>脚本ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>脚本名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">script</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>脚本</td>
+</tr>
+<tr>
+<td style="text-align: left;">remark</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">state</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxx",
+    "name":"xxx",
+    "script":"xxx",
+    "remark":"xxx",
+    "state":"1"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>16、删除解析脚本</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>创建结构</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/script/analytic/del">http://ip:port/statsservice/api/script/analytic/del</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>脚本ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<ul>
+<li>
+<p><a href="http://ip:port/statsservice/api/script/analytic/del?id=xxxxx">http://ip:port/statsservice/api/script/analytic/del?id=xxxxx</a></p>
+<p><strong>返回示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>17、统一数据上报</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>数据上报</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/datareport">http://ip:port/statsservice/api/datareport</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">domain</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务域名</td>
+</tr>
+<tr>
+<td style="text-align: left;">collection</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>文档ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">reportTime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>短时间戳</td>
+</tr>
+<tr>
+<td style="text-align: left;">data</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>上报的数据自定义格式：详情见下方各个服务上报数据格式</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "domain":"服务域名",
+    "collection":"文档ID",
+    "reportTime":11222,
+    "data":{}
+}</code></pre></table>
+<p><strong>返回参数</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    'message':'ok',
+    'status':0,
+    'data':[]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong><em>数据上报格式</em></strong></p>
+<ul>
+<li>用户子服务</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">是否必须</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">newTenantSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>当日新增租户</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>用户系统中总租户</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>应用总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">newAppSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>当日新增应用总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantAppSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>租户下应用用户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用用户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">clientSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Inteage</td>
+<td>C端用户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">clientUserSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>总C端数</td>
+</tr>
+<tr>
+<td style="text-align: left;">newClientSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>当日新增C端总数</td>
+</tr>
+</tbody>
+</table>
+<table width='100%' class='codestyle'><pre><code>{
+        "newTenantSum":8,
+        "tenantSum":41,
+        "tenantAppSum":[{
+            "tenantId":"a1",
+            "appSum":4,
+            "newAppSum":1
+        }],
+        "clientUserSum":[{
+            "tenantId":"a2",
+            "appId":"b3",
+            "clientSum":1,
+            "newClientSum":1
+        }]
+}</code></pre></table>
+<ul>
+<li>权限子服务</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">是否必须</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">interfaceSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>接口总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">useSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>当日调用次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用用户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用用户名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">interface</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>调用接口列表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">url</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">sum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>调用次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口ID</td>
+</tr>
+</tbody>
+</table>
+<table width='100%' class='codestyle'><pre><code>{
+    "interfaceSum":111,
+    "useSum":[{
+        "tenantId":"111",
+        "tenantName":"租户名称",
+        "appId":"应用用户ID",
+        "appName":"应用用户名称",
+        "interface":[{
+            "id":"接口ID",
+            "name":"接口名称",
+            "url":"接口地址",
+            "sum":"调用次数"，
+        }]
+    }]
+}</code></pre></table>
+<ul>
+<li>设备子服务</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">是否必须</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>租户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">newTenantSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>新增租户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">newTenantAppSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>新增应用总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>应用用户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用用户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用用户名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">newDeviceType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>当日新增设备类型总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>设备类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">typeName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>设备类型名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>设备总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">newDeviceSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>新建设备总数</td>
+</tr>
+</tbody>
+</table>
+<table width='100%' class='codestyle'><pre><code>{
+    "tenantSum":100,
+    "newTenantSum":111,
+    "newDeviceTypeSum":1,
+    "tenantAppSum":[{
+        "tenantId":"xxx",
+        "tenantName":"租户名称",
+        "appSum":1111,
+        "newAppSum":11
+    }],
+    "deviceType":[{
+        "typeName":"xxx",
+        "typeId":"xxxx",
+        "deviceSum":11,
+        "newDeviceSum":111
+    }],
+    "appDevice":[{
+        "tenantId":"租户ID",
+        "tenantName":"租户名称",
+        "appId":"应用用户ID",
+        "appName":"应用用户名称",
+        "newDeviceSum":111,
+        "deviceSum":111
+    }]
+
+}</code></pre></table>
+<ul>
+<li>支付子服务</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">是否必须</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>总租户</td>
+</tr>
+<tr>
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>总订单数</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用用户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>App用户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">orderSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>总订单数</td>
+</tr>
+<tr>
+<td style="text-align: left;">newOrderSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>新增订单数</td>
+</tr>
+</tbody>
+</table>
+<table width='100%' class='codestyle'><pre><code>{
+    "tenantSum":11,
+    "tenantAppSum":[{
+        "tenantId":"xxx",
+        "tenantName":"租户名称",
+        "appSum":1111,
+        "newAppSum":11
+    }],
+    "order":[{
+        "tenantId":"xxx"
+        "appId":"xxxx",
+        "orderSum":1111,
+        "newOrderSum":1111
+    }]
+}</code></pre></table>
+<ul>
+<li>告警子服务</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">是否必须</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">warningSMS</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>短信当天告警总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">warningEmail</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Array</td>
+<td>邮件当天告警总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">sum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>告警次数</td>
+</tr>
+</tbody>
+</table>
+<table width='100%' class='codestyle'><pre><code>{
+    "warningSMS":[{
+        "serviceName":"xxxx",
+        "sum":111
+    }],
+    "warningEmail":[{
+        "serviceName":"xxx",
+        "sum":111
+    }],
+}</code></pre></table>
+<ul>
+<li>地理位置子服务</li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">是否必须</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>租户总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">appSum</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Integer</td>
+<td>应用用户总数</td>
+</tr>
+</tbody>
+</table>
+<table width='100%' class='codestyle'><pre><code>{
+    "tenantSum":111,
+    "appSum":111,
+}</code></pre></table>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h1>18、前端统计</h1><div style="margin-left:20px;"><h2>18.1、支付子服务</h2><div style="margin-left:20px;"><h3>18.1.1、接入租户总数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接入租户数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/tenantsum">http://ip:port/statsservice/api/index/data/pay/tenantsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.2、总应用数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接入租户数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/appsum">http://ip:port/statsservice/api/index/data/pay/appsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.3、新增应用数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增应用数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/newappsum">http://ip:port/statsservice/api/index/data/pay/newappsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.4、订单总数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/ordersum">http://ip:port/statsservice/api/index/data/pay/ordersum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.5、新增订单数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增订单数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/newordersum">http://ip:port/statsservice/api/index/data/pay/newordersum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.6、新增订单数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增订单数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/newordertrend">http://ip:port/statsservice/api/index/data/pay/newordertrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.7、租户下应用订单总数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下应用订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/appordersumbytenant">http://ip:port/statsservice/api/index/data/pay/appordersumbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.8、租户下新增应用订单数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下应用订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/newappordersumbytenant">http://ip:port/statsservice/api/index/data/pay/newappordersumbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.9、租户下订单数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下应用订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/ordertrendbytenant">http://ip:port/statsservice/api/index/data/pay/ordertrendbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.10、租户下新增应用订单数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下应用订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/newappordertrendbytenant">http://ip:port/statsservice/api/index/data/pay/newappordertrendbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.11、应用下新增订单数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下应用订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/newordertrendbyapp">http://ip:port/statsservice/api/index/data/pay/newordertrendbyapp</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.1.12、应用订单总数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下应用订单总数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/pay/ordertrendbyapp">http://ip:port/statsservice/api/index/data/pay/ordertrendbyapp</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h2>18.2、设备子服务</h2><div style="margin-left:20px;"><h3>18.2.1、接入租户数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接入租户数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/tenantsum">http://ip:port/statsservice/api/index/data/device/tenantsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.2、总类型数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>总类型数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/typesum">http://ip:port/statsservice/api/index/data/device/typesum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.3、新增设备（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增设备（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/newdevicesum">http://ip:port/statsservice/api/index/data/device/newdevicesum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.4、 新增设备类型（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增设备类型（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/newtypetrend">http://ip:port/statsservice/api/index/data/device/newtypetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "month": 2,
+            "year": 2018,
+            "count": 2953,
+            "day": 2
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.5、累计设备类型（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>累计设备类型（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/typetrend">http://ip:port/statsservice/api/index/data/device/typetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "day":1,
+            "month":1,
+            "year":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.6、新增设备数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增设备数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/newdevicetrend">http://ip:port/statsservice/api/index/data/device/newdevicetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.7、累计设备数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备总数累计（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/devicetrend">http://ip:port/statsservice/api/index/data/device/devicetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "month": 2,
+            "year": 2018,
+            "count": 2953,
+            "day": 2
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.8、新增应用（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增应用（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/newapptrend">http://ip:port/statsservice/api/index/data/device/newapptrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "month": 2,
+            "year": 2018,
+            "count": 2953,
+            "day": 2
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.9、累计应用（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增应用（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/apptrend">http://ip:port/statsservice/api/index/data/device/apptrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "month": 2,
+            "year": 2018,
+            "count": 2953,
+            "day": 2
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.10、租户下新增应用（汇总)</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下新增应用（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/appsumbytenant">http://ip:port/statsservice/api/index/data/device/appsumbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.11、应用下累计设备（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>应用下累计设备（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/clientsumbyapp">http://ip:port/statsservice/api/index/data/device/clientsumbyapp</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "month": 2,
+            "year": 2018,
+            "count": 2953,
+            "day": 2
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.2.12、不同设备类型下设备（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>不同设备类型下设备（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/device/devicesumbytype">http://ip:port/statsservice/api/index/data/device/devicesumbytype</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">typeid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>设备类型ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总设备数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h2>18.3、权限子服务</h2><div style="margin-left:20px;"><h3>18.3.1、接口总数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口总数</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/interfacesum">http://ip:port/statsservice/api/index/data/permission/interfacesum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口总数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.3.2、接口调用次数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口调用次数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/interfaceusesum">http://ip:port/statsservice/api/index/data/permission/interfaceusesum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口使用次数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.3.3、接口调用次数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口调用次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/interfaceusetrend">http://ip:port/statsservice/api/index/data/permission/interfaceusetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111,
+        "day":1,
+        "month":1,
+        "year":2011
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口使用次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.3.4、租户下调用接口次数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户下调用接口次数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/interfaceusebytenant">http://ip:port/statsservice/api/index/data/permission/interfaceusebytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口使用次数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.3.5、某接口调用次数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口使用次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/interfaceusetrendbyid">http://ip:port/statsservice/api/index/data/permission/interfaceusetrendbyid</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">interfaceid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111,
+        "year":11,
+        "month":11,
+        "day":11
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口使用次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.3.6、APP调用接口（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口使用次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/appuseinterfacetrend">http://ip:port/statsservice/api/index/data/permission/appuseinterfacetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">interfaceid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "appId":"sadasdas",
+        "count":111,
+        "year":11,
+        "month":11,
+        "day":11
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口使用次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.3.7、租户调用某接口（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口使用次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/permission/tenantuseinterfacetrend">http://ip:port/statsservice/api/index/data/permission/tenantuseinterfacetrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">interfaceid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "tenantId":"sadasdas",
+        "count":111,
+        "year":11,
+        "month":11,
+        "day":11
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>接口使用次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h2>18.4、用户子服务</h2><div style="margin-left:20px;"><h3>18.4.1、总租户数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>总租户数</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/tenantsum">http://ip:port/statsservice/api/index/data/user/tenantsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.2、新增租户（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增租户数</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/newtenantsum">http://ip:port/statsservice/api/index/data/user/newtenantsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.3、总C端用户（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>总C端用户数,汇总</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/clientsum">http://ip:port/statsservice/api/index/data/user/clientsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.4、新增租户（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>新增租户数</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/newtenanttrend">http://ip:port/statsservice/api/index/data/user/newtenanttrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "day":1,
+        "month":1,
+        "year":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总住户数</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.5、累计租户（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>累计租户（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/tenanttrend">http://ip:port/statsservice/api/index/data/user/tenanttrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "day":1,
+        "month":1,
+        "year":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>累计</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.6、C端新增用户（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>C端新增用户 趋势</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/newclienttrend">http://ip:port/statsservice/api/index/data/user/newclienttrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "year":2018,
+        "month":11,
+        "day":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>C端总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.7、C端累计用户（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>C端累计用户（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/clienttrend">http://ip:port/statsservice/api/index/data/user/clienttrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "year":2018,
+        "month":11,
+        "day":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>C端总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.8、各租户下应用总数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>各租户下应用总数,汇总</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/tenantappsum">http://ip:port/statsservice/api/index/data/user/tenantappsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>应用用户总数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.9、各租户下C端新增用户数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>各租户下C端新增用户数,趋势图</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/newclienttrendbytenant">http://ip:port/statsservice/api/index/data/user/newclienttrendbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "year":2018,
+        "month":11,
+        "day":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>C端总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.10、各租户下C端用户累计（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>各租户下C端新增用户数,趋势图</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/clienttrendbytenant">http://ip:port/statsservice/api/index/data/user/clienttrendbytenant</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">tenantid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "year":2018,
+        "month":11,
+        "day":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>C端总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.11、各应用下总C端用户数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>各应用下C端总用户数</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/clientsumbyapp">http://ip:port/statsservice/api/index/data/user/clientsumbyapp</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总C</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.12、各应用下C端新增用户总数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>各应用下C端新增用户总数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/newclienttrendbyapp">http://ip:port/statsservice/api/index/data/user/newclienttrendbyapp</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "day":1,
+        "month":1,
+        "year":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>C端总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>天</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.4.13、各应用C端累计用户数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>各应用下新增C端用户总数,趋势图</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/user/clienttrendbyapp">http://ip:port/statsservice/api/index/data/user/clienttrendbyapp</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">appid</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>应用ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+        "year":2018,
+        "month":11,
+        "day":1,
+        "count":111
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>C端总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h2>18.5、地理位置子服务</h2><div style="margin-left:20px;"><h3>18.5.1、总租户（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/position/tenantsum">http://ip:port/statsservice/api/index/data/position/tenantsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总租户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.5.2、总应用数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/position/appsum">http://ip:port/statsservice/api/index/data/position/appsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>总租户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h2>18.6、告警子服务</h2><div style="margin-left:20px;"><h3>18.6.1、总告警次数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警总次数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/alarm/sum">http://ip:port/statsservice/api/index/data/alarm/sum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>告警总次数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.6.2、短信告警次数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>短信告警次数（汇总）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/alarm/smssum">http://ip:port/statsservice/api/index/data/alarm/smssum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>告警总次数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.6.3、邮件告警次数（汇总）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/alarm/emailsum">http://ip:port/statsservice/api/index/data/alarm/emailsum</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>告警总次数</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.6.4、总告警次数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/alarm/trend">http://ip:port/statsservice/api/index/data/alarm/trend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>告警总次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.6.5、短信告警次数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/alarm/smstrend">http://ip:port/statsservice/api/index/data/alarm/smstrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>告警总次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>18.6.6、邮件告警次数（趋势）</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警次数（趋势）</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><a href="http://ip:port/statsservice/api/index/data/alarm/emailtrend">http://ip:port/statsservice/api/index/data/alarm/emailtrend</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">starttime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>开始时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">endtime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>结束时间：yyyy/MM/dd</td>
+</tr>
+<tr>
+<td style="text-align: left;">group</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>分组统计: {day or month or year}</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "message": "ok",
+    "value":[{
+            "count": 2953,
+            "year":1,
+            "month":1,
+            "day":1
+    }]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">Integer</td>
+<td>告警总次数</td>
+</tr>
+<tr>
+<td style="text-align: left;">year</td>
+<td style="text-align: left;">Integer</td>
+<td>年</td>
+</tr>
+<tr>
+<td style="text-align: left;">month</td>
+<td style="text-align: left;">Integer</td>
+<td>月</td>
+</tr>
+<tr>
+<td style="text-align: left;">day</td>
+<td style="text-align: left;">Integer</td>
+<td>日</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div></div></body></html>

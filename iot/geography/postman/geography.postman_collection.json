@@ -1,0 +1,420 @@
+{
+	"info": {
+		"_postman_id": "4be10ab3-fc63-4a7f-bc2a-d610fedecd37",
+		"name": "geography",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "地理位置信息子服务",
+			"description": "地理位置信息子服务",
+			"item": [
+				{
+					"name": "国家管理",
+					"description": "",
+					"item": [
+						{
+							"name": "国家列表",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://192.168.3.8:8024/api/country/list?start=1&count=10",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"api",
+										"country",
+										"list"
+									],
+									"query": [
+										{
+											"key": "start",
+											"value": "1"
+										},
+										{
+											"key": "count",
+											"value": "10"
+										}
+									]
+								},
+								"description": "国家列表"
+							},
+							"response": []
+						},
+						{
+							"name": "国家添加",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"四川\",\r\n    \"code\": \"666\"\r\n}"
+								},
+								"url": {
+									"raw": "http://192.168.3.8:8024/api/country/add",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"api",
+										"country",
+										"add"
+									]
+								},
+								"description": "国家列表国家添加国家添加"
+							},
+							"response": []
+						},
+						{
+							"name": "国家修改",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\":\"5c778acbdc2ddd36f45de115\",\r\n    \"name\": \"大四川\",\r\n    \"code\": \"6666\",\r\n    \"regionCodes\":[\"xxxxxxxxxx\"] \r\n}"
+								},
+								"url": {
+									"raw": "http://192.168.3.8:8024/api/country/upd",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"api",
+										"country",
+										"upd"
+									]
+								},
+								"description": "国家修改\r\n"
+							},
+							"response": []
+						},
+						{
+							"name": "国家详情",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://192.168.3.8:8024/api/country/item?id=5c778b38dc2ddd36f45de116",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"api",
+										"country",
+										"item"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5c778b38dc2ddd36f45de116"
+										}
+									]
+								},
+								"description": "国家详情\r\n\r\n"
+							},
+							"response": []
+						},
+						{
+							"name": "国家删除",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://192.168.3.8:8024/api/country/del?id=5c778b38dc2ddd36f45de116",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"api",
+										"country",
+										"del"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "5c778b38dc2ddd36f45de116"
+										}
+									]
+								},
+								"description": "国家删除\r\n"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "行政区域",
+					"description": "",
+					"item": [
+						{
+							"name": "区域树",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "http://192.168.3.8:8024/api/region/children?countryId=5be398f1dc2ddd6816f1edf9",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"api",
+										"region",
+										"children"
+									],
+									"query": [
+										{
+											"key": "countryId",
+											"value": "5be398f1dc2ddd6816f1edf9"
+										}
+									]
+								},
+								"description": "区域树\r\n"
+							},
+							"response": []
+						},
+						{
+							"name": "区域详情",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"disabled": true
+									},
+									{
+										"key": "countryId",
+										"value": "5be398f1dc2ddd6816f1edf9",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "http://192.168.3.8:8024/ip/decode?ip=222.209.69.232",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"ip",
+										"decode"
+									],
+									"query": [
+										{
+											"key": "ip",
+											"value": "222.209.69.232"
+										}
+									]
+								},
+								"description": "区域详情"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "位置解析",
+					"description": "",
+					"item": [
+						{
+							"name": "ip解析",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"disabled": true
+									},
+									{
+										"key": "countryId",
+										"value": "5be398f1dc2ddd6816f1edf9",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "http://192.168.3.8:8024/ip/decode?ip=222.209.69.232",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"ip",
+										"decode"
+									],
+									"query": [
+										{
+											"key": "ip",
+											"value": "222.209.69.232"
+										}
+									]
+								},
+								"description": "ip解析"
+							},
+							"response": []
+						},
+						{
+							"name": "经纬度转位置",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"disabled": true
+									},
+									{
+										"key": "countryId",
+										"value": "5be398f1dc2ddd6816f1edf9",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "http://192.168.3.8:8024/address/decode?lng=104.06792346330406&lat=30.679942845419564",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"address",
+										"decode"
+									],
+									"query": [
+										{
+											"key": "lng",
+											"value": "104.06792346330406"
+										},
+										{
+											"key": "lat",
+											"value": "30.679942845419564"
+										}
+									]
+								},
+								"description": "经纬度转位置"
+							},
+							"response": []
+						},
+						{
+							"name": "位置转经纬度",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded",
+										"disabled": true
+									},
+									{
+										"key": "countryId",
+										"value": "5be398f1dc2ddd6816f1edf9",
+										"disabled": true
+									}
+								],
+								"body": {
+									"mode": "file",
+									"file": {}
+								},
+								"url": {
+									"raw": "http://192.168.3.8:8024/address/encode?address=成都",
+									"protocol": "http",
+									"host": [
+										"192",
+										"168",
+										"3",
+										"8"
+									],
+									"port": "8024",
+									"path": [
+										"address",
+										"encode"
+									],
+									"query": [
+										{
+											"key": "address",
+											"value": "成都"
+										}
+									]
+								},
+								"description": "位置转经纬度"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			]
+		}
+	]
+}

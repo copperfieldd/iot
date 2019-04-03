@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+</head>
+<body>
+<script th:inline="javascript">
+    //调用微信JS api 支付
+    function jsApiCall() {
+        WeixinJSBridge.invoke(
+            'getBrandWCPayRequest',
+            [[${data}]],
+            function (res) {
+                //支付成功
+                if (res.err_msg == "get_brand_wcpay_request:ok") {
+                    window.location.href = [[${redirectUrl}]] + "?result=1";
+                } else {
+                    window.location.href = [[${redirectUrl}]] + "?result=-1";
+                }
+            }
+        )
+    }
+
+    function callpay() {
+        if (typeof WeixinJSBridge == "undefined") {
+            if (document.addEventListener) {
+                document.addEventListener('WeixinJSBridgeReady', jsApiCall, false);
+            } else if (document.attachEvent) {
+                document.attachEvent('WeixinJSBridgeReady', jsApiCall);
+                document.attachEvent('onWeixinJSBridgeReady', jsApiCall);
+            }
+        } else {
+            jsApiCall();
+        }
+    }
+
+    callpay();
+</script>
+</body>
+</html>

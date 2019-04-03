@@ -1,0 +1,21 @@
+server:
+  port: 8026
+spring:
+  profiles:
+    active: dev
+  application:
+    name: payservice
+  cloud:
+    config:
+      profile: cloud
+      label: master
+      discovery:
+        enabled: true
+        service-id: config
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://admin:admin@192.168.3.8:8031/eureka
+

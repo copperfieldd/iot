@@ -1,0 +1,5786 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、设备端接入</h1><div style="margin-left:20px;"><h2>1.1、MQTT</h2><div style="margin-left:20px;"><h3>1.1.1、设备连接</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>使用MQTT协议的设备，接入设备子服务的第一步操作就是发送MQTT连接请求。</li>
+</ul>
+<p><strong>请求地址：</strong> </p>
+<ul>
+<li><code>IP:  47.94.154.65</code></li>
+<li><code>Port: 25003</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>MQTT Connect</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">userName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>由设备子服务分配的设备Token</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>无</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<p>请参考MQTT协议返回说明。</p>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h3>1.1.2、设备数据上报</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>上报设备数据。</li>
+</ul>
+<p><strong>请求Topic ：</strong> </p>
+<ul>
+<li><code>/deviceservice/device/telemetry</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>MQTT Publish</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">payload</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;"></td>
+<td>设备数据，数据格式为{"key1":"value1", "key2":"value2"}</td>
+</tr>
+</tbody>
+</table></div><h3>1.1.3、设备属性上报</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>上报设备数据。</li>
+</ul>
+<p><strong>请求Topic ：</strong> </p>
+<ul>
+<li><code>/deviceservice/device/attributes</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>MQTT Publish</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">payload</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;"></td>
+<td>属性数据，数据格式为{"key1":"value1", "key2":"value2"}</td>
+</tr>
+</tbody>
+</table></div><h3>1.1.4、设备订阅属性</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备订阅属性。</li>
+</ul>
+<p><strong>请求Topic ：</strong> </p>
+<ul>
+<li><code>/deviceservice/devices/attributes/response/+</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>MQTT Subscribe{订阅消息}</p>
+<p><strong>备注</strong> </p>
+</li>
+<li>-当设备订阅属性数据的消息后，在设备发布获取属性的消息时，设备就可以获取对应的属性数据</li>
+</ul></div><h3>1.1.5、设备获取属性</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备获取属性。</li>
+</ul>
+<p><strong>请求Topic ：</strong> </p>
+<ul>
+<li><code>/deviceservice/devices/attributes/request/{id}</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>MQTT Publish （发布消息）</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">payload</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>需要获取属性的key，多个用逗号隔开</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>-当设备订阅属性数据的消息后，在设备发布获取属性的消息时，设备就可以获取对应的属性数据</li>
+</ul></div></div><h2>1.2、HTTP</h2><div style="margin-left:20px;"><h3>1.2.1、数据上报</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>数据上报</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/{deviceToken}/telemetry</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+  "key1": "value1",
+  "key2":"value2"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">deviceToken</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备token</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0,
+    "message": "请求成功！！"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p></div><h3>1.2.2、属性上报</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>属性上报</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/{deviceToken}/attribute</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+  "key1": "value1",
+  "key2":"value2"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">deviceToken</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备token</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0,
+    "message": "请求成功！！"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table>
+<p>**</p></div><h3>1.2.3、获取属性</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>获取属性</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/{deviceToken}/attribute</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET
+<strong>参数：</strong> </li>
+</ul>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">keys</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备属性key，多个用逗号分隔</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0,
+    "message": "请求成功！！",
+    "value": {
+        "key1": "xxxxxx",
+        "key2": "xxxxxx"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>接口状态，0：正常，1：异常</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">json</td>
+<td>属性数据</td>
+</tr>
+</tbody>
+</table>
+<p>**</p></div></div><h2>1.3、CoAP</h2><div style="margin-left:20px;"></div><h2>1.4、TCP</h2><div style="margin-left:20px;"><h3>1.4.1、数据交互</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>数据交互</li>
+</ul>
+<p><strong>请求地址：</strong> </p>
+<ul>
+<li><code>IP:  47.94.154.65</code></li>
+<li><code>Port: 28003</code></li>
+</ul>
+<h2>协议说明</h2>
+<h3><strong>设备登录</strong></h3>
+<p>通过tcp连接上来的设备在上报数据之前必须先登录。数据包的格式为：</p>
+<p>1：数据包头固定为FFEE。</p>
+<p>2：固定包头后面紧跟 LV（Length-Value）格式的数据表示设备token，注意这里没有Tag。</p>
+<p>3：Length部分用一个字节或者三个字节组成，如果Length部分第一个字节不是FF。则Length部分只有一个字节。可表示0-254，若Length部分的第一个字节是FF，则Length部分占3个字节，其中Length部分的第2和第3字节组合起来可以表示0~65535，即最大64K。</p>
+<h3><strong>上报/获取 数据</strong></h3>
+<p>1：数据包头固定为FFEE。</p>
+<p>2：包头后跟一个字节表示上报数据类型，FF为属性数据。EE为业务数据，FE为获取属性数据。</p>
+<p>3：除包头和属性数据这三个字节外，所有其他字段均采用<strong>SIMPLE-TLV</strong>规范进行编码。</p>
+<p><strong>关于SIMPLE-TLV（Tag-Length-Value）格式的编码规范说明如下：</strong>
+a：每个SIMPLE-TLV格式描述的字段由3部分组成：标签（Tag）、值长度（Length）、值（Value）。
+b：Tag部分固定为1字节长度，其中0和255（FF）保留，即Tag部分可以表示1~254共254个标签。
+c：值长度（Length）部分可以是1个字节或者3个字节长度：
+d：若Length部分的第一个字节不是FF，则Length部分占1字节，可以表示0~254。
+e：若Length部分的第一个字节是FF，则Length部分占3个字节，其中Length部分的第2和第3字节组合起来可以表示0~65535，即最大64K。
+f：如果值长度为0，则没有值（Value）。
+（当数据类型是获取属性数据时，SIMPLE-TLV（Tag-Length-Value）的tag部门就是需要获取的对应的key的属性，length长度为0，value为空）</p></div><h3>1.4.2、数据上报</h3><div style="margin-left:30px;"><p>数据上报
+详见TCP数据交互showdoc
+<a href="https://www.showdoc.cc/58996221118691?page_id=1082629471890774">https://www.showdoc.cc/58996221118691?page_id=1082629471890774</a></p></div><h3>1.4.3、属性上报</h3><div style="margin-left:30px;"><p>属性上报
+详见TCP数据交互showdoc
+<a href="https://www.showdoc.cc/58996221118691?page_id=1082629471890774">https://www.showdoc.cc/58996221118691?page_id=1082629471890774</a></p></div><h3>1.4.4、获取属性</h3><div style="margin-left:30px;"><p>获取属性
+详见TCP数据交互showdoc
+<a href="https://www.showdoc.cc/58996221118691?page_id=1082629471890774">https://www.showdoc.cc/58996221118691?page_id=1082629471890774</a></p></div></div><h2>1.5、UDP</h2><div style="margin-left:20px;"><h3>1.5.1、数据交互</h3><div style="margin-left:30px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>数据交互</li>
+</ul>
+<p><strong>请求地址：</strong> </p>
+<ul>
+<li><code>IP:  47.94.154.65</code></li>
+<li><code>Port: 28002</code></li>
+</ul>
+<h2>协议说明</h2>
+<p><strong>数据包头、数据类型、认证数据</strong></p>
+<p>通过udp连接上来的设备数据包的格式为：</p>
+<p>1：数据包头固定为FFEE。</p>
+<p>2：包头后跟一个字节表示上报数据类型，FF为属性数据。EE为业务数据，FE为获取对应的属性数据。</p>
+<p>3：类型后面紧跟 LV（Length-Value）格式的数据表示设备token。</p>
+<p>4：Length部分用一个字节或者三个字节组成，如果Length部分第一个字节不是FF。则Length部分只有一个字节。可表示0-254，若Length部分的第一个字节是FF，则Length部分占3个字节，其中Length部分的第2和第3字节组合起来可以表示0~65535，即最大64K。</p>
+<p><strong>业务数据</strong></p>
+<p>5：除包头、数据类型、设备token数据外，所有后续的其他数据字段均采用<strong>SIMPLE-TLV</strong>规范进行编码。</p>
+<p><strong>关于SIMPLE-TLV（Tag-Length-Value）格式的编码规范说明如下：</strong>
+a：每个SIMPLE-TLV格式描述的字段由3部分组成：标签（Tag）、值长度（Length）、值（Value）。
+b：Tag部分固定为1字节长度，其中0和255（FF）保留，即Tag部分可以表示1~254共254个标签。
+c：值长度（Length）部分可以是1个字节或者3个字节长度：
+d：若Length部分的第一个字节不是FF，则Length部分占1字节，可以表示0~254。
+e：若Length部分的第一个字节是FF，则Length部分占3个字节，其中Length部分的第2和第3字节组合起来可以表示0~65535，即最大64K。
+f：如果值长度为0，则没有值（Value）。</p>
+<p><strong>关于设备获取属性数据</strong>
+当数据类型是获取属性数据时，SIMPLE-TLV（Tag-Length-Value）的tag部分就是需要获取的对应的key的属性，length长度为0，value为空。</p></div><h3>1.5.2、数据上报</h3><div style="margin-left:30px;"><p>数据上报
+详见UDP数据交互showdoc
+<a href="https://www.showdoc.cc/58996221118691?page_id=1082629270625537">https://www.showdoc.cc/58996221118691?page_id=1082629270625537</a></p></div><h3>1.5.3、属性上报</h3><div style="margin-left:30px;"><p>属性上报
+详见UDP数据交互showdoc
+<a href="https://www.showdoc.cc/58996221118691?page_id=1082629270625537">https://www.showdoc.cc/58996221118691?page_id=1082629270625537</a></p></div><h3>1.5.4、获取属性</h3><div style="margin-left:30px;"><p>获取属性
+详见UDP数据交互showdoc
+<a href="https://www.showdoc.cc/58996221118691?page_id=1082629270625537">https://www.showdoc.cc/58996221118691?page_id=1082629270625537</a></p></div></div></div><h1>2、设备管理</h1><div style="margin-left:20px;"><h2>2.1、添加设备</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加设备</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://localhost:8030/deviceservice/api/device/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "deviceSettingId":"db7199ec-c2f7-401c-a825-e2d74d8a7da9",
+    "name":"斯多",
+    "token":"WO4DKeJvevYZDs8sdfadweYvYRa",
+    "desc":"desc"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">token</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>随机token</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>版本号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca",
+        "deviceSettingName": "del设备",
+        "deviceModelName": "村长的类别",
+        "deviceModelId": "76e36bd3-3765-4d70-9dfc-332f793ebd68",
+        "name": "村长的设备",
+        "deviceTypeName": "测试一级类别_01",
+        "id": "6b916c08-8982-4bcf-a62e-b433522eabd4",
+        "deviceSettingId": "a750af48-41de-4503-bf65-646fe63a65af",
+        "username": "admin",
+        "desc": "没有"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">string</td>
+<td>设备配置名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">string</td>
+<td>设备配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelName</td>
+<td style="text-align: left;">string</td>
+<td>设备型号名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelId</td>
+<td style="text-align: left;">string</td>
+<td>设备型号id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">deivceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+</tbody>
+</table></div><h2>2.2、修改设备</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改设备</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"8a221020-d833-11e8-be64-3b07558e06bd",
+    "deviceSettingId":"104ec6b5-93da-477d-b3db-fac1e3951947",
+    "name":"光头强的设备",
+    "desc":"desc",
+    "version":"1.0.1"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>版本号</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>2.3、删除设备</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除设备</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ids</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>多个用逗号隔开</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>2.4、设备列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>设备配置名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>协议类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>租户名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 1,
+        "value": [
+            {
+                "deviceSettingName": "设备",
+                "deviceSettingId": "2d387d51-1497-4b7e-916f-f61f65869b18",
+                "protocol": "HTTP",
+                "tenantName": "长虹",
+                "createTime": "2018/10/30 10:17:11",
+                "name": "长虹电视",
+                "updateTime": "2018/10/30 10:17:11",
+                "id": "894a1de6-e359-4e49-a3ae-681ee74d9787",
+                "desc": "desc"
+            }
+        ]
+    }
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>资产名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">String</td>
+<td>设备配置名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">String</td>
+<td>设备配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">String</td>
+<td>协议</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantName</td>
+<td style="text-align: left;">String</td>
+<td>租户</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">String</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">String</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">String</td>
+<td>设备类型id</td>
+</tr>
+</tbody>
+</table></div><h2>2.5、设备详情基础信息</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备详情基础信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/item/basic</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceToken</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备token</td>
+</tr>
+</tbody>
+</table>
+<p>（deviceToken和id二选一，至少传一个）</p>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca",
+        "deviceSettingName": "del设备",
+        "deviceModelName": "村长的类别",
+        "deviceModelId": "76e36bd3-3765-4d70-9dfc-332f793ebd68",
+        "name": "村长的设备",
+        "deviceTypeName": "测试一级类别_01",
+        "id": "6b916c08-8982-4bcf-a62e-b433522eabd4",
+        "deviceSettingId": "a750af48-41de-4503-bf65-646fe63a65af",
+        "username": "admin",
+        "desc": "没有"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">string</td>
+<td>设备配置名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">string</td>
+<td>设备配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelName</td>
+<td style="text-align: left;">string</td>
+<td>设备型号名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelId</td>
+<td style="text-align: left;">string</td>
+<td>设备型号id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">deivceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+</tbody>
+</table></div><h2>2.6、设备详情认证信息</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备详情认证信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/item/authorization</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+  "status": 0,
+  "value": {
+    "type": "认证类型",
+    "token":"token"
+  }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">stirn</td>
+<td>认证类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">token</td>
+<td style="text-align: left;">string</td>
+<td>token</td>
+</tr>
+</tbody>
+</table></div><h2>2.7、设备详情事件信息</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备详情事件信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/item/event</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>设备id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+  "status": 0,
+  "value": {
+    "totalCount": 7,
+    "value": [
+      {
+        "id": "5b286119757c7e1a542f1d95",
+        "main": "主体",
+        "event": "事件",
+        "createTime": "2018/06/19 09:47:49"
+      }
+    ]
+  }
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">String</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">main</td>
+<td style="text-align: left;">String</td>
+<td>主体</td>
+</tr>
+<tr>
+<td style="text-align: left;">event</td>
+<td style="text-align: left;">String</td>
+<td>事件</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>2.8、设备详情数据信息详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备详情数据信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/item/data/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>起始索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>搜索起始时间、</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": [
+        {
+            "type": 1,
+            "value": "564559754458327A44584F713662313731694E73",
+            "key": "88"
+        },
+        {
+            "type": 1,
+            "value": "564559754458327A44584F713662313731694E73",
+            "key": "69"
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">key</td>
+<td style="text-align: left;">sttring</td>
+<td>数据key</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">string</td>
+<td>数据value</td>
+</tr>
+</tbody>
+</table></div><h2>2.9、设备详情数据信息</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备详情数据信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/item/data/</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备id</td>
+</tr>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>起始索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>搜索起始时间、</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 6,
+        "value": [
+            {
+                "id": "0e0623b9-e58c-47fb-b373-b8955173c468",
+                "value": [
+                    {
+                        "type": 1,
+                        "value": "564559754458327A44584F713662313731694E73",
+                        "key": "88"
+                    },
+                    {
+                        "type": 1,
+                        "value": "564559754458327A44584F713662313731694E73",
+                        "key": "69"
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">key</td>
+<td style="text-align: left;">sttring</td>
+<td>数据key</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">string</td>
+<td>数据value</td>
+</tr>
+</tbody>
+</table></div><h2>2.10、随机token</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>随机token</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://xx.com/api/device/token</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>GET </p>
+<p><strong>返回示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "value": "token"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">stirng</td>
+<td>token</td>
+</tr>
+</tbody>
+</table></div><h2>2.11、token导出</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>token导出</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/exportexcle</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">excleType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>excle版本1为2003版本，2为2007</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>设备配置名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>协议类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>租户名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p>搜索字段以后加</p>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>2.12、重置token</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>重置token</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/refresh/token</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">token</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备token</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": "LvD3YJ4wODiogE4DHVRP"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">string</td>
+<td>token</td>
+</tr>
+</tbody>
+</table></div><h2>2.13、文件上传</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>文件上传</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/file/upload</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">file</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">File</td>
+<td>文件</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>2.14、上传文件预览</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>预览</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/preview</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>文件id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+  "status": 0,
+  "value": {
+    "totalCount": 1,
+    "value": [
+      {
+        "deviceSettingName": "反反复复",
+        "name": "qwer1",
+        "deviceSettingId": "fa09b33d-fc51-452e-9808-e4917b47708e",
+        "username": "admin",
+        "desc": "111.0",
+        "token": "5446435468gfhgj"
+      }
+    ]
+  }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">String</td>
+<td>设备配置</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">String</td>
+<td>配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">String</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">token</td>
+<td style="text-align: left;">String</td>
+<td>设备token</td>
+</tr>
+</tbody>
+</table></div><h2>2.15、导入记录列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>导入记录列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/importrecord/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>起始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 4,
+        "value": [
+            {
+                "createTime": "2018/12/03 15:06:02",
+                "name": "测试导入hahahha",
+                "id": "6e12a3e4-eaa0-4ad6-b1a5-a19380fe4757",
+                "username": "admin",
+                "desc": "随便描述",
+                "status": "成功"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">String</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">String</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">String</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>2.16、删除导入记录</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除导入记录</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/importrecord/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>导入记录id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>2.17、批量导入</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>批量导入</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/importexcel</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>文件id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "id": "1b8eae53-11dc-4bb3-8448-13d0d213a116",
+        "deviceIds": [
+            "08b6780b-eec3-4c24-873b-17fb60e12350",
+            "bdf142d2-c442-4319-8e64-6251a721d288"
+        ],
+        "name": "测试导入hahahha",
+        "desc": "随便描述",
+        "userId": "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b",
+        "fileId": "5c04c99f3a5557225c51c9e0",
+        "createTime": 1543818799260
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceIds</td>
+<td style="text-align: left;">array</td>
+<td>成功导入设备的id集合</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>导入记录名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">userId</td>
+<td style="text-align: left;">string</td>
+<td>导入用户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">fileId</td>
+<td style="text-align: left;">string</td>
+<td>导入文件id</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">long</td>
+<td>导入时间</td>
+</tr>
+</tbody>
+</table></div><h2>2.18、导入记录详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>导入记录详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://localhost:8030/deviceservice/api/device/importrecord/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>起始索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">stirng</td>
+<td>设备配置</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "name": "测试导入hahahha",
+        "totalCount": 2,
+        "value": [
+            {
+                "deviceSettingName": "测试的类型",
+                "deviceSettingId": "e43d486e-83b0-4c6c-9c39-8f330596e9ea",
+                "createTime": "2018/12/03 15:06:02",
+                "name": "测试名称",
+                "id": "3356e7d2-24d8-4331-86c6-7b52d2895b70",
+                "desc": "你是一个大坏蛋oh ",
+                "status": "成功"
+            }
+        ],
+        "username": "admin",
+        "desc": "随便描述"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">stirng</td>
+<td>记录名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">boolen</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">srring</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">-</td>
+<td style="text-align: left;">-</td>
+<td>-</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>设备名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingName</td>
+<td style="text-align: left;">string</td>
+<td>设备配置</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceSettingId</td>
+<td style="text-align: left;">string</td>
+<td>设备配置id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">string</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>导入时间</td>
+</tr>
+</tbody>
+</table></div><h2>2.19、导出 导入记录</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>导出导入记录</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/exportrecord</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table></div><h2>2.20、设备数据导出</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>导入记录列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/data/exportexcle</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备id</td>
+</tr>
+<tr>
+<td style="text-align: left;">excleType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>excle版本 1为2003 ，2为2007</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>搜索起始时间、</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table></div></div><h1>3、配置管理</h1><div style="margin-left:20px;"><h2>3.1、设备配置列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备配置列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicesetting/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>1:为启用 2：为丢失</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>设备型号名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 11,
+        "value": [
+            {
+                "protocol": 4,
+                "createTime": "2019/01/07 16:00:48",
+                "deviceModelName": "Bluetooth",
+                "name": "詹浪111",
+                "updateTime": "2019/01/07 17:00:44",
+                "id": "1976097c-b21e-42ad-9694-5adeb0053cae",
+                "username": "admin"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelName</td>
+<td style="text-align: left;">string</td>
+<td>设备型号名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">stirng</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">string</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">string</td>
+<td>状态</td>
+</tr>
+</tbody>
+</table></div><h2>3.2、添加设备配置</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加设备配置</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicesetting/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "deviceModelId":"xxxxxxxxxxxxxxxxxxxxxx",
+    "name":"电子设备",
+    "ruleIds":"e8119fcb-f043-6fbb-bd06-8e55073b5abc",
+    "adapterId":"755cdce0-d1eb-11e8-bc4b-3b07558e06bd",
+    "hardwareVersion":"11111",
+    "softwareVersion":"11231",
+    "protocol":"1",
+    "desc":{
+        "122":"258",
+        "258":"123"
+    }
+}   </code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">deviceModelId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备型号id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">ruleIds</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>规则id，用逗号拼接</td>
+</tr>
+<tr>
+<td style="text-align: left;">adapterId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>适配器id</td>
+</tr>
+<tr>
+<td style="text-align: left;">hardwareVersion</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>硬件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">softwareVersion</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>软件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">map</td>
+<td>数据描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>传输协议，（1，2，3，4，5分别对应 MQTT ,HTTP, CAOP, TCP, UDP）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "catagory": {
+            "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca",
+            "deviceModelName": "测试二级类别_01",
+            "deviceModelId": "a883f61b-ec1d-4485-8be1-58d238852e76",
+            "deviceTypeName": "测试一级类别_01"
+        },
+        "protocol": 5,
+        "adapter": {
+            "name": "SystemAdpter",
+            "id": "907f764b-9ab3-4d40-929a-0e56c82ce2e7"
+        },
+        "name": "测试1111",
+        "rule": [
+            {
+                "name": "测试规则11",
+                "id": "cade046a-27cc-41b9-8ff8-a0e7cf32fecd",
+                "desc": null
+            },
+            {
+                "name": "11111111",
+                "id": "6e813b20-3a22-4582-a848-55d5ae15a72b",
+                "desc": "22222222"
+            }
+        ],
+        "id": "2f46e2ce-4d38-468c-94bc-ea136f60ad57",
+        "desc": {},
+        "status": "USING"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">string</td>
+<td>详情信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">rule</td>
+<td style="text-align: left;">list</td>
+<td>规则</td>
+</tr>
+<tr>
+<td style="text-align: left;">adapter</td>
+<td style="text-align: left;">stirng</td>
+<td>适配器</td>
+</tr>
+<tr>
+<td style="text-align: left;">softwareVersion</td>
+<td style="text-align: left;">stirng</td>
+<td>软件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">hardwareVersion</td>
+<td style="text-align: left;">string</td>
+<td>硬件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">string</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>数据描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">catagory</td>
+<td style="text-align: left;">json</td>
+<td>类别信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelName</td>
+<td style="text-align: left;">string</td>
+<td>设备型号名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelId</td>
+<td style="text-align: left;">string</td>
+<td>设备型号id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+</tbody>
+</table></div><h2>3.3、设备配置详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备配置详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicesetting/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "catagory": {
+            "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca",
+            "deviceModelName": "测试二级类别_01",
+            "deviceModelId": null,
+            "deviceTypeName": "测试一级类别_01"
+        },
+        "protocol": 5,
+        "adapter": {
+            "name": "SystemAdpter",
+            "id": "907f764b-9ab3-4d40-929a-0e56c82ce2e7"
+        },
+        "name": "测试1111",
+        "rule": [
+            {
+                "name": "测试规则11",
+                "id": "cade046a-27cc-41b9-8ff8-a0e7cf32fecd",
+                "desc": null
+            },
+            {
+                "name": "11111111",
+                "id": "6e813b20-3a22-4582-a848-55d5ae15a72b",
+                "desc": "22222222"
+            }
+        ],
+        "id": "2f46e2ce-4d38-468c-94bc-ea136f60ad57",
+        "desc": {},
+        "status": "USING"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">rule</td>
+<td style="text-align: left;">list</td>
+<td>规则</td>
+</tr>
+<tr>
+<td style="text-align: left;">adapter</td>
+<td style="text-align: left;">stirng</td>
+<td>适配器</td>
+</tr>
+<tr>
+<td style="text-align: left;">softwareVersion</td>
+<td style="text-align: left;">stirng</td>
+<td>软件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">hardwareVersion</td>
+<td style="text-align: left;">string</td>
+<td>硬件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">string</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>数据描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">catagory</td>
+<td style="text-align: left;">json</td>
+<td>类别信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelName</td>
+<td style="text-align: left;">string</td>
+<td>设备型号名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelId</td>
+<td style="text-align: left;">string</td>
+<td>设备型号id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+</tbody>
+</table></div><h2>3.4、设备配置下拉列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备配置下拉列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicesetting/pulldown/list</code></li>
+</ul>
+</li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 2,
+        "value": [
+            {
+                "name": "设备",
+                "id": "55cd1885-9e10-423b-bb0d-6861231130ac"
+            },
+            {
+                "name": "电子设备",
+                "id": "51e4b6c0-c447-4ed9-9882-a86b9fdffe9e"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table></div><h2>3.5、删除设备配置</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除设备类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicesetting/del</code></li>
+</ul>
+<p><strong>请求方式：</strong>
+-GET </p>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>3.6、修改设备配置</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改设备配置</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicesetting/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxxxxx",
+    "deviceModelId":"xxxxxxxxx",
+    "name":"电子设备",
+    "ruleIds":"e8119fcb-f043-6fbb-bd06-8e55073b5abc",
+    "adapterId":"755cdce0-d1eb-11e8-bc4b-3b07558e06bd",
+    "hardwareVersion":"11111",
+    "softwareVersion":"11231",
+    "desc":{
+        "122":"258",
+        "258":"123"
+    }
+}   </code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceModelId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备型号id</td>
+</tr>
+<tr>
+<td style="text-align: left;">ruleIds</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>规则id，用逗号拼接</td>
+</tr>
+<tr>
+<td style="text-align: left;">adapterId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>适配器id</td>
+</tr>
+<tr>
+<td style="text-align: left;">hardwareVersion</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>硬件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">softwareVersion</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>软件版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">map</td>
+<td>数据描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div></div><h1>4、适配器管理</h1><div style="margin-left:20px;"><h2>4.1、适配器列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>适配器列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/adapter/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>1为启用，2为丢失</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>所属协议</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 1,
+        "value": [
+            {
+                "protocol": "dfddddddddddddddddddddddd",
+                "createTime": "2018/11/07 14:45:45",
+                "name": "bbbbbbbbbbbbbbbbbbb",
+                "updateTime": "2018/11/07 14:45:45",
+                "id": "e9292e70-c2a0-4fcf-a0b9-ae35ce56a373",
+                "version": "1.0.0",
+                "status": "可用",
+                "username": "admin"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>网关名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">int</td>
+<td>网关数量</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>数据返回状态，0为成功，1为失败</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">string</td>
+<td>添加人</td>
+</tr>
+</tbody>
+</table></div><h2>4.2、适配器下拉列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>适配器列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/adapter/pulldown/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>0为添加，1为选择</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 3,
+        "value": [
+            {
+                "name": "SystemAdpter",
+                "id": "4dfddd30-cdf3-11e8-831e-3b07558e06bd",
+                "clazz":"xxxxxxx"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">clazz</td>
+<td style="text-align: left;">string</td>
+<td>全类名</td>
+</tr>
+</tbody>
+</table></div><h2>4.3、增加适配器</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>增加适配器</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/adapter/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+}</code></pre></table>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>4.4、修改适配器</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改适配器</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/adapter/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+}</code></pre></table>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>4.5、适配器详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>适配器详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/adapter/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0,
+    "value": {
+        "protocol": "HTTP",
+        "deletedFlag": false,
+        "name": "SystemAdpter",
+        "id": "435f8e00-d1bd-11e8-af39-3b07558e06bd",
+        "version": "1.0",
+        "passFlag": false,
+        "desc": "没有详情"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">stirng</td>
+<td>协议</td>
+</tr>
+<tr>
+<td style="text-align: left;">deletedFlag</td>
+<td style="text-align: left;">boolen</td>
+<td>是否删除</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">srring</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">passFlag</td>
+<td style="text-align: left;">string</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+</tbody>
+</table></div><h2>4.6、删除适配器</h2><div style="margin-left:20px;"><p>欢迎使用ShowDoc！</p>
+<p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除适配器</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/adapter/del</code></li>
+</ul>
+<p><strong>请求方式：</strong>
+-GET </p>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div></div><h1>5、插件管理</h1><div style="margin-left:20px;"><h2>5.1、插件列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>插件列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/plugin/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>1:为启用 2：为丢失</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 4,
+        "value": [
+            {
+                "createTime": "2018/10/29 19:14:19",
+                "name": "System Telemetry Plugin",
+                "updateTime": "2018/10/29 19:14:19",
+                "id": "4645b7ec-ef08-4ff6-b997-11bab418bcb8",
+                "version": "1.0.0",
+                "status": "可用",
+                "username": ""
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">String</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">String</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">String</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">stirng</td>
+<td>更新时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>5.2、添加插件</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加插件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/plugin/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "modelId":"32089ac6-4b3a-4152-9196-4b1fe8f9fda1",
+    "name":"测试百特云",
+    "desc":"描述",
+    "config": {
+        "protocol":"HTTP",
+        "host":"127.0.0.1",
+        "port":8080,
+        "basePath":"/api/test",
+        "userName":"admin",
+        "password":"admin",
+        "headers":[
+            {
+                "key":"key",
+                "value":"value"
+            },
+            {
+                "key":"key",
+                "value":"value" 
+            }
+            ]
+    }
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">modelId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>模板id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>插件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>协议</td>
+</tr>
+<tr>
+<td style="text-align: left;">host</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>ip地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">port</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">basePath</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>接口路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">userName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">headers</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>请求头</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0,
+    "value": {
+        "name": "测试",
+        "id": "dfaf7efb-7791-4d63-8d4a-1a6f6051c166",
+        "version": "1.0.0",
+        "config": {},
+        "clazz": "TelemetryStoragePlugin",
+        "desc": "测试"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">string</td>
+<td>详情</td>
+</tr>
+</tbody>
+</table></div><h2>5.3、添加插件下拉列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>插件下拉列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/plugin/pulldown/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 2,
+        "value": [
+            {
+                "name": "System Telemetry Plugin",
+                "id": "0c964632-5324-42f4-918f-d558e1c06a1b",
+                "version": "1.0.0",
+                "clazz": "TelemetryStoragePlugin"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">String</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">version</td>
+<td style="text-align: left;">String</td>
+<td>版本号</td>
+</tr>
+<tr>
+<td style="text-align: left;">clazz</td>
+<td style="text-align: left;">string</td>
+<td>插件全类名</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+</tbody>
+</table></div><h2>5.4、删除插件</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除插件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/plugin/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>逻辑单元id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>5.5、插件详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>插件详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/plugin/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "name": "测试百特云",
+        "id": "c5bc59a1-de62-42cd-b304-e3083f1d486e",
+        "version": "1.0.0",
+        "config": {
+            "basePath": "/api/test",
+            "headers": [
+                {
+                    "key": "key",
+                    "value": "value"
+                },
+                {
+                    "key": "key",
+                    "value": "value"
+                }
+            ],
+            "host": "127.0.0.1",
+            "password": "admin",
+            "port": 8080,
+            "protocol": "HTTP",
+            "userName": "admin"
+        },
+        "desc": "描述"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>插件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td>string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>协议</td>
+</tr>
+<tr>
+<td style="text-align: left;">host</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>ip地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">port</td>
+<td style="text-align: left;">是</td>
+<td>int</td>
+<td>端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">basePath</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>接口路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">userName</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">headers</td>
+<td style="text-align: left;">是</td>
+<td>string</td>
+<td>请求头</td>
+</tr>
+</tbody>
+</table></div><h2>5.6、修改插件</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改插件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/plugin/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>返回示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"c5bc59a1-de62-42cd-b304-e3083f1d486e",
+    "modelId":"32089ac6-4b3a-4152-9196-4b1fe8f9fda1",
+    "name":"测试百特云测试测试",
+    "desc":"描述",
+    "config": {
+        "protocol":"HTTP",
+        "host":"127.0.0.1",
+        "port":8080,
+        "basePath":"/api/test",
+        "userName":"admin",
+        "password":"admin",
+        "headers":[
+            {
+                "key":"key",
+                "value":"value"
+            },
+            {
+                "key":"key",
+                "value":"value" 
+            }
+            ]
+    }
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">modelId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>模板id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>插件名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">protocol</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>协议</td>
+</tr>
+<tr>
+<td style="text-align: left;">host</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>ip地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">port</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>端口</td>
+</tr>
+<tr>
+<td style="text-align: left;">basePath</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>接口路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">userName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>用户名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">headers</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>请求头</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "name": "测试百特云测试测试",
+        "id": "c5bc59a1-de62-42cd-b304-e3083f1d486e",
+        "version": "1.0.0",
+        "config": {
+            "basePath": "/api/test",
+            "headers": [
+                {
+                    "key": "key",
+                    "value": "value"
+                },
+                {
+                    "key": "key",
+                    "value": "value"
+                }
+            ],
+            "host": "127.0.0.1",
+            "password": "admin",
+            "port": 8080,
+            "protocol": "HTTP",
+            "userName": "admin"
+        },
+        "desc": "描述"
+    }
+}</code></pre></table>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">json</td>
+<td>插件详情</td>
+</tr>
+</tbody>
+</table></div></div><h1>6、规则管理</h1><div style="margin-left:20px;"><h2>6.1、过滤器下拉列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>过滤器下拉列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/component/pulldown/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "请求成功！！",
+    "value": {
+        "totalCount": 1,
+        "value": [
+            {
+                "name": "Message Type Filter",
+                "id": "eb4cf397-d352-4e39-823c-7a8207abb536",
+                "type": "FILTER",
+                "version": "1.0.0",
+                "clazz": "MsgTypeFilter"
+            }
+        ]
+    }
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1,
+    "message": "查询失败",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<p>|:-----  |:-----|-----|
+|status |int   |详见通用状态码对照表  |
+|totalCount|String|总记录数
+|name|String|名称|
+|version|String|版本号
+|type|String|类型
+|clazz|String|类名
+|options|array|过滤器下拉配置</p></div><h2>6.2、添加规则</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/rule/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name": "测试规则",
+    "pluginId": "c5bc59a1-de62-42cd-b304-e3083f1d486e",
+    "type":0,
+    "filters": [
+        {
+            "id":"eb4cf397-d352-4e39-823c-7a8207abb536",
+            "configuration":[
+                "xxxxxx",
+                "xxxxxx"
+                ]
+        }
+        ],
+    "desc":"描述"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>0为系统规则 1为设备类型规则</td>
+</tr>
+<tr>
+<td style="text-align: left;">filters</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">list</td>
+<td>过滤器集合</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>desc</td>
+</tr>
+<tr>
+<td style="text-align: left;">pluginId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">id</td>
+<td>插件id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+  "status": 0,
+  "value": {
+    "plugin": {
+      "name": "十二月插件",
+      "id": "5cda7b6f-ab56-4666-9eb8-57a0ec8f46ba"
+    },
+    "name": "测试规则",
+    "id": "9e5ceee1-c270-44cf-801d-d22aa366886a",
+    "filters": [
+      {
+        "clazz": "com.changhong.iot.deviceservice.server.extensions.core.filter.MsgTypeFilter",
+        "configuration": [
+          "POST_ATTRIBUTES",
+          "POST_TELEMETRY"
+        ],
+        "id": "eb4cf397-d352-4e39-823c-7a8207abb536",
+        "name": "Message Type Filter"
+      }
+    ],
+    "type": 0,
+    "desc": "测试"
+  }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">json</td>
+<td>详情，详见规则详情</td>
+</tr>
+</tbody>
+</table></div><h2>6.3、修改规则</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/rule/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name": "测试规则",
+    "pluginId": "847fbb8d-2419-45e2-aa2e-7642d38ba499",
+    "type":1,
+    "filters": [
+        {
+            "id":"eb4cf397-d352-4e39-823c-7a8207abb536",
+            "configuration":[
+                "aaa",
+                "xx222xxxx"
+                ]
+        }
+        ],
+    "desc":"描述",
+    "id":"6c25efc0-a7b2-4d4d-a65f-4919e131987b"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>类型 0为系统规则，1为设备类型规则</td>
+</tr>
+<tr>
+<td style="text-align: left;">filters</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>过滤器id集合,多个逗号隔开</td>
+</tr>
+<tr>
+<td style="text-align: left;">pluginId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>插件id</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>6.4、删除规则</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/rule/del </code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>6.5、规则列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>规则列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/rule/list </code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>1:为启用 2：为丢失</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 3,
+        "value": [
+            {
+                "createTime": "2018/10/29 19:14:19",
+                "name": "System Telemetry Rule",
+                "updateTime": "2018/10/29 19:14:19",
+                "id": "fb16f768-6b58-487d-8a26-4a24580667f1",
+                "type": "系统规则",
+                "username": "",
+                "desc": null,
+                "status": "在用"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">String</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">String</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">String</td>
+<td>状态</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>添加人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">stirng</td>
+<td>更新时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>6.6、规则详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>规则详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/rule/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "plugin": {
+            "name": "测试的数据",
+            "id": "c5b340a3-7d6a-40b2-8ea8-87cbc5847479"
+        },
+        "name": "阿斯顿发生 ",
+        "id": "9c89fc9b-1905-44cd-8b7d-beb9986196a9",
+        "filters": [
+            {
+                "clazz": "com.changhong.iot.deviceservice.server.extensions.core.filter.MsgTypeFilter",
+                "configuration": [
+                    "POST_ATTRIBUTES",
+                    "POST_TELEMETRY"
+                ],
+                "id": "eb4cf397-d352-4e39-823c-7a8207abb536",
+                "name": "Message Type Filter"
+            }
+        ],
+        "type": 0,
+        "desc": "asdf "
+    }
+}</code></pre></table>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;"><strong>返回参数说明</strong></th>
+<th style="text-align: left;">参数名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">plugin</td>
+<td style="text-align: left;">srring</td>
+<td>插件</td>
+</tr>
+<tr>
+<td style="text-align: left;">desc</td>
+<td style="text-align: left;">string</td>
+<td>描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">filters</td>
+<td style="text-align: left;">string</td>
+<td>过滤器</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>0为系统规则，1为租户规则</td>
+</tr>
+</tbody>
+</table></div><h2>6.7、过滤器配置信息</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>过滤器配置信息</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/component/config</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>过滤器id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": [
+        {
+            "name": "上报属性数据",
+            "value": "POST_ATTRIBUTES"
+        },
+        {
+            "name": "上报业务数据",
+            "value": "POST_TELEMETRY"
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table></div></div><h1>7、应用REST接口</h1><div style="margin-left:20px;"><h2>7.1、查询设备上报的完整业务数据</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询设备上报的完整业务数据</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/telemetry/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>搜索的开始时间 （格式例如：2018/12/12 09:51:10）</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>结束时间（格式例如：2018/12/12 09:51:10）</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备id，id和deviceToken二选一</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceToken</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备token，id和deviceToken二选一</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 2,
+        "value": [
+            {
+                "36": "46314649487255416C5751366644715A34436342",
+                "45": "46314649487255416C5751366644715A34436342",
+                "createTime": "2018/12/12 09:51:10"
+            },
+            {
+                "36": "46314649487255416C5751366644715A34436342",
+                "45": "46314649487255416C5751366644715A34436342",
+                "createTime": "2018/12/11 18:00:58"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总数</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">json</td>
+<td>数据</td>
+</tr>
+</tbody>
+</table></div><h2>7.2、查询设备上报的完整属性数据</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询设备上报的完整属性数据</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/device/attribute/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>搜索的开始时间 （格式例如：2018/12/12 09:51:10）</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>结束时间（格式例如：2018/12/12 09:51:10）</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备id，id和deviceToken二选一</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceToken</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>设备token，id和deviceToken二选一</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+    "value": {
+        "totalCount": 72,
+        "value": [
+            {
+                "createTime": "2018/12/13 18:02:23",
+                "value": "2",
+                "key": "1"
+            },
+            {
+                "createTime": "2018/12/13 17:42:12",
+                "value": "2",
+                "key": "1"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总记录数</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">json</td>
+<td>数据</td>
+</tr>
+</tbody>
+</table></div><h2>7.3、向指定设备下发属性数据</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>向指定设备下发属性数据</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/attributes/publish</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+  "ids": [
+    "xxxxx",
+    "xxx",
+    "xxx"
+  ],
+  "value": {
+    "key1": "value",
+    "key2": "value"
+  }
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ids</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">list</td>
+<td>设备id集合</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>设备属性</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div></div><h1>8、日志管理</h1><div style="margin-left:20px;"></div><h1>9、设备类型管理</h1><div style="margin-left:20px;"><h2>9.1、删除设备类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除设备类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicetype/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>9.2、修改设备类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改设备类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/deviceservice/api/devicetype/upd">http://ip:port/deviceservice/api/devicetype/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"d2928da8-36a5-4387-ba18-6d983bb59d67",
+    "name":"测试类别"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+    "value": {
+        "createTime": "2018/12/21 18:15:30",
+        "name": "测试类1别",
+        "id": "d04bc124-0e27-4e48-8f32-cede73a80c3e"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>9.3、设备类型列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备类型列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicetype/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>起始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+    "value": {
+        "totalCount": 2,
+        "value": [
+            {
+                "createTime": "2018/12/21 16:16:10",
+                "name": "测试类别",
+                "id": "478a5eab-72d1-4305-b8c0-66647c22cae5"
+            },
+            {
+                "createTime": "2018/12/21 12:01:50",
+                "name": "一级类别",
+                "id": "d2928da8-36a5-4387-ba18-6d983bb59d67"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总记录条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>9.4、设备型号详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备型号详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicemodel/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+    "value": {
+        "deviceTypeName": "测试一级类别_01",
+        "createTime": "2018/12/28 15:39:34",
+        "name": "测试二级类别_01",
+        "id": "a883f61b-ec1d-4485-8be1-58d238852e76",
+        "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+</tbody>
+</table></div><h2>9.5、设备类型详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备类型详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicetype/item</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+    "value": {
+        "createTime": "2018/12/21 16:16:10",
+        "name": "测试类别",
+        "id": "478a5eab-72d1-4305-b8c0-66647c22cae5"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>9.6、添加设备类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加设备类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/deviceservice/api/devicetype/add">http://ip:port/deviceservice/api/devicetype/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name":"一级类别"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0
+    "value": {
+        "createTime": "2018/12/21 18:15:30",
+        "name": "测试类1别",
+        "id": "d04bc124-0e27-4e48-8f32-cede73a80c3e"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>9.7、删除设备型号</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除设备型号</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/api/deviceservice/devicemodel/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>9.8、添加设备型号</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加设备型号</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/deviceservice/api/devicemodel/add">http://ip:port/deviceservice/api/devicemodel/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name":"测试别",
+    "deviceTypeId":"478a5eab-72d1-4305-b8c0-66647c22cae5"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">stirng</td>
+<td>设备类型id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "deviceTypeName": "测试一级类别_01",
+        "createTime": "2018/12/28 15:39:34",
+        "name": "测试二级类别_01",
+        "id": "a883f61b-ec1d-4485-8be1-58d238852e76",
+        "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+</tbody>
+</table></div><h2>9.9、设备型号列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>设备型号列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/deviceservice/api/devicemodel/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>起始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">firstId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>一级类别id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 22,
+        "value": [
+            {
+                "deviceTypeName": "类别8",
+                "createTime": "2018/12/25 15:12:34",
+                "name": "fd",
+                "id": "12d73c22-71a9-43c8-9a35-344b8e4429dc",
+                "username": "admin"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总记录条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">String</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">String</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">String</td>
+<td>设备类型名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">String</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>创建时间</td>
+</tr>
+</tbody>
+</table></div><h2>9.10、修改设备型号</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改设备型号</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/deviceservice/api/devicemodel/upd">http://ip:port/deviceservice/api/devicemodel/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"5cb1ef10-f136-4f69-a4b7-52f1ea512dbf",
+    "name":"测试类25别",
+    "deviceTypeId":"478a5eab-72d1-4305-b8c0-66647c22cae5"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">stirng</td>
+<td>设备类型id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "deviceTypeName": "测试一级类别_01",
+        "createTime": "2018/12/28 15:39:34",
+        "name": "测试二级类别_01",
+        "id": "a883f61b-ec1d-4485-8be1-58d238852e76",
+        "deviceTypeId": "b0c0702f-35cb-4776-bb7f-c2501057f3ca"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeId</td>
+<td style="text-align: left;">string</td>
+<td>设备类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">deviceTypeName</td>
+<td style="text-align: left;">string</td>
+<td>设备类型名称</td>
+</tr>
+</tbody>
+</table></div></div></body></html>

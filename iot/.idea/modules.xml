@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/alarmservice/alarmservice.iml" filepath="$PROJECT_DIR$/alarmservice/alarmservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/audit/audit.iml" filepath="$PROJECT_DIR$/audit/audit.iml" />
+      <module fileurl="file://$PROJECT_DIR$/config/config.iml" filepath="$PROJECT_DIR$/config/config.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eureka/eureka.iml" filepath="$PROJECT_DIR$/eureka/eureka.iml" />
+      <module fileurl="file://$PROJECT_DIR$/eoms/eureka (1) (com.bytecloud).iml" filepath="$PROJECT_DIR$/eoms/eureka (1) (com.bytecloud).iml" />
+      <module fileurl="file://$PROJECT_DIR$/geography/geography.iml" filepath="$PROJECT_DIR$/geography/geography.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/iot.iml" filepath="$PROJECT_DIR$/.idea/iot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/common/iot-common.iml" filepath="$PROJECT_DIR$/common/iot-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/stats/iot-stats.iml" filepath="$PROJECT_DIR$/stats/iot-stats.iml" />
+      <module fileurl="file://$PROJECT_DIR$/payservice/payservice.iml" filepath="$PROJECT_DIR$/payservice/payservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/permissionservice/permissionservice.iml" filepath="$PROJECT_DIR$/permissionservice/permissionservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/userservice/userservice.iml" filepath="$PROJECT_DIR$/userservice/userservice.iml" />
+      <module fileurl="file://$PROJECT_DIR$/zuul/zuul.iml" filepath="$PROJECT_DIR$/zuul/zuul.iml" />
+    </modules>
+  </component>
+</project>

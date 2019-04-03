@@ -1,0 +1,22 @@
+zuul:
+  semaphore:
+    max-semaphores: 2000
+ribbon:
+  ReadTimeout: 120000
+  SocketTimeout: 120000
+  ConnectTimeout: 120000
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: false # 禁用熔断器
+
+# feign client的配置
+feign:
+  hystrix:
+    enabled: false # 禁用feign的hystrix
+  client:
+    config:
+      default:
+        connectTimeout: 120000
+        readTimeout: 120000

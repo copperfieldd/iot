@@ -1,0 +1,3511 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、密码验证</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>权限验证</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/userservice/api//password/check</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">username</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>登录名</td>
+</tr>
+<tr>
+<td style="text-align: left;">password</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>密码</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>用户类型（平台管理员：0，租户管理员：1，应用管理员：3）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "username":"root",
+    "password":"cdaf7a",
+    "type":0
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<h2>apis</h2>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>当为0的时候，则证明该用户密码正确</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">string</td>
+<td>消息</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">object</td>
+<td>内容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h1>2、权限验证</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>权限验证</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/authenticity</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>用户id（默认当前用户）</td>
+</tr>
+<tr>
+<td style="text-align: left;">path</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>相对路径</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<h2>apis</h2>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>当为0的时候，则证明该用户具有此权限</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">string</td>
+<td>消息</td>
+</tr>
+<tr>
+<td style="text-align: left;">value</td>
+<td style="text-align: left;">object</td>
+<td>内容</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div><h1>3、接口管理</h1><div style="margin-left:20px;"><h2>3.1、添加接口</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加接口</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/interface/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>类型（0:私有，1:公开）</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>接口的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>具体路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>(serviceId和appId二选一)服务Id</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>(serviceId和appId二选一)应用id</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "serviceId":"5bd97cfb796ad001c4f86d94",
+    "type": 1,
+    "name": "接口测试3",
+    "dataUrl": "/api/test",
+    "remarks": "接口测试"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value": {
+        "id": "b728e205-7096-448e-af7e-4e262024b53f",
+        "tenantId": "87ff24d8-c037-4a56-942a-ee5c28ccfe7a",
+        "remarks": "接口测试",
+        "createTime": "2018-12-12 12:12:12",
+        "creatorName": "admin0391",
+        "creatorId": "ab939884-bc4a-4a4b-90ec-96a035952f63",
+        "updateTime": 1545384758380,
+        "deleteFlag": 0,
+        "name": "接口列表",
+        "type": 0,
+        "dataUrl": "/userservice/api/grade/list",
+        "serviceId": "0",
+        "appId": null
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型（公开，私有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">string</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">string</td>
+<td>租户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorId</td>
+<td style="text-align: left;">string</td>
+<td>创建人id</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deleteFlag</td>
+<td style="text-align: left;">int</td>
+<td>0：未删除，1：删除</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.2、修改接口</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改接口</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/api/api/interface/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>接口的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>接口的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>具体路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"5b7d1a6118077f3110b95edb",
+    "type": 1,
+    "name": "接口",
+    "dataUrl": "api/super",
+    "remarks": "这是一个测试接口"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.3、接口详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查看接口详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/interface/list?start=0&count=10&serviceId=5bd97cfb796ad001c4f86d94</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>接口的ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "id": "eaa20821f8f84701ae6696f8d533866e",
+        "name": "接口测试",
+        "type": 1,
+        "dataUrl": "/api/test",
+        "createTime": "2018-10-31 18:11:19",
+        "remarks": "接口测试",
+        "creatorName": "root",
+        "updateTime": "2018-10-31 18:11:19"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型（公开，私有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.4、删除接口</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除接口</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/api/interface/del?id=5b7d231418077f2698d19b98</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>接口的ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.5、接口列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>接口列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/interface/list?start=0&count=10&serviceId=5bd97cfb796ad001c4f86d94</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>要获取的开始下标</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>要获取多少条</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>api名称的模糊搜索</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>(serviceId和appId和tenantId三选一）服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>(serviceId和appId和tenantId三选一）应用id</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>(serviceId和appId和tenantId三选一）租户id</td>
+</tr>
+<tr>
+<td style="text-align: left;">filter</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>筛选</td>
+</tr>
+<tr>
+<td style="text-align: left;">sort</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>排序</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选filter：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">object</td>
+<td>创建时间范围</td>
+</tr>
+</tbody>
+</table>
+<p><strong>筛选createTime创建时间范围：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>sort排序：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>需要排序的字段</td>
+</tr>
+<tr>
+<td style="text-align: left;">order</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>asc或desc</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "pageNo": 1,
+        "pageSize": 10,
+        "totalCount": 5,
+        "totalPage": 1,
+        "list": [
+            {
+                "id": "eaa20821f8f84701ae6696f8d533866e",
+                "name": "接口测试",
+                "complexName":"服务名或应用名",
+                "type": 1,
+                "dataUrl": "/api/test",
+                "createTime": "2018-10-31 18:11:19",
+                "remarks": "接口测试",
+                "creatorName": "root",
+                "updateTime": "2018-10-31 18:11:19"
+            }
+        ],
+        "firstResult": 0
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型（公开，私有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">complexName</td>
+<td style="text-align: left;">string</td>
+<td>服务名或应用名</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.6、查询角色接口</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询角色的接口</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/interface/listByRole?id=5b7d257818077f29a034efbc</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>角色的ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "467e2e28f2dd4fc99bf6bea3083a053e",
+            "name": "接口测试2",
+            "type": 1,
+            "dataUrl": "/api/test",
+            "createTime": "2018-10-31 18:12:56",
+            "remarks": "接口测试",
+            "creatorName": "root",
+            "updateTime": "2018-10-31 18:12:56"
+        },
+        {
+            "id": "6c35be331000429bbf11f6eed8c7cc26",
+            "name": "接口测试3",
+            "complexName":"服务名或应用名",
+            "type": 1,
+            "dataUrl": "/api/test",
+            "createTime": "2018-10-31 18:13:01",
+            "remarks": "接口测试",
+            "creatorName": "root",
+            "updateTime": "2018-10-31 18:13:01"
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型（公开，私有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">complexName</td>
+<td style="text-align: left;">string</td>
+<td>服务名或应用名</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.7、查询租户的接口</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询租户的接口</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/interface/listByTenant?id=5bd2743018077f2c205cf26b</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>租户id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "467e2e28f2dd4fc99bf6bea3083a053e",
+            "name": "接口测试2",
+            "complexName":"服务名或应用名",
+            "type": 1,
+            "dataUrl": "/api/test",
+            "createTime": "2018-10-31 18:12:56",
+            "remarks": "接口测试",
+            "creatorName": "root",
+            "updateTime": "2018-10-31 18:12:56"
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型（公开，私有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">complexName</td>
+<td style="text-align: left;">string</td>
+<td>服务名或应用名</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>3.8、查询组织机构的接口</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询组织机构的api</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/interface/listByOrg?id=5bd04472796ad02df4460680</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>用户或者组织的ID（默认当前用户id）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "467e2e28f2dd4fc99bf6bea3083a053e",
+            "name": "接口测试2",
+            "complexName":"服务名或应用名",
+            "type": 1,
+            "dataUrl": "/api/test",
+            "createTime": "2018-10-31 18:12:56",
+            "remarks": "接口测试",
+            "creatorName": "root",
+            "updateTime": "2018-10-31 18:12:56"
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型（公开，私有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">complexName</td>
+<td style="text-align: left;">string</td>
+<td>服务名或应用名</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>4、菜单管理</h1><div style="margin-left:20px;"><h2>4.1、添加菜单</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加菜单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>父亲菜单ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>menu的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>标志符</td>
+</tr>
+<tr>
+<td style="text-align: left;">apiId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>apiId</td>
+</tr>
+<tr>
+<td style="text-align: left;">englishName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>英文名</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "pid": "5bd9807c796ad032508f3915",
+    "name": "第三个菜单",
+    "tag":"tag",
+    "apiId": "eaa20821f8f84701ae6696f8d533866e",
+    "remarks": "这一个菜单的备注"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value": {
+        "id": "6ffbc278-2e00-422a-afd2-c751409046f7",
+        "tenantId": "87ff24d8-c037-4a56-942a-ee5c28ccfe7a",
+        "remarks": "这一个菜单的备注",
+        "createTime": "2018-12-12 12:12:12",
+        "creatorName": null,
+        "creatorId": null,
+        "updateTime": "2018-12-12 12:12:12",
+        "deleteFlag": 0,
+        "pid": "8d428baa8df64ba287e7540d0cc97f48",
+        "name": "测试菜单二",
+        "englishName": null,
+        "tag": "a",
+        "sortNum": 3600,
+        "apiId": "b1a8347d95ce440c9a34a776b20f6bbb",
+        "appId": null
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th>参数名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>englishName</td>
+<td>string</td>
+<td>英文名称</td>
+</tr>
+<tr>
+<td>remarks</td>
+<td>string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td>tenantId</td>
+<td>string</td>
+<td>租户id</td>
+</tr>
+<tr>
+<td>pid</td>
+<td>string</td>
+<td>上级菜单id</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>string</td>
+<td>菜单标识</td>
+</tr>
+<tr>
+<td>apiId</td>
+<td>string</td>
+<td>接口id</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td>tenantId</td>
+<td>string</td>
+<td>租户id</td>
+</tr>
+<tr>
+<td>createTime</td>
+<td>string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td>updateTime</td>
+<td>string</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td>deleteFlag</td>
+<td>int</td>
+<td>0：未删除，1：删除</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.2、修改菜单</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改菜单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>菜单id</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>上级菜单</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>菜单名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">apiId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>接口id</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>菜单备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"5b7d1cd218077f3110b95edc",
+    "pid": "0",
+    "name": "菜单",
+    "apiId": "5b7d1a5218077f3110b95ed9",
+    "remarks": "这一个菜单的备注"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.3、菜单详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>菜单详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/item?id=5bd9807c796ad032508f3915</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>menu的ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "id": "5bd9807c796ad032508f3915",
+        "pid": "0",
+        "name": "第一个菜单",
+        "tag":"tag",
+        "apiId": "eaa20821f8f84701ae6696f8d533866e",
+        "remarks": "这一个菜单的备注",
+        "url": "/api/test",
+        "apiName": "接口测试",
+        "pname": "/"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th>参数名</th>
+<th>类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td>name</td>
+<td>string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td>remarks</td>
+<td>string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td>pid</td>
+<td>string</td>
+<td>上级菜单id</td>
+</tr>
+<tr>
+<td>tag</td>
+<td>string</td>
+<td>菜单标识</td>
+</tr>
+<tr>
+<td>apiId</td>
+<td>string</td>
+<td>接口id</td>
+</tr>
+<tr>
+<td>url</td>
+<td>string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td>apiName</td>
+<td>string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td>pname</td>
+<td>string</td>
+<td>上级菜单名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.4、删除菜单</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除菜单</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/del?id=5b18da791d3b9b0848cac549</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>菜单的ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<p>|参数名|类型|说明|</p>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.5、menu菜单排序</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>menu菜单排序</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/api/menu/sort?thisId=5b7d1eb618077f3110b95edf&nextId=5b7d1e3818077f3110b95ede</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">thisId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>当前菜单ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">nextId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>当前菜单后面菜单的ID（当前菜单拍最后时，该参数不传或传“”）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "排序成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.6、角色的菜单列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查看角色的菜单列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/listByRole?id=48c94c29337c47e29b62d6124098a89d</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>角色ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "5bd9807c796ad032508f3915",
+            "pid": "0",
+            "tag":"tag",
+            "name": "第一个菜单",
+            "children": [
+                {
+                    "id": "5bd980df796ad032508f3916",
+                    "tag":"tag",
+                    "pid": "5bd9807c796ad032508f3915",
+                    "name": "第二个菜单",
+                    "children": []
+                }
+            ]
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>上级菜单id</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">string</td>
+<td>菜单标识</td>
+</tr>
+<tr>
+<td style="text-align: left;">children</td>
+<td style="text-align: left;">array</td>
+<td>子菜单</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.7、租户的菜单列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>租户的菜单列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/listByTenant?id=5bd2743018077f2c205cf26b</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>租户ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "0",
+            "name": "/",
+            "englishName":"/",
+            "children": [
+                {
+                    "id": "5bd9807c796ad032508f3915",
+                    "pid": "0",
+                    "name": "第一个菜单",
+                    "children": [
+                        {
+                            "id": "5bd980df796ad032508f3916",
+                            "pid": "5bd9807c796ad032508f3915",
+                            "tag":"tag",
+                            "name": "第二个菜单",
+                            "children": []
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>上级菜单id</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">string</td>
+<td>菜单标识</td>
+</tr>
+<tr>
+<td style="text-align: left;">children</td>
+<td style="text-align: left;">array</td>
+<td>子菜单</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.8、用户的菜单列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查看用户的菜单列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/tree</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>用户的ID  （默认当前用户id）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "0",
+            "name": "/",
+            "children": [
+                {
+                    "apiName": "接口测试",
+                    "children": [
+                        {
+                            "apiName": "接口测试",
+                            "children": [],
+                            "pname": "",
+                            "name": "第二个菜单",
+                            "pid": "5bd9807c796ad032508f3915",
+                            "id": "5bd980df796ad032508f3916",
+                            "tag":"tag",
+                            "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                            "remarks": "这一个菜单的备注",
+                            "url": "/api/test"
+                        },
+                        {
+                            "apiName": "接口测试",
+                            "children": [],
+                            "pname": "",
+                            "name": "第三个菜单",
+                            "pid": "5bd9807c796ad032508f3915",
+                            "tag":"tag",
+                            "id": "5bd980e6796ad032508f3917",
+                            "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                            "remarks": "这一个菜单的备注",
+                            "url": "/api/test"
+                        }
+                    ],
+                    "pname": "",
+                    "name": "第一个菜单",
+                    "pid": "0",
+                    "tag":"tag",
+                    "id": "5bd9807c796ad032508f3915",
+                    "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                    "remarks": "这一个菜单的备注",
+                    "url": "/api/test"
+                }
+            ]
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>menu的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">string</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>父亲菜单ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>menu的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">string</td>
+<td>编号</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>具体路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>4.9、应用的菜单列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查看应用的菜单列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/menu/treeByAppId?id</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>应用的id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": [
+        {
+            "id": "0",
+            "name": "/",
+            "children": [
+                {
+                    "apiName": "接口测试",
+                    "children": [
+                        {
+                            "apiName": "接口测试",
+                            "tag":"tag",
+                            "children": [],
+                            "pname": "",
+                            "name": "第二个菜单",
+                            "pid": "5bd9807c796ad032508f3915",
+                            "id": "5bd980df796ad032508f3916",
+                            "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                            "remarks": "这一个菜单的备注",
+                            "url": "/api/test"
+                        },
+                        {
+                            "apiName": "接口测试",
+                            "tag":"tag",
+                            "children": [],
+                            "pname": "",
+                            "name": "第三个菜单",
+                            "pid": "5bd9807c796ad032508f3915",
+                            "id": "5bd980e6796ad032508f3917",
+                            "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                            "remarks": "这一个菜单的备注",
+                            "url": "/api/test"
+                        }
+                    ],
+                    "pname": "",
+                    "tag":"tag",
+                    "name": "第一个菜单",
+                    "pid": "0",
+                    "id": "5bd9807c796ad032508f3915",
+                    "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                    "remarks": "这一个菜单的备注",
+                    "url": "/api/test"
+                }
+            ]
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>menu的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">string</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>父亲菜单ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>menu的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">code</td>
+<td style="text-align: left;">string</td>
+<td>编号</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>具体路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div><h1>5、角色管理</h1><div style="margin-left:20px;"><h2>5.1、添加角色</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加role</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">munuIds</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">array</td>
+<td>来自于<a href="https://www.showdoc.cc/web/#/58996221118691?page_id=828055395242614" title="添加角色或等级时获取api列表和menu">添加角色或等级时获取api列表和menu</a></td>
+</tr>
+<tr>
+<td style="text-align: left;">apiIds</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">array</td>
+<td>来自于<a href="https://www.showdoc.cc/web/#/58996221118691?page_id=828055395242614" title="添加角色或等级时获取api列表和menu">添加角色或等级时获取api列表和menu</a></td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name": "管理员三",
+    "remarks": "角色的备注信息",
+    "orgIds":[
+        "5b7bdea118077f2aa8f41003"
+        ],
+    "menuIds":[
+            "5b7d1e0118077f3110b95edd","5b7d1eb618077f3110b95edf"
+        ],
+    "apiIds":[
+            "5b7d1a5218077f3110b95ed9","5b7d1a5b18077f3110b95eda"
+        ]
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value": {
+        "id": "fa11eeb9-e04d-49ff-894c-0f194b5856ce",
+        "tenantId": "87ff24d8-c037-4a56-942a-ee5c28ccfe7a",
+        "remarks": "角色的备注信息",
+        "createTime": 1545385476842,
+        "creatorName": "admin0391",
+        "creatorId": "ab939884-bc4a-4a4b-90ec-96a035952f63",
+        "updateTime": 1545385476842,
+        "deleteFlag": 0,
+        "name": "测试角色",
+        "sortNum": 1750,
+        "orgIds": [],
+        "apiIds": [],
+        "menuIds": [],
+        "serviceId": null,
+        "appId": null
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>角色的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">string</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>menu的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorId</td>
+<td style="text-align: left;">string</td>
+<td>创建人id</td>
+</tr>
+<tr>
+<td style="text-align: left;">sortNum</td>
+<td style="text-align: left;">int</td>
+<td>排序编号</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">int</td>
+<td>服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">int</td>
+<td>应用id</td>
+</tr>
+<tr>
+<td style="text-align: left;">orgIds</td>
+<td style="text-align: left;">array</td>
+<td>组织机构ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">menuIds</td>
+<td style="text-align: left;">array</td>
+<td>菜单ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">apiIds</td>
+<td style="text-align: left;">array</td>
+<td>接口ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deleteFlag</td>
+<td style="text-align: left;">int</td>
+<td>0：未删除，1：删除</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.2、修改角色</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改角色</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>角色id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"5b7d267a18077f29a034efbd",
+    "name": "管理员二",
+    "remarks": "角色的备注信息",
+    "orgIds":[
+        ],
+    "menuIds":[
+            "5b7d1e3818077f3110b95ede"
+        ],
+    "apiIds":[
+            "5b7d23ed18077f2698d19b99","5b7d23f218077f2698d19b9a"
+        ]
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.3、查看角色详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查看角色详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/item?id=48c94c29337c47e29b62d6124098a89d</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>角色ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "name": "角色一",
+        "tenantId": "0",
+        "id": "48c94c29337c47e29b62d6124098a89d",
+        "remarks": "角色的备注信息",
+        "api": [
+            {
+                "dataUrl": "/api/test",
+                "createTime": "2018-10-31 18:12:56",
+                "creatorName": "root",
+                "name": "接口测试2",
+                "updateTime": "2018-10-31 18:12:56",
+                "id": "467e2e28f2dd4fc99bf6bea3083a053e",
+                "type": 1,
+                "remarks": "接口测试"
+            },
+            {
+                "dataUrl": "/api/test",
+                "createTime": "2018-10-31 18:13:01",
+                "creatorName": "root",
+                "name": "接口测试3",
+                "updateTime": "2018-10-31 18:13:01",
+                "id": "6c35be331000429bbf11f6eed8c7cc26",
+                "type": 1,
+                "remarks": "接口测试"
+            }
+        ],
+        "menu": [
+            {
+                "apiName": "",
+                "children": [],
+                "pname": "",
+                "name": "第一个菜单",
+                "pid": "0",
+                "id": "5bd9807c796ad032508f3915",
+                "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                "remarks": "这一个菜单的备注",
+                "url": ""
+            },
+            {
+                "apiName": "",
+                "children": [],
+                "pname": "",
+                "name": "第二个菜单",
+                "pid": "5bd9807c796ad032508f3915",
+                "id": "5bd980df796ad032508f3916",
+                "apiId": "eaa20821f8f84701ae6696f8d533866e",
+                "remarks": "这一个菜单的备注",
+                "url": ""
+            }
+        ],
+        "org": [
+            {
+                "id": "5bd2743018077f2c205cf26d",
+                "name": "admin001",
+                "type": 5,      //5:终端用户
+                "isUser":true // true:用户，false:部门
+            }
+        ],
+        "orgIds":["xxxxx","xxxx"],
+        "menuIds":["xxxxx","xxxxxx"],
+        "apiIds":["xxxx","xxxx"]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>角色的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">string</td>
+<td>租户ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>menu的名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">orgIds</td>
+<td style="text-align: left;">array</td>
+<td>组织机构ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">menuIds</td>
+<td style="text-align: left;">array</td>
+<td>菜单ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">apiIds</td>
+<td style="text-align: left;">array</td>
+<td>接口ids</td>
+</tr>
+<tr>
+<td style="text-align: left;">org</td>
+<td style="text-align: left;">array</td>
+<td>组织机构对象数组</td>
+</tr>
+<tr>
+<td style="text-align: left;">menu</td>
+<td style="text-align: left;">array</td>
+<td>菜单对象数组</td>
+</tr>
+<tr>
+<td style="text-align: left;">api</td>
+<td style="text-align: left;">array</td>
+<td>接口对象数组</td>
+</tr>
+</tbody>
+</table>
+<h3>org</h3>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>用户类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">isUser</td>
+<td style="text-align: left;">bool</td>
+<td>是否是用户</td>
+</tr>
+</tbody>
+</table>
+<h3>api</h3>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">type</td>
+<td style="text-align: left;">int</td>
+<td>类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<h3>menu</h3>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">pid</td>
+<td style="text-align: left;">string</td>
+<td>上级菜单id</td>
+</tr>
+<tr>
+<td style="text-align: left;">tag</td>
+<td style="text-align: left;">string</td>
+<td>菜单标识</td>
+</tr>
+<tr>
+<td style="text-align: left;">apiId</td>
+<td style="text-align: left;">string</td>
+<td>接口id</td>
+</tr>
+<tr>
+<td style="text-align: left;">url</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">apiName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">pname</td>
+<td style="text-align: left;">string</td>
+<td>上级菜单名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.4、删除角色</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除role</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/del?id=5b0cd18f1d3b9b090864602a</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>角色ID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功！",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.5、租户角色列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>role列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/list?start=0&count=10&name=</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>要获取多少条</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>模糊搜索的role名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">tenantId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>租户id（默认当前用户租户）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "pageNo": 1,
+        "pageSize": 10,
+        "totalCount": 1,
+        "totalPage": 1,
+        "list": [
+            {
+                "id": "48c94c29337c47e29b62d6124098a89d",
+                "name": "角色一",
+                "remarks": "角色的备注信息",
+                "createTime": "2018-10-31 18:30:07",
+                "creatorName": "root"
+            }
+        ],
+        "firstResult": 0
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>角色的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.6、应用角色列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>应用角色列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/listByAppId?start=0&count=10&name=&appId=xxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>开始条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>要获取多少条</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>模糊搜索的role名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">appId</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>应用id（如果不是应用管理员则必传）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "pageNo": 1,
+        "pageSize": 10,
+        "totalCount": 1,
+        "totalPage": 1,
+        "list": [
+            {
+                "id": "48c94c29337c47e29b62d6124098a89d",
+                "name": "角色一",
+                "remarks": "角色的备注信息",
+                "createTime": "2018-10-31 18:30:07",
+                "creatorName": "root"
+            }
+        ],
+        "firstResult": 0
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>角色的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.7、组织机构角色列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询用户角色列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/role/listByOrg?id=04054170d60640bf8384f457cae6fdf3</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>orgID</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": [
+        {
+            "id": "48c94c29337c47e29b62d6124098a89d",
+            "name": "角色一"
+        }
+    ]
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>角色的ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>5.8、添加角色或等级时获取api列表和menu</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加角色或等级时获取api列表和menu</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/assign</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "",
+    "value": {
+        "apis": [
+            {
+                "id": "467e2e28f2dd4fc99bf6bea3083a053e",
+                "name": "接口测试2",
+                "complexName":"服务名或应用名",
+                "dataUrl": "/api/test"
+            }
+        ],
+        "menus": [
+            {
+                "id": "5bd9807c796ad032508f3915",
+                "name": "第一个菜单",
+                "children": [
+                    {
+                        "id": "5bd980df796ad032508f3916",
+                        "name": "第二个菜单",
+                        "children": []
+                    },
+                    {
+                        "id": "5bd980e6796ad032508f3917",
+                        "name": "第三个菜单",
+                        "children": []
+                    },
+                    {
+                        "id": "10b1b8963f0e47738295d336ea176360",
+                        "name": "测试站点4",
+                        "children": []
+                    }
+                ]
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<h2>apis</h2>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">complexName</td>
+<td style="text-align: left;">string</td>
+<td>联合名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">dataUrl</td>
+<td style="text-align: left;">string</td>
+<td>地址</td>
+</tr>
+</tbody>
+</table>
+<h2>menus</h2>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>唯一标识符</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">children</td>
+<td style="text-align: left;">array</td>
+<td>子菜单</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul>
+<p>欢迎使用ShowDoc！</p></div></div><h1>6、服务管理</h1><div style="margin-left:20px;"><h2>6.1、服务下拉列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务下拉列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/service/opt</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "totalCount": 1,
+        "list": [
+            {
+                "id": "20ef5d4876d24d399579c95c8469630a",
+                "name": "第一个服务"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.2、添加服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/service/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "name":"消息推送子服务",
+    "remarks":"消息推送子服务"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "保存成功！",
+    "value":{
+        "id":"xxxx",
+        "name":"xxx",
+        "englishName":"xxx",
+        "remarks":"xxx",
+        "createTime":"2018-12-12 12:12:12",
+        "creatorName":"sa",
+        "creatorId":"aaaaaaaaaaa",
+        "updateTime":"2018-12-12 12:12:12",
+        "deleteFlag":0
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">englishName</td>
+<td style="text-align: left;">string</td>
+<td>英文名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorId</td>
+<td style="text-align: left;">string</td>
+<td>创建人id</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">deleteFlag</td>
+<td style="text-align: left;">int</td>
+<td>0：未删除，1：删除</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.3、修改服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/service/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+</tbody>
+</table>
+<p><strong>请求示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxxxxxxxxxxxx",
+    "name":"消息推送子服务",
+    "remarks":"消息推送子服务"
+}</code></pre></table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "修改成功！",
+    "value":null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.4、删除服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/service/del?id=xxxxxxxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": "删除成功！",
+    "value":null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">groupid</td>
+<td style="text-align: left;">int</td>
+<td>用户组id，1：超级管理员；2：普通用户</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.5、服务详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务详情</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/service/item?id=xxxxxxxxxxx</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "id": "44c5705ead704e7a9f48bada4009f28c",
+        "name": "权限子服务",
+        "remarks": "权限子服务",
+        "createTime": "2018-11-02 14:52:41",
+        "creatorName": "root",
+        "updateTime": "2018-11-02 14:52:41"
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div><h2>6.6、服务列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>服务列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://{{host}}:{{port}}/permissionservice/api/service/list?start=0&count=10</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>start</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>count</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "message": null,
+    "value": {
+        "totalCount": 6,
+        "list": [
+            {
+                "id": "9ec20199f28c43269b1d3da9e3776f4d",
+                "name": "用户子服务",
+                "remarks": "用户子服务",
+                "createTime": "2018-11-02 14:52:05",
+                "creatorName": "root",
+                "updateTime": "2018-11-02 14:52:05",
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">string</td>
+<td>ID</td>
+</tr>
+<tr>
+<td style="text-align: left;">name</td>
+<td style="text-align: left;">string</td>
+<td>名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">remarks</td>
+<td style="text-align: left;">string</td>
+<td>备注</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">string</td>
+<td>创建时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">creatorName</td>
+<td style="text-align: left;">string</td>
+<td>创建人</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">string</td>
+<td>修改时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>备注</strong> </p>
+<ul>
+<li>更多返回错误代码请看首页的错误代码描述</li>
+</ul></div></div></body></html>

@@ -1,0 +1,215 @@
+{ 
+    "_id" : "5ff66bd725d04a3db900217a51f6f47b", 
+    "structure" : "[{\"fieldId\":\"tenantSum\",\"fieldName\":\"截止当日总租户\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newTenantSum\",\"fieldName\":\"当日新加租户用户总数\",\"fieldType\":\"Number\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appSum\",\"fieldName\":\"应用用户数量\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newAppSum\",\"fieldName\":\"新增应用总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"tenantAppSum\",\"fieldName\":\"截止当日应用用户总数\",\"fieldType\":\"Array\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appId\",\"fieldName\":\"应用用户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"clientSum\",\"fieldName\":\"终端用户总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newClientSum\",\"fieldName\":\"新建终端用户总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"clientUserSum\",\"fieldName\":\"截止当日终端用户数量\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "collection_id" : "用户表", 
+    "collection_name" : "user_user", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "9d625300237a47bbbee0b5c4b0d1fd88", 
+    "structure" : "[{\"fieldId\":\"interfaceSum\",\"fieldName\":\"接口总数\",\"fieldType\":\"Number\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"id\",\"fieldName\":\"接口ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"name\",\"fieldName\":\"接口名称\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"url\",\"fieldName\":\"接口地址\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"sum\",\"fieldName\":\"使用次数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"interface\",\"fieldName\":\"接口\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"useSum\",\"fieldName\":\"使用次数\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "collection_id" : "权限服务", 
+    "collection_name" : "permission_permission", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "c4b6fe2e033d4b5799a1fcd8c5862de2", 
+    "structure" : "[{\"fieldId\":\"tenantSum\",\"fieldName\":\"截止当日总租户\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newTenantSum\",\"fieldName\":\"当日新加租户用户总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"deviceTypeSum\",\"fieldName\":\"当日设备总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newDeviceTypeSum\",\"fieldName\":\"新增设备总数\",\"fieldType\":\"Number\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appSum\",\"fieldName\":\"应用用户数量\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newAppSum\",\"fieldName\":\"新增应用总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"tenantAppSum\",\"fieldName\":\"截止当日应用用户总数\",\"fieldType\":\"Array\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"typeId\",\"fieldName\":\"类型ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"newDeviceSum\",\"fieldName\":\"新建终端总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"deviceSum\",\"fieldName\":\"终端总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"deviceType\",\"fieldName\":\"设备类型\",\"fieldType\":\"Array\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appId\",\"fieldName\":\"应用用户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"newDeviceSum\",\"fieldName\":\"新建终端总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"deviceSum\",\"fieldName\":\"终端总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"appDevice\",\"fieldName\":\"截止当日终端用户数量\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "collection_id" : "用户统计", 
+    "collection_name" : "device_device", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "6806b85dd2e3405cb3af7706f72918c6", 
+    "structure" : "[{\"fieldId\":\"tenantSum\",\"fieldName\":\"截止当日总租户\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newTenantSum\",\"fieldName\":\"当日新加租户用户总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"orderSum\",\"fieldName\":\"总订单\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newOrderSum\",\"fieldName\":\"新增订单\",\"fieldType\":\"Number\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appId\",\"fieldName\":\"应用Id\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"orderSum\",\"fieldName\":\"总订单\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newOrderSum\",\"fieldName\":\"新增订单\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"appOrderSum\",\"fieldName\":\"新增订单\",\"fieldType\":\"Array\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appSum\",\"fieldName\":\"应用用户数量\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newAppSum\",\"fieldName\":\"新增应用总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"tenantAppSum\",\"fieldName\":\"截止当日应用用户总数\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "collection_id" : "支付", 
+    "collection_name" : "pay_pay", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "c168f111a96b41b18690f28f38452635", 
+    "structure" : "[{\"fieldId\":\"warningSum\",\"fieldName\":\"总告警次数\",\"fieldType\":\"Number\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"serviceName\",\"fieldName\":\"服务名称\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"sum\",\"fieldName\":\"总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newSum\",\"fieldName\":\"总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"warningSMS\",\"fieldName\":\"截止当日总租户\",\"fieldType\":\"Array\",\"sys\":false},{\"childFields\":[{\"fieldId\":\"newSum\",\"fieldName\":\"总数\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"serviceName\",\"fieldName\":\"服务名称\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"sum\",\"fieldName\":\"总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"warningEmail\",\"fieldName\":\"邮件报警\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "collection_id" : "告警", 
+    "collection_name" : "alarm_alarm", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "898162b1e4114529b9910d9b2006f489", 
+    "structure" : "[{\"childFields\":[{\"fieldId\":\"tenantId\",\"fieldName\":\"租户ID\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"appSum\",\"fieldName\":\"应用用户数量\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"newAppSum\",\"fieldName\":\"新增应用总数\",\"fieldType\":\"Number\",\"sys\":false}],\"fieldId\":\"tenantAppSum\",\"fieldName\":\"截止当日应用用户总数\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "00111e6ef4004758a8cfef7375977c24", 
+    "collection_id" : "地理位置", 
+    "collection_name" : "position_position", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "27ea223cb49c45efb12ebbdb795ae6af", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"1\",\"fieldName\":\"1\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "collection_remark" : "描述一下", 
+    "collection_id" : "test1", 
+    "collection_name" : "user_test1", 
+    "create_time" : NumberLong(1546573603), 
+    "update_time" : NumberLong(1546573603), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "f59b293fca4c4be889773d2b3596f4de", 
+    "structure" : "[{\"childFields\":[{\"childFields\":[],\"fieldId\":\"2\",\"fieldName\":\"2\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"1\",\"fieldName\":\"1\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "00111e6ef4004758a8cfef7375977c24", 
+    "collection_remark" : "test2", 
+    "collection_id" : "test2", 
+    "collection_name" : "position_test2", 
+    "create_time" : NumberLong(1546574082), 
+    "update_time" : NumberLong(1546574082), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "b1a00954966246ee8f3807da4a35cfe7", 
+    "structure" : "[{\"childFields\":[{\"childFields\":[{\"childFields\":[{\"childFields\":[],\"fieldId\":\"4\",\"fieldName\":\"4\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"3\",\"fieldName\":\"3\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"2\",\"fieldName\":\"2\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"1\",\"fieldName\":\"1\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "collection_remark" : "1", 
+    "collection_id" : "1", 
+    "collection_name" : "pay_1", 
+    "create_time" : NumberLong(1546587359), 
+    "update_time" : NumberLong(1546587359), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "fb2226f43dcf423e8b99ed43e37f887e", 
+    "structure" : "[{\"childFields\":[{\"childFields\":[],\"fieldId\":\"字段1-1\",\"fieldName\":\"字段1-1\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"字段1\",\"fieldName\":\"字段1\",\"fieldType\":\"Array\",\"sys\":false},{\"childFields\":[],\"fieldId\":\"字段2\",\"fieldName\":\"字段2\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "collection_remark" : "test", 
+    "collection_id" : "test", 
+    "collection_name" : "permission_test", 
+    "create_time" : NumberLong(1546936925), 
+    "update_time" : NumberLong(1546936925), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "64a8f7732edc44e7bce915f2f98fd56c", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"1\",\"fieldName\":\"1\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "042168547aa04f6b9276ab48261d4f10", 
+    "collection_remark" : "test", 
+    "collection_id" : "test", 
+    "collection_name" : "ds_test", 
+    "create_time" : NumberLong(1547026757), 
+    "update_time" : NumberLong(1547026757), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "c0f289ab29d847379167bead2be628dc", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"sdsad\",\"fieldName\":\"sd\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "collection_remark" : "dasdasdsadsa", 
+    "collection_id" : "121212", 
+    "collection_name" : "device_wdadss", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547175029), 
+    "update_time" : NumberLong(1547194417), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "d9559a12a30e471194b862c995262662", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"test\",\"fieldName\":\"test\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "042168547aa04f6b9276ab48261d4f10", 
+    "collection_remark" : "ds", 
+    "collection_id" : "ds", 
+    "collection_name" : "ds_ds", 
+    "create_time" : NumberLong(1547193619), 
+    "update_time" : NumberLong(1547194125), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "7956b4edeafa4d42adfd566a5b375f5b", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"1\",\"fieldName\":\"1\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "042168547aa04f6b9276ab48261d4f10", 
+    "collection_remark" : "dd", 
+    "collection_id" : "dd", 
+    "collection_name" : "ds_dd", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "create_time" : NumberLong(1547194225), 
+    "update_time" : NumberLong(1547194225), 
+    "state" : NumberInt(2)
+}
+{ 
+    "_id" : "043bc3c7e1934008aca5022a290822e6", 
+    "structure" : "[{\"childFields\":[{\"childFields\":[],\"fieldId\":\"热汤发\",\"fieldName\":\"34他\",\"fieldType\":\"Array\",\"sys\":false}],\"fieldId\":\"额外人额风格潍坊\",\"fieldName\":\"玩儿3额头突然\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "collection_remark" : "热天", 
+    "collection_id" : "额外", 
+    "collection_name" : "user_热", 
+    "create_time" : NumberLong(1547712469), 
+    "update_time" : NumberLong(1547712469), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "5b1ee9b3c9f747478ee3b7664cb223d1", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"a\",\"fieldName\":\"a\",\"fieldType\":\"String\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "042168547aa04f6b9276ab48261d4f10", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "collection_remark" : "a", 
+    "collection_id" : "a", 
+    "collection_name" : "ds_a", 
+    "create_time" : NumberLong(1547778643), 
+    "update_time" : NumberLong(1547778643), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "ebf3ca394a3d4213a1bdee55e7ff9d27", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"ef\",\"fieldName\":\"ew\",\"fieldType\":\"Array\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "founder_id" : "35d6b409-fd3a-4bdc-bef9-8f5ce1c6672b", 
+    "founder_name" : "admin", 
+    "collection_remark" : "sdaf", 
+    "collection_id" : "daf", 
+    "collection_name" : "device_reg", 
+    "create_time" : NumberLong(1547805339), 
+    "update_time" : NumberLong(1547805368), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "63cb34127b3e4b969dc3c63fe1a37ef9", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"tr\",\"fieldName\":\"rt\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "79ab6d4774cf411c8c7a7cd561f32dcf", 
+    "founder_id" : "5d7925c0-e3b0-49bf-be46-a0d8cc1de67c", 
+    "founder_name" : "田 机关医院", 
+    "collection_remark" : "trh", 
+    "collection_id" : "tr", 
+    "collection_name" : "费GV热_trh", 
+    "create_time" : NumberLong(1548037489), 
+    "update_time" : NumberLong(1548037489), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "87e3552f5c6d4efa9718190563867964", 
+    "structure" : "[{\"childFields\":[],\"fieldId\":\"erw\",\"fieldName\":\"ewr\",\"fieldType\":\"Number\",\"sys\":false},{\"fieldId\":\"year\",\"fieldName\":\"上报日期-年，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"month\",\"fieldName\":\"上报日期-月，系统字段\",\"fieldType\":\"Number\",\"sys\":true},{\"fieldId\":\"day\",\"fieldName\":\"上报日期-日，系统字段\",\"fieldType\":\"Number\",\"sys\":true}]", 
+    "app_id" : "79ab6d4774cf411c8c7a7cd561f32dcf", 
+    "founder_id" : "5d7925c0-e3b0-49bf-be46-a0d8cc1de67c", 
+    "founder_name" : "田 机关医院", 
+    "collection_remark" : "erwt", 
+    "collection_id" : "erwt", 
+    "collection_name" : "费GV热_erw", 
+    "create_time" : NumberLong(1548037537), 
+    "update_time" : NumberLong(1548037537), 
+    "state" : NumberInt(0)
+}

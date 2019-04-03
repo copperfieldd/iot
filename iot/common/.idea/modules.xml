@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/iot-common.iml" filepath="$PROJECT_DIR$/iot-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../com_changhong_iot_pms/iot-pms.iml" filepath="$PROJECT_DIR$/../com_changhong_iot_pms/iot-pms.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../com_changhong_iot_statistics/iot-statistics.iml" filepath="$PROJECT_DIR$/../com_changhong_iot_statistics/iot-statistics.iml" />
+    </modules>
+  </component>
+</project>

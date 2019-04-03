@@ -1,0 +1,129 @@
+@import '~antd/lib/style/themes/default.less';
+@import '../../utils/utils.less';
+.site_table_styles{
+  height: 12px;
+  :global{
+    .ant-spin-nested-loading{
+      border:solid 1px #cccccc;
+    }
+    .ant-table-placeholder{
+      border-bottom:none;
+    }
+  }
+}
+.search{
+  cursor: pointer;
+}
+
+.flexDirR {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+}
+.ele_input_addStype{
+  border: solid 1px #d9d9d9;
+  min-height: 32px;
+  border-radius: 4px;
+  margin-top: 6px;
+  position:relative;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.down_icon{
+  position: absolute;
+  right: 5px;
+  font-size: 8px;
+  color: rgba(0,0,0,0.25);
+  top: 50%;
+  transform: translate(0,-50%);
+}
+.ele_input_style{
+  background-color: #fcfcfc;
+  border: solid 1px #e6e9f0;
+  margin:4px 20px 4px 4px ;
+  height:28px;
+  line-height:28px;
+  width: 240px;
+  white-space: nowrap;
+  overflow: hidden;
+  border-radius: 2px;
+  padding:0 4px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.list{
+  :global{
+    .ant-list-item{
+      cursor: pointer;
+      &:hover{
+        background: @primary-color;
+        color:#fff;
+      }
+    }
+  }
+}
+.treeCheck{
+  .infinite_container {
+    overflow: auto;
+    height: 433px;
+    width: 100%;
+    text-align: center;
+    border: solid 1px #d9d9d9;
+    margin-top: 10px;
+  }
+  .closeList{
+    position: absolute;
+    z-index: 1;
+    color: rgba(0, 0, 0, 0.45);
+    cursor: pointer;
+    font-size: 16px;
+    right: 8px;
+    top: 6px;
+  }
+}
+
+.card_class{
+  :global{
+    .ant-tabs-bar{
+      border-bottom: none;
+    }
+    .ant-tabs-nav-scroll{
+      text-align: center;
+    }
+    .ant-tabs-nav .ant-tabs-tab-active{
+      color: #fff;
+      background: #3a87e4;
+      border-radius: 8px;
+    }
+    .ant-tabs-nav .ant-tabs-tab{
+      border-radius: 8px;
+      border: 1px solid #e8e8e8;
+      margin-bottom: 1px;
+      padding: 8px 16px;
+    }
+    .ant-tabs-top .ant-tabs-ink-bar-animated, .ant-tabs-bottom .ant-tabs-ink-bar-animated{
+      display: none !important;
+    }
+  }
+}
+.table_card_class{
+  width: auto;
+  :global{
+    .ant-card-body{
+      padding: 8px 10px !important;
+    }
+    .table_row_styles{
+      padding:0px 6px !important;
+    }
+  }
+}
+.deviceList_styles{
+  :global{
+    .ant-list-header{
+      background-color: #eff3fb;
+    }
+  }
+}

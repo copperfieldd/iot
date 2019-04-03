@@ -1,0 +1,34 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:th="http://www.thymeleaf.org">
+<head></head>
+
+<body>
+     <div class="copyright" id="copyright_div" th:fragment='copyright' >
+        <p><a href="javascript:void(null);" onclick="showAbout();">关于RECLO</a> | <a href="javascript:void(null);" onclick="showAgreement();">用户协议</a> | <a href="javascript:void();" onclick="showContact();">客户服务</a></p>
+        <small class="margin-top">© 2016 Active SONAR INC.ALL RIGHTS RESERVED.</small>
+        <script>
+            /**
+             * 显示用户协议
+             */
+            function showAgreement() {
+                openWin(BASE_URL + 'public/agreement');
+            }
+            
+            /**
+             * 显示客户服务
+             */
+            function showContact() {
+                openWin(BASE_URL + 'public/contact');
+            }
+            /**
+             * 显示关于我们
+             */
+            function showAbout() {
+                openWin(BASE_URL + 'public/about');
+            }
+        </script>
+     </div>
+
+</body>
+</html>

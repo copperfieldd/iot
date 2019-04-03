@@ -1,0 +1,605 @@
+{ 
+    "_id" : "d3c0ce7d40fa467b82422dd4b614f1b2", 
+    "script" : "{aggregate:'user_user',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "汇总", 
+    "script_name" : "总租户数（汇总）", 
+    "script_tag" : "tenantsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "fcb96d8cc83842df9f10886a6da33b28", 
+    "script" : "{aggregate:'user_user',pipeline:[{$match: {'reportTime': {$gte: #{get('starttime')},$lte: #{get('endtime')}}}},{$group:{_id:null,count:{$sum:'$newTenantSum'}}},{$project:{'count':1,_id:0}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "汇总", 
+    "script_name" : "新增租户（汇总）", 
+    "script_tag" : "newtenantsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "5bc7da9a927045a9853b584e811f6cd6", 
+    "script" : "{aggregate:'user_user',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind: '$clientUserSum'},{$group:{_id:null,count:{$sum:'$clientUserSum.clientSum'}}},{$project:{count:1,_id:0}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "汇总", 
+    "script_name" : "总C端用户（汇总）", 
+    "script_tag" : "clientsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "d0c51715f4cd41b98e548544f35b0a46", 
+    "script" : "{aggregate:'user_user',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$newTenantSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year','month':'$month'},count:{$sum:'$newTenantSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year','month':'$month','day':'$day'},count:{$sum:'$newTenantSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "新增租户（趋势）", 
+    "script_tag" : "newtenanttrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "b5bb938f7ff748b78abd63c9ade370e8", 
+    "script" : "{aggregate:'user_user',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year','month':'$month','day':'$day'},count:{$sum:'$tenantSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "累计租户（趋势）", 
+    "script_tag" : "tenanttrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "a2e06aa003084165b4560913635cc41e", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month','day':'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "C端新增用户（趋势）", 
+    "script_tag" : "newclienttrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "6961a00a3884418e805295723b567596", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month','day':'$day'},count:{$sum:'$clientUserSum.clientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "C端累计用户（趋势）", 
+    "script_tag" : "clienttrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "8342ddc910684fd88b87cf5c263a45d7", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "汇总", 
+    "script_name" : "各租户下应用总数（汇总）", 
+    "script_tag" : "tenantappsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "d03737d5fe034b75b71d18cc68a76e2b", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.tenantId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "各租户下C端新增用户数（趋势）", 
+    "script_tag" : "newclienttrendbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "2cdeb6a578ca4693a0934f997e8112d0", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.tenantId':'#{get('tenantid')}'}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.clientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "各租户下C端用户累计（趋势）", 
+    "script_tag" : "clienttrendbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "833026cb03ec496bb3f0dc71fa3dd454", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "汇总", 
+    "script_name" : "各应用下总C端用户数（汇总）", 
+    "script_tag" : "clientsumbyapp", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "3202bca849f847d3b4e2d74d91c84230", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.newClientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "各应用下C端新增用户总数（趋势）", 
+    "script_tag" : "newclienttrendbyapp", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "c16d1e990765401dad0cf8e3d0692e5d", 
+    "script" : "{aggregate:'user_user',pipeline:[{$unwind:'$clientUserSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'clientUserSum.appId':'#{get('appid')}'}},{$group:{_id:{tenantId:'$clientUserSum.appId',year:'$year',month:'$month',day:'$day'},count:{$sum:'$clientUserSum.clientSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}]}", 
+    "app_id" : "4b88888e26734565a7f37c8a68bd4753", 
+    "remark" : "趋势", 
+    "script_name" : "各应用C端累计用户数（趋势）", 
+    "script_tag" : "clienttrendbyapp", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "3228d7af10bf48ecb72a372d16e4e81d", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$interfaceSum'}}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "汇总", 
+    "script_name" : "接口总数（汇总）", 
+    "script_tag" : "interfacesum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "db19c4c420af43eeb0fe16d161f9cf90", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$group:{_id:null,count:{$sum:'$useSum.interface.sum'}}},{$project:{_id:0,count:1}}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "汇总", 
+    "script_name" : "接口调用次数（汇总）", 
+    "script_tag" : "interfaceusesum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "593b8185074a4fb4adb2d41dfdfd225b", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "趋势", 
+    "script_name" : "接口调用次数（趋势）", 
+    "script_tag" : "interfaceusetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "162ba55f7a4b48bebb1654a764803d4e", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$useSum'},{$match:{'useSum.tenantId':'#{get('tenantid')}'}},{$unwind:'$useSum.interface'},{$group:{_id:null,count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'count':1}}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "汇总", 
+    "script_name" : "租户下调用次数（汇总）", 
+    "script_tag" : "interfaceusebytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "485985643ad245509a5bdb7a8881c65d", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'useSum.interface.id':'#{get('interfaceid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "趋势", 
+    "script_name" : "接口调用次数（趋势）", 
+    "script_tag" : "interfaceusetrendbyid", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "2f38f0ab9e6f42c1927b653902d15ec2", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'useSum.interface.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "趋势", 
+    "script_name" : "APP调用接口（趋势）", 
+    "script_tag" : "appuseinterfacetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "194af3aabeea4ca7a7b15fc05a452487", 
+    "script" : "{aggregate:'permission_permission',pipeline:[{$unwind:'$useSum'},{$unwind:'$useSum.interface'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'useSum.tenantId':'#{get('tenantid')}','useSum.interface.id':'#{get('interfaceid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','count':1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','count':1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$useSum.interface.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day','count':1}}\"}]}", 
+    "app_id" : "e1fccbd3f799496e8b2b071608846294", 
+    "remark" : "趋势", 
+    "script_name" : "租户下调用某接口次数（趋势）", 
+    "script_tag" : "tenantuseinterfacetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "7992b14669f1401392d9e7bebaf46bca", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总", 
+    "script_name" : "接入租户数（汇总）", 
+    "script_tag" : "tenantsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "5428c2615d3b4e698efc69bcdec418fc", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:{$size:'$deviceType'}}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总", 
+    "script_name" : "总类型数（汇总）", 
+    "script_tag" : "typesum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "bac103f177f041b59a91a6790ab80673", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$deviceType'},{$group:{_id:null,count:{$sum:'$deviceType.deviceSum'}}},{$project:{_id:0,count:1}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总", 
+    "script_name" : "总设备数(汇总)", 
+    "script_tag" : "devicesum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "c11cdb8459294664a182cc1a1c9c5603", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$deviceType'},{$group:{_id:null,count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{_id:0,count:1}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总", 
+    "script_name" : "新增设备（汇总）", 
+    "script_tag" : "newdevicesum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "42864f17b55f43ffa774a568fe983104", 
+    "script" : "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$newDeviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$newDeviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$newDeviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "趋势", 
+    "script_name" : "新增设备类型（趋势）", 
+    "script_tag" : "newtypetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "b548c09df5ae4c2da8800c91c0c03c35", 
+    "script" : "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$deviceTypeSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "趋势", 
+    "script_name" : "累计设备类型（趋势）", 
+    "script_tag" : "typetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "596935399f8d40d6abd638c692e4d13b", 
+    "script" : "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$deviceType'},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$deviceType.newDeviceSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "趋势", 
+    "script_name" : "新增设备数（趋势）", 
+    "script_tag" : "newdevicetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "ee78347074f34451a19228f6df22a456", 
+    "script" : "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$deviceType'},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$deviceType.deviceSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "趋势", 
+    "script_name" : "累计设备数（趋势）", 
+    "script_tag" : "devicetrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "bafc8cfde3a04eefa6f827690a80fd83", 
+    "script" : "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$tenantAppSum'},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "趋势", 
+    "script_name" : "新增应用（趋势）", 
+    "script_tag" : "newapptrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "f9071343cba84799a0f615ab225e2f50", 
+    "script" : "{aggregate:'device_device',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$tenantAppSum'},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$tenantAppSum.appSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "趋势", 
+    "script_name" : "累计应用（趋势）", 
+    "script_tag" : "apptrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "809c700b06a644c1a93b0a2c1ccb9fda", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$tenantAppSum'},{$match:{'tenantAppSum.tenantId':'#{get('tenantid')}'}},{$project:{count:'$tenantAppSum.newAppSum'}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总", 
+    "script_name" : "租户下新增应用（汇总）", 
+    "script_tag" : "appsumbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "352c0dd36ad640058c364c6a808b2cc9", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$appDevice'},{$match:{'appDevice.appId':'#{get('appid')}'}},{$project:{count:'$appDevice.deviceSum'}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总 ", 
+    "script_name" : "应用下累计设备（汇总）", 
+    "script_tag" : "clientsumbyapp", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "a5a0f35296a849699c793b6e99f663d5", 
+    "script" : "{aggregate:'device_device',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$deviceType'},{$match:{'deviceType.typeId':'#{get('typeid')}'}},{$project:{count:'$deviceType.deviceSum'}}]}", 
+    "app_id" : "db455f77693541f789c695bc905af4d1", 
+    "remark" : "汇总", 
+    "script_name" : "不同设备类型下设备（汇总）", 
+    "script_tag" : "devicesumbytype", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "91984627fe0e4a9b84ccaa744b7f1f3f", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "接入租户总数（汇总）", 
+    "script_tag" : "tenantsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "ef4efb9c231145da86b46e53ee0190a0", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$tenantAppSum'},{$group:{_id:null,count:{$sum:'$tenantAppSum.appSum'}}},{$project:{count:1,_id:0}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "总应用数（汇总）", 
+    "script_tag" : "appsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "be4d7c0d500640ac8263c910a988f8b3", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$unwind:'$tenantAppSum'},{$group:{_id:null,count:{$sum:'$tenantAppSum.newAppSum'}}},{$project:{count:1,_id:0}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "新增应用数（汇总）", 
+    "script_tag" : "newappsum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "fbd37515df724c74820ba97606fe45e9", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$orderSum'}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "订单总数（汇总）", 
+    "script_tag" : "ordersum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "7f79ff5048e84ab287ab8678bd8a1e55", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$newOrderSum'}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "新增订单数（汇总）", 
+    "script_tag" : "newordersum", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "984ac1ae64444c209bd1e6c1e05b203c", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$appOrderSum'},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "趋势", 
+    "script_name" : "新增订单数（趋势）", 
+    "script_tag" : "newordertrend", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "030790eb10b3418a8074befcfc968cea", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "租户下应用订单总数（汇总）", 
+    "script_tag" : "appordersumbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "1972f9b0a1614091bb8e93c252646def", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},{$project:{count:{$sum:'$appOrderSum.newOrderSum'}}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "汇总", 
+    "script_name" : "租户下新增应用订单数（汇总）", 
+    "script_tag" : "newappordersumbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "f92345cd46464c8aad19bd1c5a12f3e2", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.orderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "趋势", 
+    "script_name" : "租户下订单数（趋势）", 
+    "script_tag" : "ordertrendbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "ad5e041f8a6b430082d9c0f3860bffab", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.tenantId':'#{get('tenantid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "趋势", 
+    "script_name" : "租户下新增应用订单数（趋势）", 
+    "script_tag" : "newappordertrendbytenant", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "4bfd502866044f27a45a03c695462b76", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.appId':'#{get('appid')}'}},#{get('group')=='year'?\"{$group:{_id:{year:'$year'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year',count:1}}\":get('group')=='month'?\"{$group:{_id:{year:'$year',month:'$month'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month',count:1}}\":\"{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.newOrderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}\"}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "趋势", 
+    "script_name" : "应用下新增订单数（趋势）", 
+    "script_tag" : "newordertrendbyapp", 
+    "create_time" : NumberLong(1546480479), 
+    "update_time" : NumberLong(1546480479), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "af633898818a4093b782ee5c156a6b78", 
+    "script" : "{aggregate:'pay_pay',pipeline:[{$unwind:'$appOrderSum'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}},'appOrderSum.appId':'#{get('appid')}'}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$appOrderSum.orderSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "趋势", 
+    "script_name" : "应用订单总数（趋势）", 
+    "script_tag" : "ordertrendbyapp", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "03272d96734b43b4a3433e79de3bb908", 
+    "script" : "{aggregate:'alarm_alarm',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$warningSum'}}]}", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "remark" : "汇总", 
+    "script_name" : "总告警次数（汇总）", 
+    "script_tag" : "sum", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "586f458238b2459b9fae9294a017df2f", 
+    "script" : "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningSMS'},{$sort:{'reportTime':-1}},{$limit:1},{$group:{_id:null,count:{$sum:'warningSMS.sum'}}},{$project:{_id:0,count:1}}]}", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "remark" : "汇总", 
+    "script_name" : "短信告警次数（汇总）", 
+    "script_tag" : "smssum", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "19a59c9ef880452dbea9c23b346f25eb", 
+    "script" : "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningEmail'},{$sort:{'reportTime':-1}},{$limit:1},{$group:{_id:null,count:{$sum:'warningEmail.sum'}}},{$project:{_id:0,count:1}}]}", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "remark" : "汇总", 
+    "script_name" : "邮件告警次数（汇总）", 
+    "script_tag" : "emailsum", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "d8c01e79ae0849268e47dd650eecd3b8", 
+    "script" : "{aggregate:'alarm_alarm',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$warningSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "remark" : "趋势", 
+    "script_name" : "总告警次数（趋势）", 
+    "script_tag" : "trend", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "e0e65b70366f4e579a2e736462ccaaaa", 
+    "script" : "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningSMS'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$warningSMS.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "remark" : "趋势", 
+    "script_name" : "短信告警次数（趋势）", 
+    "script_tag" : "smstrend", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "82046963179448f8aca905c7dfc2f1cb", 
+    "script" : "{aggregate:'alarm_alarm',pipeline:[{$unwind:'$warningEmail'},{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$warningEmail.sum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "484283cdbf6845e7961b811a37fccbfa", 
+    "remark" : "趋势", 
+    "script_name" : "邮件告警次数（趋势）", 
+    "script_tag" : "emailtrend", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "d35568d399a1469ba3abfe3525a965fe", 
+    "script" : "{aggregate:'position_position',pipeline:[{$sort:{'reportTime':-1}},{$limit:1},{$project:{_id:0,count:'$tenantSum'}}]}", 
+    "app_id" : "00111e6ef4004758a8cfef7375977c24", 
+    "remark" : "汇总", 
+    "script_name" : "总租户数（汇总）", 
+    "script_tag" : "tenantsum", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "a9ee6e9f59424634be6595a0f7e0b584", 
+    "script" : "{aggregate:'position_position',pipeline:[{$match:{'reportTime':{$gte:#{get('starttime')},$lte:#{get('endtime')}}}},{$unwind:'$tenantAppSum'},{$group:{_id:{year:'$year',month:'$month',day:'$day'},count:{$sum:'$tenantAppSum.appSum'}}},{$project:{'_id':0,'year':'$_id.year','month':'$_id.month','day':'$_id.day',count:1}}]}", 
+    "app_id" : "00111e6ef4004758a8cfef7375977c24", 
+    "remark" : "汇总", 
+    "script_name" : "总应用数（汇总）", 
+    "script_tag" : "appsum", 
+    "create_time" : NumberLong(1546480480), 
+    "update_time" : NumberLong(1546480480), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "a545ab6810394582a15f6a5ced4b2f5b", 
+    "script" : "共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu共同的话题uuu", 
+    "app_id" : "29ffc11327c6483ba17508d148d07cee", 
+    "remark" : "共同的话题uuu共同的话题uuu", 
+    "script_name" : "uu共同的话题", 
+    "script_tag" : "带给人", 
+    "create_time" : NumberLong(1547713826), 
+    "update_time" : NumberLong(1547777980), 
+    "state" : NumberInt(0)
+}
+{ 
+    "_id" : "c8d475ea8c5d4beb881e232f8f7d6373", 
+    "script" : "tset", 
+    "app_id" : "042168547aa04f6b9276ab48261d4f10", 
+    "remark" : "test", 
+    "script_name" : "测试脚本", 
+    "script_tag" : "123", 
+    "create_time" : NumberLong(1547780853), 
+    "update_time" : NumberLong(1547780864), 
+    "state" : NumberInt(0)
+}

@@ -1,0 +1,31 @@
+server:
+  port: 8029
+spring:
+ # MYSQL配置
+  # Redis配置
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 0
+    pool:
+      max-idle: 5
+      min-idle: 0
+      max-active: 8
+      max-wait: -1
+    timeout:
+      default: 60
+      smscode: 300
+      weixin: 3600
+  profiles:
+    #系统运行模式 dev 开发模式 debug 调试模式 prod 生产模式　
+    active: dev
+  data:
+    mongodb:
+      host: 192.168.3.8
+      port: 27017
+      database: stats
+#      username: xxxx
+#      password: F6Psh4Cxq3QXhw==
+    cassandra:
+      connect-timeout-millis: 10000

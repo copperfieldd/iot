@@ -1,0 +1,1812 @@
+
+        <html xmlns:v="urn:schemas-microsoft-com:vml"
+        xmlns:o="urn:schemas-microsoft-com:office:office"
+        xmlns:w="urn:schemas-microsoft-com:office:word"
+        xmlns="http://www.w3.org/TR/REC-html40">
+        <head><meta http-equiv=Content-Type content="text/html;  
+        charset=utf-8">
+        <style type="text/css">
+            table  
+            {  
+                border-collapse: collapse;
+                border: none;  
+                width: 100%;  
+            }  
+            td  
+            {  
+                border: solid #CCC 1px;  
+            }  
+            .codestyle{
+                word-break: break-all;
+                background:silver;mso-highlight:silver;
+            }
+        </style>
+        <meta name=ProgId content=Word.Document>
+        <meta name=Generator content="Microsoft Word 11">
+        <meta name=Originator content="Microsoft Word 11">
+        <xml><w:WordDocument><w:View>Print</w:View></xml></head>
+        <body><h1>1、告警查询</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警查询</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/zuul/api-alarmservice/alarmservice/alarm/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmData</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警内容(告警数据)</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "value": {
+        "totalCount": 1,
+        "value": [
+            {
+                "alarmData": "米荣的告警数据0",
+                "alarmName": "告警0",
+                "alarmType": "田田田米荣类型0",
+                "createTime": "2019/01/16 10:31:18",
+                "id": "86e3f13d016f4eb69cc4440721ea3b0a",
+                "serviceName": "米荣服务0"
+            }
+        ]
+    },
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">String</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">String</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmData</td>
+<td style="text-align: left;">String</td>
+<td>告警内容(告警数据)</td>
+</tr>
+<tr>
+<td style="text-align: left;">createTime</td>
+<td style="text-align: left;">String</td>
+<td>告警时间</td>
+</tr>
+</tbody>
+</table></div><h1>2、导出Excel文件</h1><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>导出Excel文件</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/alarm/exportExcel</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmData</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警内容(告警数据)</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String、</td>
+<td>文件路径</td>
+</tr>
+<tr>
+<td style="text-align: left;">excelType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>1为2003版本，2为2010，2007版本</td>
+</tr>
+</tbody>
+</table></div><h1>3、子服务配置</h1><div style="margin-left:20px;"><h2>3.1、添加子服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加子服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/alarmservice/api/alarmService/add">http://ip:port/alarmservice/api/alarmService/add</a> '</li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>服务名</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceDesc</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>子服务描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>3.2、删除子服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除子服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/alarmService/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">long</td>
+<td>子服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">flag</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>是否强行删除关联的告警规则，不传默认为false</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0,
+    "message": "删除成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>3.3、修改子服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改子服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/alarmService/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Long</td>
+<td>子服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceDesc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>服务描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>3.4、查询子服务</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询子服务</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/alarmService/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "value": {
+        "firstPage": true,
+        "firstResult": 0,
+        "lastPage": true,
+        "nextPage": 1,
+        "pageNo": 1,
+        "pageSize": 2,
+        "prevPage": 1,
+        "totalCount": 2,
+        "totalPage": 1,
+        "value": [
+            {
+                "accessKey": "e424d94f9a374693a647d77393055871",
+                "createTime": "2018/11/08 18:23:19",
+                "id": "9fffacade03649b9be960c4564b5f174",
+                "serviceDesc": "asdfasdf",
+                "serviceName": "测试"
+            },
+            {
+                "accessKey": "60bdb13aad3742f3ac630599b9b5f3bd",
+                "createTime": "2018/11/09 11:02:39",
+                "id": "2ebab2e70b36424f8a3a69ee102eae62",
+                "serviceDesc": "测试一下服务",
+                "serviceName": "测试服务"
+            }
+        ]
+    },
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageNo</td>
+<td style="text-align: left;">int</td>
+<td>当前查询的索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageSize</td>
+<td style="text-align: left;">int</td>
+<td>每页显示的内容的条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总共的数据条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceDesc</td>
+<td style="text-align: left;">String</td>
+<td>子服务描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">accessKey</td>
+<td style="text-align: left;">string</td>
+<td>访问key</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>数据返回状态，0为成功，1为失败</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table></div></div><h1>4、告警类型管理</h1><div style="margin-left:20px;"><h2>4.1、添加告警类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加告警类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/type/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmDesc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>告警描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0,
+    "message": "添加成功"
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>4.2、删除告警类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除告警类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/type/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">long</td>
+<td>告警类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">flag</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>是否强行删除关联的告警规则，不传默认为false</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>4.3、修改告警类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改告警类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/alarmservice/api/type/upd">http://ip:port/alarmservice/api/type/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Long</td>
+<td>告警类型id</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Sing</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmDesc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警描述</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>4.4、查询告警类型</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询告警类型</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/type/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "message": "请求成功！！",
+    "status": 0,
+    "value": {
+        "totalCount": 3,
+        "value": [
+            {
+                "alarmDesc": "系统默认支持的告警类型：错误",
+                "alarmName": "通知",
+                "alarmType": "sys_error",
+                "createTime": "2018/11/08 18:23:15",
+                "id": "b240b9bbc19344599870809827d08205"
+            },
+            {
+                "alarmDesc": "系统默认支持的告警类型：警告",
+                "alarmName": "警告",
+                "alarmType": "sys_warn",
+                "createTime": "2018/11/08 18:23:15",
+                "id": "b0e0e37b1a1e4ab08e1de8794832de12"
+            }
+        ]
+    }
+}</code></pre></table>
+<p>fail</p>
+<pre><code class="language-_">  {
+    "status": 1,
+    "message": "查询失败",
+    "value": null
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageNo</td>
+<td style="text-align: left;">int</td>
+<td>当前查询的索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageSize</td>
+<td style="text-align: left;">int</td>
+<td>每页显示的内容的条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总共的数据条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmName</td>
+<td style="text-align: left;">String</td>
+<td>告警名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">String</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmDesc</td>
+<td style="text-align: left;">String</td>
+<td>告警描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>数据返回状态，0为成功，1为失败</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table></div></div><h1>5、通知策略管理</h1><div style="margin-left:20px;"><h2>5.1、删除通知策略</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除通知策略</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/policy/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>通知策略id</td>
+</tr>
+<tr>
+<td style="text-align: left;">flag</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>是否强行删除关联的告警规则，不传默认为false</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>5.2、修改通知策略</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改通知策略</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/policy/upd</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST </p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxx",
+  "notifyName": "asdf",
+  "accessKey": "e424d94f9a374693a647d77393055871",
+  "interfaceName": "sdfg",
+  "notifyUrl": "https://www.showdoc.cc/page/edit/58996221118691/0",
+  "notifyUrlDesc": "asdfadsf"
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">Long</td>
+<td>通知策略id</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>通知策略名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>通知策略类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">accessKey</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>子服务访问key</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyUrl</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>通知地址 ，接口</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyUrlDesc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>接口描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">interfaceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>5.3、添加策略</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加策略</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/policy/add</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">notifyName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>通知策略名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>通知策略类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">accessKey</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>子服务访问key</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyUrl</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>通知地址 ，接口</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyUrlDesc</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>接口描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">interfaceName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>接口名称</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>5.4、查询通知策略</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>查询通知策略</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/policy/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET </li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>通知策略名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">interFaceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">string</td>
+<td>接口名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 6,
+        "value": [
+            {
+                "accessKey": "60bdb13aad3742f3ac630599b9b5f3bd",
+                "createTime": "2018/12/07 11:24:46",
+                "notifyName": "苏打粉",
+                "notifyUrl": "http://47.94.154.65:8020/#/warning/informStrategy/add",
+                "id": "509db5ea79a344ecadb0fb28b2f1c6bb",
+                "serviceName": "测试服务",
+                "interFaceName": "1",
+                "desc": "测试一下服务"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageNo</td>
+<td style="text-align: left;">int</td>
+<td>当前查询的索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageSize</td>
+<td style="text-align: left;">int</td>
+<td>每页显示的内容的条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总共的数据条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyName</td>
+<td style="text-align: left;">String</td>
+<td>通知策略名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyType</td>
+<td style="text-align: left;">String</td>
+<td>通知策略类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceId</td>
+<td style="text-align: left;">string</td>
+<td>子服务id</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyUrl</td>
+<td style="text-align: left;">String</td>
+<td>通知策略地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyUrlDesc</td>
+<td style="text-align: left;">String</td>
+<td>通知策略地址描述</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>数据返回状态，0为成功，1为失败</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table></div></div><h1>6、告警规则管理</h1><div style="margin-left:20px;"><h2>6.1、添加告警规则</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加告警规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/zuul/api-alarmservice/alarmservice/rule/add">http://ip:port/zuul/api-alarmservice/alarmservice/rule/add</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST</p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+  "ruleName": "xxxxxx",
+  "accessKey": "xxxxxxx",
+  "alarmTypeId": "xxxxxx",
+  "alarmContent": "xxxxxx",
+  "contentMatchType": 0,
+  "notifyId": "xxxxxx",
+  "emailss": [
+    "xxxx",
+    "xxxx"
+  ],
+  "messages": [
+    "xxx",
+    "xxx"
+  ]
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ruleName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>告警规则名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">accessKey</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>子服务访问key，0为所有子服务</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmTypeId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>告警类型id，*为所有类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmContent</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>告警配置的内容，*为所有内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">contentMatchType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>内容匹配规则，0为完全匹配，1为模糊匹配</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyIds</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">list</td>
+<td>通知策略id</td>
+</tr>
+<tr>
+<td style="text-align: left;">emailss</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">list</td>
+<td>邮箱地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">messages</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">list</td>
+<td>手机号码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>6.2、修改告警规则</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>修改告警规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/alarmservice/api/rule/upd">http://ip:port/alarmservice/api/rule/upd</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>
+<p>POST</p>
+<p><strong>请求示例</strong></p>
+</li>
+</ul>
+<table width='100%' class='codestyle'><pre><code>{
+    "id":"xxxxxxx",
+  "ruleName": "xxxxxx",
+  "accessKey": "xxxxxxx",
+  "alarmTypeId": "xxxxxx",
+  "alarmContent": "xxxxxx",
+  "contentMatchType": 0,
+  "notifyId": "xxxxxx",
+  "emailss": [
+    "xxxx",
+    "xxxx"
+  ],
+  "messages": [
+    "xxx",
+    "xxx"
+  ]
+}</code></pre></table>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">ruleName</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>告警规则名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">accessKey</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>子服务访问key，0为所有子服务</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmTypeId</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>告警类型id，*为所有类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmContent</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">String</td>
+<td>告警配置的内容，*为所有内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">contentMatchType</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>内容匹配规则，0为完全匹配，1为模糊匹配</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyIds</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">list</td>
+<td>通知策略id</td>
+</tr>
+<tr>
+<td style="text-align: left;">emailss</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">list</td>
+<td>邮箱地址</td>
+</tr>
+<tr>
+<td style="text-align: left;">messages</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">list</td>
+<td>手机号码</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code> {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>6.3、删除告警规则</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>删除告警规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/rule/del</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">long</td>
+<td>告警规则id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>  {
+    "status": 0
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+</tbody>
+</table></div><h2>6.4、告警规则列表</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>告警规则列表</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li><code>http://ip:port/alarmservice/api/rule/list</code></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>GET</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">start</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>索引数</td>
+</tr>
+<tr>
+<td style="text-align: left;">count</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">int</td>
+<td>每页显示多少条记录</td>
+</tr>
+<tr>
+<td style="text-align: left;">ruleName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>规则名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">startTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>开始时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">endTime</td>
+<td style="text-align: left;">否</td>
+<td style="text-align: left;">String</td>
+<td>结束时间</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong>
+success</p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "totalCount": 3,
+        "value": [
+            {
+                "alarmType": "通知",
+                "createTime": "2018/11/09 11:36:37",
+                "ruleName": "测试",
+                "id": "fdd2d1b4b63e424681427e1dac242c09",
+                "serviceName": "测试服务",
+                "notity": "短信,邮件,接口"
+            },
+            {
+                "alarmType": "通知",
+                "createTime": "2018/11/09 11:32:42",
+                "ruleName": "测试规则2",
+                "id": "7abe06e176914a899baa3eefa9f35581",
+                "serviceName": "测试服务",
+                "notity": "短信"
+            },
+            {
+                "alarmType": "通知",
+                "createTime": "2018/11/09 11:31:26",
+                "ruleName": "测试规则",
+                "id": "96cc0e5660ae4ea48010049e2be33563",
+                "serviceName": "测试",
+                "notity": "短信"
+            }
+        ]
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageNo</td>
+<td style="text-align: left;">int</td>
+<td>当前查询的索引</td>
+</tr>
+<tr>
+<td style="text-align: left;">pageSize</td>
+<td style="text-align: left;">int</td>
+<td>每页显示的内容的条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">totalCount</td>
+<td style="text-align: left;">int</td>
+<td>总共的数据条数</td>
+</tr>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">String</td>
+<td>告警规则id</td>
+</tr>
+<tr>
+<td style="text-align: left;">ruleName</td>
+<td style="text-align: left;">String</td>
+<td>告警规则名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">String</td>
+<td>子服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">String</td>
+<td>告警类型，*为所有类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmContent</td>
+<td style="text-align: left;">String</td>
+<td>匹配告警的内容，*为任意内容</td>
+</tr>
+<tr>
+<td style="text-align: left;">contentMatchType</td>
+<td style="text-align: left;">int</td>
+<td>内容匹配规则，0为完全匹配，1为模糊匹配</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyName</td>
+<td style="text-align: left;">String</td>
+<td>通知策略名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">updateTime</td>
+<td style="text-align: left;">Date</td>
+<td>更新时间</td>
+</tr>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>数据返回状态，0为成功，1为失败</td>
+</tr>
+<tr>
+<td style="text-align: left;">message</td>
+<td style="text-align: left;">String</td>
+<td>信息</td>
+</tr>
+</tbody>
+</table></div><h2>6.5、规则详情</h2><div style="margin-left:20px;"><p><strong>简要描述：</strong> </p>
+<ul>
+<li>添加告警规则</li>
+</ul>
+<p><strong>请求URL：</strong> </p>
+<ul>
+<li>` <a href="http://ip:port/zuul/api-alarmservice/alarmservice/rule/item">http://ip:port/zuul/api-alarmservice/alarmservice/rule/item</a></li>
+</ul>
+<p><strong>请求方式：</strong></p>
+<ul>
+<li>POST</li>
+</ul>
+<p><strong>参数：</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">必选</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">id</td>
+<td style="text-align: left;">是</td>
+<td style="text-align: left;">string</td>
+<td>规则id</td>
+</tr>
+</tbody>
+</table>
+<p><strong>返回示例</strong></p>
+<table width='100%' class='codestyle'><pre><code>{
+    "status": 0,
+    "value": {
+        "alarmContent": "xxxxxx",
+        "emails": [
+            "xxxx",
+            "xxxx"
+        ],
+        "alarmType": {
+            "alarmName": "通知",
+            "id": "b1797c9eae1c4ecab4ee67e0ec6e7c44"
+        },
+        "contentMatchType": 0,
+        "accessKey": "e424d94f9a374693a647d77393055871",
+        "ruleName": "xxxxxx",
+        "messages": [
+            "xxx",
+            "xxx"
+        ],
+        "id": "45f9f9ebfa5d408db41ad1df1e6edeba",
+        "serviceName": "测试",
+        "notify": {
+            "notifyId": "00aaa9935d2b44cb8ea7375d46d0f3c0",
+            "interfaceName": "sdfg",
+            "serviceName": "测试",
+            "url": "https://www.showdoc.cc/page/edit/58996221118691/0"
+        }
+    }
+}</code></pre></table>
+<p><strong>返回参数说明</strong> </p>
+<table>
+<thead><tr style='background-color: rgb(0, 136, 204); color: rgb(255, 255, 255);'>
+<th style="text-align: left;">参数名</th>
+<th style="text-align: left;">类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">status</td>
+<td style="text-align: left;">int</td>
+<td>详见通用状态码对照表</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmContent</td>
+<td style="text-align: left;">string</td>
+<td>匹配内容（*为匹配所有）</td>
+</tr>
+<tr>
+<td style="text-align: left;">contentMatchType</td>
+<td style="text-align: left;">int</td>
+<td>匹配规则（0完全匹配，1模糊匹配）</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyMeta</td>
+<td style="text-align: left;">string</td>
+<td>通知策略源数据</td>
+</tr>
+<tr>
+<td style="text-align: left;">serviceName</td>
+<td style="text-align: left;">string</td>
+<td>服务名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">alarmType</td>
+<td style="text-align: left;">string</td>
+<td>告警类型</td>
+</tr>
+<tr>
+<td style="text-align: left;">ruleName</td>
+<td style="text-align: left;">string</td>
+<td>规则名称</td>
+</tr>
+<tr>
+<td style="text-align: left;">notifyName</td>
+<td style="text-align: left;">string</td>
+<td>策略名称</td>
+</tr>
+</tbody>
+</table></div></div><h1>7、告警处理</h1><div style="margin-left:20px;"></div></body></html>
